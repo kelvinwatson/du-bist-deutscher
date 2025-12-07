@@ -6,6 +6,12 @@
     <string name="nav_grammar">Grammatik</string>
     <string name="nav_account">Benutzerkonto</string>
 
+    <!-- titles -->
+    <string name="title_overview">Du bist jetzt Deutscher!</string>
+    <string name="title_grammar">Grammatik</string>
+    <string name="title_account">Benutzerkonto</string>
+    <string name="title_prepositions">Präpositionen</string>
+
     <string name="adverbs">Umstandswörter</string>
     <string name="prepositions">Präpositionen</string>
 </resources>

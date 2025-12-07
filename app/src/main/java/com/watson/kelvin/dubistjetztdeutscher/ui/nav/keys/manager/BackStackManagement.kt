@@ -2,6 +2,7 @@ package com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.manager
 
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
+import kotlinx.coroutines.flow.StateFlow
 
 /**
  * Interface for managing navigation back stacks.
@@ -13,7 +14,12 @@ interface BackStackManagement<K : AppNavKey> {
     /**
      * The current active top-level navigation key.
      */
-    val currentKey: K
+    val currentTopLevelKeyFlow: StateFlow<K>
+
+    /**
+     * The current sub/nested level navigation key.
+     */
+    val currentSubLevelKeyFlow: StateFlow<K>
 
     /**
      * The flattened back stack for the current top-level route.

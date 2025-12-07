@@ -5,9 +5,15 @@ import androidx.activity.compose.LocalActivity
 import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
@@ -27,17 +33,20 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.NavigationViewMod
  * Stateless version of App that uses lambdas for navigation actions.
  * This allows for more flexible composition and testing without exposing the BackStackManagement directly.
  *
- * @param currentKey The current active (top-level) bottom nav selection (e.g. Overview, Grammar, Account)
- * @param backStackForCurrentKey The nested/sub back stack associated with the [currentKey]
+ * @param currentTopLevelKey The current active (top-level) bottom nav selection (e.g. Overview, Grammar, Account)
+ * @param currentSubLevelKey The current active nested/sub screen within the [currentTopLevelKey] (e.g. Prepositions)
+ * @param backStackForCurrentKey The nested/sub back stack associated with the [currentTopLevelKey]
  * @param onNavigateToTopLevel Callback to navigate to a top-level (bottom nav) route (e.g. Overview, Grammar, Account)
  * @param onNavigate Callback to add a nested screen to the current route
  * @param removeLastKey Callback to handle back navigation
  * @param modifier Optional modifier to apply to the root composable
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @VisibleForTesting
 @Composable
 internal fun App(
-    currentKey: AppNavKey,
+    currentTopLevelKey: AppNavKey,
+    currentSubLevelKey: AppNavKey,
     backStackForCurrentKey: List<AppNavKey>,
     onNavigateToTopLevel: (AppNavKey) -> Unit,
     onNavigate: (AppNavKey) -> Unit,
@@ -53,9 +62,18 @@ internal fun App(
 
     Scaffold(
         modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(currentSubLevelKey.titleRes),
+                    )
+                }
+            )
+        },
         bottomBar = {
             BottomBar(
-                currentTopLevel = currentKey,
+                currentTopLevel = currentTopLevelKey,
                 onClick = onNavigateToTopLevel,
             )
         }
@@ -109,8 +127,12 @@ fun App(
     modifier: Modifier = Modifier,
     navViewModel: NavigationViewModel = viewModel<NavigationViewModel>(),
 ) {
+    val currentTopLevelKey: AppNavKey by navViewModel.currentTopLevelKeyFlow.collectAsState()
+    val currentSubLevelKey: AppNavKey by navViewModel.currentSubLevelKeyFlow.collectAsState()
+
     App(
-        currentKey = navViewModel.currentKey,
+        currentTopLevelKey = currentTopLevelKey,
+        currentSubLevelKey = currentSubLevelKey,
         backStackForCurrentKey = navViewModel.subBackStack,
         onNavigateToTopLevel = navViewModel::addTopLevel,
         onNavigate = navViewModel::add,
