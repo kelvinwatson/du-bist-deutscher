@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">DuBistJetztDeutscher</string>
+    <string name="app_name">Du bist jetzt Deutscher</string>
+
+    <!-- navigation -->
+    <string name="nav_overview">Overview</string>
+    <string name="nav_grammar">Grammar</string>
+    <string name="nav_account">Account</string>
+
+    <!-- titles -->
+    <string name="title_overview">Overview</string>
+    <string name="title_grammar">Grammar</string>
+    <string name="title_account">Account</string>
+    <string name="title_prepositions">Prepositions</string>
+
+    <string name="adverbs">Adverbs</string>
+    <string name="prepositions">Prepositions</string>
 </resources>

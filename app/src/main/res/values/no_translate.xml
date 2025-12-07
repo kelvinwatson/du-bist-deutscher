@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="no_translate_prepositions" translatable="false">Präpositionen</string>
+    <string name="no_translate_adverbs" translatable="false">Umstandswörter</string>
+</resources>

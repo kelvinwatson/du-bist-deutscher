@@ -1,58 +1,59 @@
 package com.watson.kelvin.dubistjetztdeutscher.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Gray
+import androidx.compose.ui.graphics.Color.Companion.Yellow
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+typealias Theme = MaterialTheme
+/**
+ * There is only one theme, dark. Perhaps in the future, it can be customized to change the text
+ * color from pink to yellow to green.
+ */
+private val appColorScheme = darkColorScheme(
+    primary = Black,
+    secondary = Gray,
+    onPrimary = Yellow,
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val appTextStyleDefault = TextStyle.Default.copy(
+    color = Yellow,
+    fontFamily = FontFamily.Monospace,
+)
+private val materialTypography = androidx.compose.material3.Typography()
+private val appTypography = androidx.compose.material3.Typography(
+    displayLarge = materialTypography.displayLarge.merge(appTextStyleDefault),
+    displayMedium = materialTypography.displayMedium.merge(appTextStyleDefault),
+    displaySmall = materialTypography.displaySmall.merge(appTextStyleDefault),
+    headlineLarge = materialTypography.headlineLarge.merge(appTextStyleDefault),
+    headlineMedium = materialTypography.headlineMedium.merge(appTextStyleDefault),
+    headlineSmall = materialTypography.headlineSmall.merge(appTextStyleDefault),
+    titleLarge = materialTypography.titleLarge.merge(appTextStyleDefault),
+    titleMedium = materialTypography.titleMedium.merge(appTextStyleDefault),
+    titleSmall = materialTypography.titleSmall.merge(appTextStyleDefault),
+    bodyLarge = materialTypography.bodyLarge.merge(appTextStyleDefault),
+    bodyMedium = materialTypography.bodyMedium.merge(appTextStyleDefault),
+    bodySmall = materialTypography.bodySmall.merge(appTextStyleDefault),
+    labelLarge = materialTypography.labelLarge.merge(appTextStyleDefault),
+    labelMedium = materialTypography.labelMedium.merge(appTextStyleDefault),
+    labelSmall = materialTypography.labelSmall.merge(appTextStyleDefault),
 )
 
 @Composable
-fun DuBistJetztDeutscherTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+fun AppTheme(
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+        colorScheme = appColorScheme,
+        typography = appTypography
+    ) {
+        ProvideTextStyle(appTextStyleDefault) {
+            content()
+        }
+    }
 }

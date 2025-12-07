@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Du bist jetzt Deutscher</string>
+
+    <!-- navigation -->
+    <string name="nav_overview">Übersicht</string>
+    <string name="nav_grammar">Grammatik</string>
+    <string name="nav_account">Benutzerkonto</string>
+
+    <string name="adverbs">Umstandswörter</string>
+    <string name="prepositions">Präpositionen</string>
+</resources>
