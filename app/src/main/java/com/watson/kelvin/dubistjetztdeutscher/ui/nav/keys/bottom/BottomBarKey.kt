@@ -30,7 +30,8 @@ sealed interface BottomBarKey : AppNavKey {
     @Serializable
     data object Overview : BottomBarKey {
         override val id: String = "Overview"
-        override val titleRes: Int = AppStringResource.title_overview
+        override val germanTitleRes: Int = AppStringResource.no_translate_title_overview
+        override val localizedTitleRes: Int = AppStringResource.title_overview
         override val icon: ImageVector = Icons.Default.Home
         override val labelResource: Int = AppStringResource.nav_overview
     }
@@ -38,15 +39,26 @@ sealed interface BottomBarKey : AppNavKey {
     @Serializable
     data object Grammar : BottomBarKey {
         override val id: String = "Grammar"
-        override val titleRes: Int = AppStringResource.title_grammar
+        override val germanTitleRes: Int = AppStringResource.no_translate_title_grammar
+        override val localizedTitleRes: Int = AppStringResource.title_grammar
         override val icon: ImageVector = Icons.Default.School
         override val labelResource: Int = AppStringResource.nav_grammar
     }
 
     @Serializable
+    data object Vocabulary : BottomBarKey {
+        override val id: String = "Vocabulary"
+        override val germanTitleRes: Int = AppStringResource.no_translate_vocabulary
+        override val localizedTitleRes: Int = AppStringResource.title_vocabulary
+        override val icon: ImageVector = Icons.Default.School
+        override val labelResource: Int = AppStringResource.nav_vocabulary
+    }
+
+    @Serializable
     data object Account : BottomBarKey {
         override val id: String = "Account"
-        override val titleRes: Int = AppStringResource.title_account
+        override val germanTitleRes: Int = AppStringResource.no_translate_title_account
+        override val localizedTitleRes: Int = AppStringResource.title_account
         override val icon: ImageVector = Icons.Default.Person
         override val labelResource: Int = AppStringResource.nav_account
     }

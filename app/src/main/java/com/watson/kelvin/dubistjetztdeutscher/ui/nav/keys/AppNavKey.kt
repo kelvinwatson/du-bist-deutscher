@@ -2,7 +2,6 @@ package com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys
 
 import androidx.annotation.StringRes
 import androidx.navigation3.runtime.NavKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.resource.AppStringResource
 
 /**
  * Base for all app navigation keys. Holds a unique identifier and title resource for each key.
@@ -27,9 +26,12 @@ interface NavIdentifier {
      */
     val id: String
 
+    @get:StringRes
+    val germanTitleRes: Int
+
     /**
      * A factory that produces the title for this navigation key.
      */
     @get:StringRes
-    val titleRes: Int
+    val localizedTitleRes: Int
 }

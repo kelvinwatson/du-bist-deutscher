@@ -9,4 +9,10 @@
     <string name="tab_dative" translatable="false">Dativ</string>
     <string name="tab_twoway" translatable="false">Wechselpräpositionen</string>
     <string name="tab_genitive" translatable="false">Genitiv</string>
+
+    <string name="no_translate_title_overview" translatable="false">Du bist jetzt Deutscher!</string>
+    <string name="no_translate_title_grammar" translatable="false">Grammatik</string>
+    <string name="no_translate_vocabulary" translatable="false">Wortschatz</string>
+    <string name="no_translate_title_account" translatable="false">Benutzerkonto</string>
+    <string name="no_translate_title_prepositions" translatable="false">Präpositionen</string>
 </resources>

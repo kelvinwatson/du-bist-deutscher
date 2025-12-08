@@ -17,6 +17,7 @@ sealed interface Grammar : EmbeddedModeNavKey {
     @Serializable
     data object Prepositions : Grammar {
         override val id: String = "Prepositions"
-        override val titleRes: Int = AppStringResource.title_prepositions
+        override val germanTitleRes: Int = AppStringResource.no_translate_title_prepositions
+        override val localizedTitleRes: Int = AppStringResource.title_prepositions
     }
 }
