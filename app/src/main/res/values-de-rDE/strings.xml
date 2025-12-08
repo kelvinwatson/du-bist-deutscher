@@ -14,4 +14,16 @@
 
     <string name="adverbs">Umstandswörter</string>
     <string name="prepositions">Präpositionen</string>
+
+    <!-- tab labels -->
+    <string name="tab_accusative">Akkusativ</string>
+    <string name="tab_dative">Dativ</string>
+    <string name="tab_twoway">Wechselpräpositionen</string>
+    <string name="tab_genitive">Genitiv</string>
+
+    <!-- tab explanations -->
+    <string name="tab_accusative_explanation">Akkusativ</string>
+    <string name="tab_dative_explanation">Dativ</string>
+    <string name="tab_twoway_explanation">Wechselpräpositionen</string>
+    <string name="tab_genitive_explanation">Genitiv</string>
 </resources>

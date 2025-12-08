@@ -14,4 +14,9 @@
 
     <string name="adverbs">Adverbs</string>
     <string name="prepositions">Prepositions</string>
+
+    <string name="tab_accusative_explanation">Accusative</string>
+    <string name="tab_dative_explanation">Dative</string>
+    <string name="tab_twoway_explanation">Two-Way</string>
+    <string name="tab_genitive_explanation">Genitive</string>
 </resources>

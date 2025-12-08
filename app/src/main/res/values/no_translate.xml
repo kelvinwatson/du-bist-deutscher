@@ -3,4 +3,10 @@
 
     <string name="no_translate_prepositions" translatable="false">Präpositionen</string>
     <string name="no_translate_adverbs" translatable="false">Umstandswörter</string>
+
+    <!-- tab labels -->
+    <string name="tab_accusative" translatable="false">Akkusativ</string>
+    <string name="tab_dative" translatable="false">Dativ</string>
+    <string name="tab_twoway" translatable="false">Wechselpräpositionen</string>
+    <string name="tab_genitive" translatable="false">Genitiv</string>
 </resources>
