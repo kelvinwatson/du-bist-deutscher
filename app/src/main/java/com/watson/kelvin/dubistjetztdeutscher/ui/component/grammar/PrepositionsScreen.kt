@@ -289,12 +289,12 @@ private val twoWayPrepositions = listOf(
 )
 
 private val genitivePrepositions = listOf(
+    Preposition("außerhalb", "outside", "Außerhalb der Stadt ist es ruhig."),
+    Preposition("innerhalb", "inside/within", "Innerhalb einer Woche bekommst du eine Antwort."),
+    Preposition("statt", "instead of", "Statt des Autos nehme ich das Fahrrad."),
+    Preposition("trotz", "despite", "Trotz des schlechten Wetters gehen wir spazieren."),
     Preposition("während", "during", "Während des Essens telefoniere ich nicht."),
     Preposition("wegen", "because of", "Wegen des Regens bleiben wir zu Hause."),
-    Preposition("trotz", "despite", "Trotz des schlechten Wetters gehen wir spazieren."),
-    Preposition("statt", "instead of", "Statt des Autos nehme ich das Fahrrad."),
-    Preposition("außerhalb", "outside", "Außerhalb der Stadt ist es ruhig."),
-    Preposition("innerhalb", "inside/within", "Innerhalb einer Woche bekommst du eine Antwort.")
 )
 
 // ========== Compose Previews ==========
