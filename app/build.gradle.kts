@@ -44,6 +44,8 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":core-theme"))
+
     // Core Android dependencies
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)

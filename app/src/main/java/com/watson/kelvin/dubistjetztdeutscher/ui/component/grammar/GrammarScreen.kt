@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.AppStringResource
-import com.watson.kelvin.dubistjetztdeutscher.ui.theme.Theme
+import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 
 @OptIn(ExperimentalMaterial3Api::class) // TopAppBar
 @Composable

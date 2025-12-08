@@ -27,8 +27,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.watson.kelvin.dubistjetztdeutscher.R
-import com.watson.kelvin.dubistjetztdeutscher.ui.theme.AppTheme
-import com.watson.kelvin.dubistjetztdeutscher.ui.theme.Theme
+import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey
+import com.watson.kelvin.dubistjetztdeutscher.core.theme.AppTheme
+import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 
 /**
  * Prepositions screen with tabbed navigation for different preposition categories.
@@ -57,8 +58,9 @@ fun PrepositionsScreen(
                 .horizontalScroll(rememberScrollState())
         ) {
             tabs.forEachIndexed { index, tab ->
+                val color = tab.colorKey.color(AppTheme.prepositionColors)
                 Tab(
-                    selectedContentColor = tab.highlightColor,
+                    selectedContentColor = color,
                     selected = selectedTabIndex == index,
                     onClick = { selectedTabIndex = index },
                     text = {
@@ -68,14 +70,14 @@ fun PrepositionsScreen(
                                 style = MaterialTheme.typography.labelLarge,
                                 maxLines = 1,
                                 softWrap = false,
-                                color = tab.highlightColor,
+                                color = color,
                             )
                             Text(
                                 text = "(" + stringResource(tab.localizedRes) + ")",
                                 style = MaterialTheme.typography.bodySmall,
                                 maxLines = 1,
                                 softWrap = false,
-                                color = tab.highlightColor,
+                                color = color,
                             )
                         }
                     },
@@ -86,9 +88,10 @@ fun PrepositionsScreen(
         }
 
         tabs[selectedTabIndex].let { tab ->
+            val color = tab.colorKey.color(AppTheme.prepositionColors)
             PrepositionList(
                 prepositions = tab.data,
-                highlightColor = tab.highlightColor
+                highlightColor = color
             )
         }
     }
@@ -101,34 +104,34 @@ sealed class PrepositionTab(
     val germanRes: Int,
     val localizedRes: Int,
     val data: List<Preposition>,
-    val highlightColor: Color
+    val colorKey: PrepositionColorKey
 ) {
     data object Accusative : PrepositionTab(
         germanRes = R.string.tab_accusative,
         localizedRes = R.string.tab_accusative_explanation,
         data = accusativePrepositions,
-        highlightColor = AppTheme.prepositionColors.akkusativ,
+        colorKey = PrepositionColorKey.Akkusativ,
     )
 
     data object Dative : PrepositionTab(
         germanRes = R.string.tab_dative,
         localizedRes = R.string.tab_dative_explanation,
         data = dativePrepositions,
-        highlightColor = AppTheme.prepositionColors.dativ,
+        colorKey = PrepositionColorKey.Dativ,
     )
 
     data object TwoWay : PrepositionTab(
         germanRes = R.string.tab_twoway,
         localizedRes = R.string.tab_twoway_explanation,
         data = twoWayPrepositions,
-        highlightColor = AppTheme.prepositionColors.wechsel,
+        colorKey = PrepositionColorKey.Wechsel,
     )
 
     data object Genitive : PrepositionTab(
         germanRes = R.string.tab_genitive,
         localizedRes = R.string.tab_genitive_explanation,
         data = genitivePrepositions,
-        highlightColor = AppTheme.prepositionColors.genitive,
+        colorKey = PrepositionColorKey.Genitive,
     )
 }
 
@@ -205,6 +208,16 @@ private fun PrepositionCard(
             }
         }
     }
+}
+
+/**
+ * Extension function for PrepositionColorKey to get the color from AppPrepositionColors
+ */
+fun PrepositionColorKey.color(colors: com.watson.kelvin.dubistjetztdeutscher.core.theme.AppPrepositionColors): Color = when (this) {
+    PrepositionColorKey.Akkusativ -> colors.akkusativ
+    PrepositionColorKey.Dativ -> colors.dativ
+    PrepositionColorKey.Wechsel -> colors.wechsel
+    PrepositionColorKey.Genitive -> colors.genitive
 }
 
 // ========== Sample Data Lists ===========
@@ -386,7 +399,7 @@ private fun PrepositionListPreview() {
             prepositions = listOf(
                 Preposition("durch", "through", "Wir gehen durch den Park."),
                 Preposition("für", "for", "Das Geschenk ist für dich."),
-                Preposition("gegen", "against", "Er ist gegen die Wand gelaufen."),
+                Preposition("gegen", "against", "Er is gegen die Wand gelaufen."),
                 Preposition("ohne", "without", "Ich kann nicht ohne dich leben.")
             )
         )
