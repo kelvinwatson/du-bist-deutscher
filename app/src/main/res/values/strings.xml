@@ -11,14 +11,24 @@
     <string name="title_overview">Du bist jetzt Deutscher!</string>
     <string name="title_grammar">Grammar</string>
     <string name="title_vocabulary">Vocabulary</string>
+
+    <!-- grammar section titles -->
     <string name="title_account">Account</string>
+    <string name="title_connectors">Connectors</string>
     <string name="title_prepositions">Prepositions</string>
 
     <string name="adverbs">Adverbs</string>
+    <string name="connectors">Connectors</string>
     <string name="prepositions">Prepositions</string>
 
+    <!-- Preposition tab explanations -->
     <string name="tab_accusative_explanation">Accusative</string>
     <string name="tab_dative_explanation">Dative</string>
     <string name="tab_twoway_explanation">Two-Way</string>
     <string name="tab_genitive_explanation">Genitive</string>
+
+    <!-- Connector tab explanations -->
+    <string name="tab_coordinating_explanation">Coordinating</string>
+    <string name="tab_subordinating_explanation">Subordinating</string>
+    <string name="tab_adverbial_connector_explanation">Adverbial</string>
 </resources>

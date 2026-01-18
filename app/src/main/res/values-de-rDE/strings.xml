@@ -12,9 +12,13 @@
     <string name="title_grammar">Grammatik</string>
     <string name="title_vocabulary">Wortschatz</string>
     <string name="title_account">Benutzerkonto</string>
+
+    <!-- grammar section titles -->
+    <string name="title_connectors">Konnektoren</string>
     <string name="title_prepositions">Präpositionen</string>
 
     <string name="adverbs">Umstandswörter</string>
+    <string name="connectors">Konnektoren</string>
     <string name="prepositions">Präpositionen</string>
 
     <!-- tab labels -->
@@ -28,4 +32,9 @@
     <string name="tab_dative_explanation">Dativ</string>
     <string name="tab_twoway_explanation">Wechselpräpositionen</string>
     <string name="tab_genitive_explanation">Genitiv</string>
+
+    <!-- Connector tabs (translations only) -->
+    <string name="tab_coordinating_explanation">Nebenordnend</string>
+    <string name="tab_subordinating_explanation">Unterordnend</string>
+    <string name="tab_adverbial_connector_explanation">Mehrdeutig</string>
 </resources>

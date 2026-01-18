@@ -1,68 +1,88 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.prepositions
 
+import android.content.res.Configuration
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PrimaryScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.watson.kelvin.dubistjetztdeutscher.R
+import com.watson.kelvin.dubistjetztdeutscher.core.theme.AppPrepositionColors
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.AppTheme
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
+import com.watson.kelvin.dubistjetztdeutscher.domain.model.Tab
 
 /**
  * Prepositions screen with tabbed navigation for different preposition categories.
- * Demonstrates Material3 TabRow with multiple tabs for organizing content.
+ * Demonstrates Material3 TabRow with swipeable content using HorizontalPager.
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PrepositionsScreen(
     modifier: Modifier = Modifier,
+    prepositionsViewModel: PrepositionsViewModel = viewModel(factory = PrepositionsViewModel.Factory),
 ) {
-    // State to track the selected tab
-    var selectedTabIndex by remember { mutableIntStateOf(0) }
+    val selectedTabIndex by prepositionsViewModel.selectedTabIndex.collectAsState()
+    val tabs = prepositionsViewModel.tabs
 
-    // Define the tabs
-    val tabs = listOf(
-        PrepositionTab.Accusative,
-        PrepositionTab.Dative,
-        PrepositionTab.TwoWay,
-        PrepositionTab.Genitive
+    // Create a PagerState synchronized with the selected tab
+    val pagerState = rememberPagerState(
+        initialPage = selectedTabIndex,
+        pageCount = { tabs.size }
     )
 
+    // Sync pager state with ViewModel (when user swipes)
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect { page ->
+            prepositionsViewModel.selectTab(page)
+        }
+    }
+
+    // Sync ViewModel state with pager (when tab is clicked or programmatically changed)
+    LaunchedEffect(selectedTabIndex) {
+        if (pagerState.currentPage != selectedTabIndex) {
+            pagerState.animateScrollToPage(selectedTabIndex)
+        }
+    }
+
     Column(modifier = modifier.fillMaxSize()) {
-        // TabRow for navigation
-        androidx.compose.foundation.layout.Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState())
+        // PrimaryScrollableTabRow for navigation
+        PrimaryScrollableTabRow(
+            selectedTabIndex = selectedTabIndex,
+            modifier = Modifier.fillMaxWidth(),
+            edgePadding = 0.dp
         ) {
             tabs.forEachIndexed { index, tab ->
                 val color = tab.colorKey.color(AppTheme.prepositionColors)
                 Tab(
                     selectedContentColor = color,
                     selected = selectedTabIndex == index,
-                    onClick = { selectedTabIndex = index },
+                    onClick = { prepositionsViewModel.selectTab(index) },
                     text = {
                         Column {
                             Text(
@@ -81,13 +101,17 @@ fun PrepositionsScreen(
                             )
                         }
                     },
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
+                    modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
         }
 
-        tabs[selectedTabIndex].let { tab ->
+        // HorizontalPager for swipeable content
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxSize()
+        ) { page ->
+            val tab = tabs[page]
             val color = tab.colorKey.color(AppTheme.prepositionColors)
             PrepositionList(
                 prepositions = tab.data,
@@ -105,7 +129,10 @@ sealed class PrepositionTab(
     val localizedRes: Int,
     val data: List<Preposition>,
     val colorKey: PrepositionColorKey
-) {
+) : Tab {
+    override val id: String
+        get() = this::class.simpleName ?: "unknown"
+
     data object Accusative : PrepositionTab(
         germanRes = R.string.tab_accusative,
         localizedRes = R.string.tab_accusative_explanation,
@@ -213,7 +240,7 @@ private fun PrepositionCard(
 /**
  * Extension function for PrepositionColorKey to get the color from AppPrepositionColors
  */
-fun PrepositionColorKey.color(colors: com.watson.kelvin.dubistjetztdeutscher.core.theme.AppPrepositionColors): Color = when (this) {
+fun PrepositionColorKey.color(colors: AppPrepositionColors): Color = when (this) {
     PrepositionColorKey.Akkusativ -> colors.akkusativ
     PrepositionColorKey.Dativ -> colors.dativ
     PrepositionColorKey.Wechsel -> colors.wechsel
@@ -334,7 +361,7 @@ private fun PrepositionsScreenPreview() {
     name = "Prepositions Screen - Dark",
     showBackground = true,
     backgroundColor = 0xFF000000,
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES
+    uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
 private fun PrepositionsScreenDarkPreview() {

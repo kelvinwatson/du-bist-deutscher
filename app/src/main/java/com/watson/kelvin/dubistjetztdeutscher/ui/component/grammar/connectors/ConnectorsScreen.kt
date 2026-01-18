@@ -151,9 +151,7 @@ sealed class ConnectorTab(
         localizedRes = R.string.tab_subordinating_explanation,
         data = subordinatingConjunctions,
         notes = "Nebensatz. ALWAYS send the verb to the end. WEIL–DASS–OB → verb goes to the end.",
-        color = {
-            MaterialTheme.colorScheme.primary
-        }
+        color = { MaterialTheme.colorScheme.error }
     )
 
     data object CoordinatingConjunctions : ConnectorTab(

@@ -3,15 +3,7 @@ package com.watson.kelvin.dubistjetztdeutscher.ui.component.app
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalActivity
 import androidx.annotation.VisibleForTesting
-import androidx.compose.foundation.layout.consumeWindowInsets
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.safeGesturesPadding
-import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.layout.systemGesturesPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -27,7 +19,8 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.bottombar.BottomBar
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.GrammarScreen
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.PrepositionsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors.ConnectorsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.AccountScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.singleLineTitle
@@ -115,6 +108,10 @@ internal fun App(
 
                 entry<Grammar.Prepositions> { key ->
                     PrepositionsScreen()
+                }
+
+                entry<Grammar.Connectors> { key ->
+                    ConnectorsScreen()
                 }
             },
         )

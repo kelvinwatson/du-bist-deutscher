@@ -16,5 +16,5 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.manager.BackStackManag
  */
 class NavigationViewModel(
     // TODO Use Koin dependency injection
-    private val backStackManager: BackStackManagement<AppNavKey> = BackStackManager(BottomBarKey.Overview)
+    private val backStackManager: BackStackManagement<AppNavKey> = BackStackManager(BottomBarKey.Grammar)
 ) : ViewModel(), BackStackManagement<AppNavKey> by backStackManager

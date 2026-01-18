@@ -65,17 +65,17 @@ sealed interface BottomBarKey : AppNavKey {
 }
 
 
-/**
- * A [Saver] implementation to save and restore [BottomBarKey] instances in
- * [androidx.compose.runtime.saveable.rememberSaveable]
- */
 object BottomBarNavKeys {
     val bottomBarKeys: List<BottomBarKey> = listOf(
-        BottomBarKey.Overview,
         BottomBarKey.Grammar,
+        BottomBarKey.Overview,
         BottomBarKey.Account,
     )
 
+    /**
+     * A [Saver] implementation to save and restore [BottomBarKey] instances in
+     * [androidx.compose.runtime.saveable.rememberSaveable]
+     */
     val stateSaver = Saver<BottomBarKey, String>(
         save = { it::class.qualifiedName },
         restore = { qualifiedClass ->
