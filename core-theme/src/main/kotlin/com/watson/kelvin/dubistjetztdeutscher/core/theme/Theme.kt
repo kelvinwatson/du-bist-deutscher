@@ -27,10 +27,6 @@ fun AppTheme(
 object AppTheme {
 
     @get:ReadOnlyComposable
-    val caseColors: AppCaseColors
-        @Composable get() = LocalAppColors.current.caseColors
-
-    @get:ReadOnlyComposable
     val prepositionColors: AppPrepositionColors
         @Composable get() = LocalAppColors.current.prepositionColors
 

@@ -11,7 +11,7 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.NavIdentifier
  */
 @Composable
 fun NavIdentifier.singleLineTitle(): String {
-    return "${stringResource(localizedTitleRes)} (${germanTitleRes})"
+    return "${stringResource(localizedTitleRes)} (${stringResource(germanTitleRes)})"
 }
 
 /**
@@ -24,8 +24,9 @@ fun NavIdentifier.singleLineTitle(): String {
  * Präpositionen
  * (Prepositions)
  *
+ * @param delimiter The delimiter to use between the two titles. Defaults to a newline.
  */
 @Composable
-fun NavIdentifier.delineatedTitle(): String {
-    return "${stringResource(localizedTitleRes)}\n(${germanTitleRes})"
+fun NavIdentifier.delimitedTitle(delimiter: String = "\n"): String {
+    return "${stringResource(localizedTitleRes)}\n(${stringResource(germanTitleRes)})"
 }
