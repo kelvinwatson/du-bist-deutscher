@@ -1,6 +1,6 @@
 package com.watson.kelvin.dubistjetztdeutscher.domain.usecase
 
-import com.watson.kelvin.dubistjetztdeutscher.domain.model.Tab
+import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

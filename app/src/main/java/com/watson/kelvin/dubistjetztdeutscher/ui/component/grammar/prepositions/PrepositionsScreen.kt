@@ -31,11 +31,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.watson.kelvin.dubistjetztdeutscher.R
-import com.watson.kelvin.dubistjetztdeutscher.core.theme.AppPrepositionColors
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey
-import com.watson.kelvin.dubistjetztdeutscher.core.theme.AppTheme
+import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey.Companion.toColor
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
-import com.watson.kelvin.dubistjetztdeutscher.domain.model.Tab
+import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.PrepositionsFallbackData
+import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
 
 /**
  * Prepositions screen with tabbed navigation for different preposition categories.
@@ -47,7 +47,7 @@ fun PrepositionsScreen(
     modifier: Modifier = Modifier,
     prepositionsViewModel: PrepositionsViewModel = viewModel(factory = PrepositionsViewModel.Factory),
 ) {
-    val selectedTabIndex by prepositionsViewModel.selectedTabIndex.collectAsState()
+    val selectedTabIndex: Int by prepositionsViewModel.selectedTabIndex.collectAsState()
     val tabs = prepositionsViewModel.tabs
 
     // Create a PagerState synchronized with the selected tab
@@ -78,7 +78,7 @@ fun PrepositionsScreen(
             edgePadding = 0.dp
         ) {
             tabs.forEachIndexed { index, tab ->
-                val color = tab.colorKey.color(AppTheme.prepositionColors)
+                val color = tab.colorKey.toColor(Theme.prepositionColors)
                 Tab(
                     selectedContentColor = color,
                     selected = selectedTabIndex == index,
@@ -112,7 +112,7 @@ fun PrepositionsScreen(
             modifier = Modifier.fillMaxSize()
         ) { page ->
             val tab = tabs[page]
-            val color = tab.colorKey.color(AppTheme.prepositionColors)
+            val color = tab.colorKey.toColor(Theme.prepositionColors)
             PrepositionList(
                 prepositions = tab.data,
                 highlightColor = color
@@ -136,28 +136,28 @@ sealed class PrepositionTab(
     data object Accusative : PrepositionTab(
         germanRes = R.string.tab_accusative,
         localizedRes = R.string.tab_accusative_explanation,
-        data = accusativePrepositions,
+        data = PrepositionsFallbackData.accusativePrepositions,
         colorKey = PrepositionColorKey.Akkusativ,
     )
 
     data object Dative : PrepositionTab(
         germanRes = R.string.tab_dative,
         localizedRes = R.string.tab_dative_explanation,
-        data = dativePrepositions,
+        data = PrepositionsFallbackData.dativePrepositions,
         colorKey = PrepositionColorKey.Dativ,
     )
 
     data object TwoWay : PrepositionTab(
         germanRes = R.string.tab_twoway,
         localizedRes = R.string.tab_twoway_explanation,
-        data = twoWayPrepositions,
+        data = PrepositionsFallbackData.twoWayPrepositions,
         colorKey = PrepositionColorKey.Wechsel,
     )
 
     data object Genitive : PrepositionTab(
         germanRes = R.string.tab_genitive,
         localizedRes = R.string.tab_genitive_explanation,
-        data = genitivePrepositions,
+        data = PrepositionsFallbackData.genitivePrepositions,
         colorKey = PrepositionColorKey.Genitive,
     )
 }
@@ -205,15 +205,19 @@ private fun PrepositionCard(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .border(width = 1.dp, shape = RoundedCornerShape(8.dp), color = borderColor),
+            .padding(vertical = Theme.dimens.gridVerticalSpacing)
+            .border(
+                width = Theme.dimens.borderWidth,
+                shape = RoundedCornerShape(Theme.dimens.cornerRadius),
+                color = borderColor,
+            ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Theme.colorScheme.primary)
-                .padding(8.dp)
+                .background(MaterialTheme.colorScheme.primary)
+                .padding(Theme.dimens.cellPadding)
         ) {
             Text(
                 text = preposition.german,
@@ -237,106 +241,6 @@ private fun PrepositionCard(
     }
 }
 
-/**
- * Extension function for PrepositionColorKey to get the color from AppPrepositionColors
- */
-fun PrepositionColorKey.color(colors: AppPrepositionColors): Color = when (this) {
-    PrepositionColorKey.Akkusativ -> colors.akkusativ
-    PrepositionColorKey.Dativ -> colors.dativ
-    PrepositionColorKey.Wechsel -> colors.wechsel
-    PrepositionColorKey.Genitive -> colors.genitive
-}
-
-// ========== Sample Data Lists ===========
-
-private val accusativePrepositions = listOf(
-    Preposition("bis", "until, up to, by", "Ich gehe bis die Ecke."),
-    Preposition("bis an", "right up to (a border or edge)", "Ich fahre bis an den Strand."),
-    Preposition("bis auf", "except for / down to", "Bis auf einen Fehler war alles richtig."),
-    Preposition("bis in", "into (time/direction)", "Wir haben bis in die Nacht gefeiert."),
-    Preposition("bis über", "beyond / over", "Das Wasser ist bis über die Knie gestiegen."),
-    Preposition(
-        "bis unter",
-        "up to underneath / as low as",
-        "Der Schnee ist bis unter das Fenster gegangen."
-    ),
-    Preposition("durch", "through", "Wir gehen durch den Park."),
-    Preposition("für", "for", "Das Geschenk ist für den Lehrer."),
-    Preposition("gegen", "against", "Ich nehme Medizin gegen den Schnupfen."),
-    Preposition("ins", "in the (maskulin/neuter)", "Wir fahren ins Büro."),
-    Preposition("ohne", "without", "Ich gehe ohne den Freund."),
-    Preposition("um", "around, at (time)", "Wir sitzen um den Tisch.")
-)
-
-private val dativePrepositions = listOf(
-    Preposition("ab", "from (without range)", null),
-    Preposition("am", "on (static location/temporal/event)", "Am Dienstag kann ich leider nicht."),
-    Preposition("aus", "out of, from", "Ich komme aus dem Haus."),
-    Preposition("bei", "at, with", "Ich bin bei dem Lehrer."),
-    Preposition("bis zu", "up to / as far as / until", "Ich gehe bis zu der Schule."),
-    Preposition("im", "in the ([dat] maskulin/neuter)", null),
-    Preposition("gegenüber", "opposite", "Das Café ist dem Bahnhof gegenüber."),
-    Preposition("mit", "with", "Ich gehe mit dem Freund."),
-    Preposition("nach", "to, after", "Wir fahren nach der Schule."),
-    Preposition("seit", "since, for (time)", "Ich lerne Deutsch seit einem Jahr."),
-    Preposition("von", "from (with range), of", "Das Geschenk ist von dem Freund."),
-    Preposition("von dem", "from the", null),
-    Preposition("zu", "to", "Ich gehe zu meinen Eltern."),
-    Preposition("zum", "to a/the ([mask, neut])", "Treffen wir uns zum Kaffee?"),
-    Preposition("zur", "to a/the ([fem])", "Ich gehe zur Schule.")
-)
-
-private val twoWayPrepositions = listOf(
-    Preposition(
-        "an",
-        "at, on (vertical surface)",
-        "Akk: Ich hänge das Bild an die Wand. / Dat: Das Bild hängt an der Wand."
-    ),
-    Preposition(
-        "am",
-        "on (static location/temporal/event)",
-        "Dat: Am Dienstag kann ich leider nicht."
-    ),
-    Preposition(
-        "auf",
-        "on (horizontal surface), up",
-        "Akk: Ich lege das Buch auf den Tisch. / Dat: Das Buch liegt auf dem Tisch."
-    ),
-    Preposition("hinter", "behind", "Akk [movement]: Dat [static location/temporal/event]:"),
-    Preposition("in", "in, into", "Akk: Ich gehe in das Haus. / Dat: Ich bin in dem Haus."),
-    Preposition("ins", "in the ([akk] neuter)", null),
-    Preposition(
-        "neben",
-        "next to",
-        "Akk: Ich setze mich neben den Mann. / Dat: Ich setze neben dem Mann."
-    ),
-    Preposition(
-        "über",
-        "over, above",
-        "Akk: Ich hänge die Lampe über den Tisch. / Dat: Die Lampe hängt über dem Tisch."
-    ),
-    Preposition(
-        "unter",
-        "under",
-        "Akk: Ich lege die Katze unter den Tisch. / Dat: Die Katze liegt unter dem Tisch."
-    ),
-    Preposition("vor", "in front of", "Akk: Ich gehe vor das Haus. / Dat: Ich stehe vor dem Haus."),
-    Preposition(
-        "zwischen",
-        "in between",
-        "Akk: Ich gehe zwischen die Häuser. / Dat: Ich stehe zwischen den Häusern."
-    )
-)
-
-private val genitivePrepositions = listOf(
-    Preposition("außerhalb", "outside", "Außerhalb der Stadt ist es ruhig."),
-    Preposition("innerhalb", "inside/within", "Innerhalb einer Woche bekommst du eine Antwort."),
-    Preposition("statt", "instead of", "Statt des Autos nehme ich das Fahrrad."),
-    Preposition("trotz", "despite", "Trotz des schlechten Wetters gehen wir spazieren."),
-    Preposition("während", "during", "Während des Essens telefoniere ich nicht."),
-    Preposition("wegen", "because of", "Wegen des Regens bleiben wir zu Hause."),
-)
-
 // ========== Compose Previews ==========
 
 /**
@@ -349,7 +253,7 @@ private val genitivePrepositions = listOf(
 )
 @Composable
 private fun PrepositionsScreenPreview() {
-    AppTheme {
+    Theme {
         PrepositionsScreen()
     }
 }
@@ -365,7 +269,7 @@ private fun PrepositionsScreenPreview() {
 )
 @Composable
 private fun PrepositionsScreenDarkPreview() {
-    AppTheme {
+    Theme {
         PrepositionsScreen()
     }
 }
@@ -379,7 +283,7 @@ private fun PrepositionsScreenDarkPreview() {
 )
 @Composable
 private fun PrepositionCardPreview() {
-    AppTheme {
+    Theme {
         PrepositionCard(
             preposition = Preposition(
                 german = "durch",
@@ -399,7 +303,7 @@ private fun PrepositionCardPreview() {
 )
 @Composable
 private fun PrepositionCardNoExamplePreview() {
-    AppTheme {
+    Theme {
         PrepositionCard(
             preposition = Preposition(
                 german = "für",
@@ -421,7 +325,7 @@ private fun PrepositionCardNoExamplePreview() {
 )
 @Composable
 private fun PrepositionListPreview() {
-    AppTheme {
+    Theme {
         PrepositionList(
             prepositions = listOf(
                 Preposition("durch", "through", "Wir gehen durch den Park."),

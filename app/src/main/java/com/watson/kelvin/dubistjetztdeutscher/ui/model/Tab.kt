@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.domain.model
+package com.watson.kelvin.dubistjetztdeutscher.ui.model
 
 /**
  * Generic interface for tab items that can be used in tabbed navigation.

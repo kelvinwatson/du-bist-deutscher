@@ -4,7 +4,11 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalActivity
 import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.sharp.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -12,22 +16,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.adjectives.AdjectivesScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.bottombar.BottomBar
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.GrammarScreen
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors.ConnectorsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.AccountScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.singleLineTitle
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.vocabulary.VocabularyScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.NavigationViewModel
+import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
 /**
  * Stateless version of App that uses lambdas for navigation actions.
@@ -68,6 +75,19 @@ internal fun App(
                     Text(
                         text = currentSubLevelKey.singleLineTitle(),
                     )
+                },
+                navigationIcon = {
+                    // Optionally show back button if we are not on a top-level screen
+                    if (backStackForCurrentKey.size > 1) {
+                        IconButton(
+                            onClick = { removeLastKey {} }
+                        ) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Sharp.ArrowBack,
+                                contentDescription = stringResource(StringResource.nav_back),
+                            )
+                        }
+                    }
                 }
             )
         },
@@ -105,13 +125,17 @@ internal fun App(
                 entry<BottomBarKey.Account> {
                     AccountScreen()
                 }
-
+                entry<BottomBarKey.Vocabulary> {
+                    VocabularyScreen(onClick = onNavigate)
+                }
                 entry<Grammar.Prepositions> { key ->
                     PrepositionsScreen()
                 }
-
+                entry<Grammar.Adjectives> { key ->
+                    AdjectivesScreen()
+                }
                 entry<Grammar.Connectors> { key ->
-                    ConnectorsScreen()
+                    com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors.ConnectorsScreen()
                 }
             },
         )

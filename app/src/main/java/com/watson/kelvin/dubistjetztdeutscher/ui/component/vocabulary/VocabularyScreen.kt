@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.vocabulary
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -15,14 +15,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
-@OptIn(ExperimentalMaterial3Api::class) // TopAppBar
+/**
+ * Main screen for the Vocabulary tab. Displays vocabulary features in a grid.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GrammarScreen(
-    onClick: (goTo: AppNavKey) -> Unit,
+fun VocabularyScreen(
     modifier: Modifier = Modifier,
+    onClick: (goTo: AppNavKey) -> Unit = {},
 ) {
     LazyVerticalGrid(
         modifier = modifier,
@@ -30,31 +32,9 @@ fun GrammarScreen(
         horizontalArrangement = Arrangement.spacedBy(Theme.dimens.gridHorizontalSpacing),
         verticalArrangement = Arrangement.spacedBy(Theme.dimens.gridVerticalSpacing),
     ) {
-
         item {
             TextButton(
-                onClick = { onClick(Grammar.Prepositions) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.prepositionColors.akkusativ,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = "${stringResource(StringResource.no_translate_prepositions)}\n(${
-                        stringResource(
-                            StringResource.prepositions
-                        )
-                    })",
-                    textAlign = TextAlign.Center,
-                    color = Theme.prepositionColors.akkusativ
-                )
-            }
-        }
-
-        item {
-            TextButton(
-                onClick = { onClick(Grammar.Connectors) },
+                onClick = { onClick(com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar.Connectors) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
                     color = Theme.connectorColors.coordinating,
@@ -62,37 +42,27 @@ fun GrammarScreen(
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
-                    text = "${stringResource(StringResource.no_translate_title_connectors)}\n(${
-                        stringResource(
-                            StringResource.connectors
-                        )
-                    })",
+                    text = "${stringResource(StringResource.no_translate_title_connectors)}\n(${stringResource(StringResource.connectors)})",
                     textAlign = TextAlign.Center,
                     color = Theme.connectorColors.coordinating
                 )
             }
         }
-
         item {
             TextButton(
-                onClick = { /* TODO: Navigate to detailed screen */ },
+                onClick = { onClick(com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar.Adjectives) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
-                    color = Color(0xFFB39DDB)
-                ), // Example: purple for adverbs
+                    color = Color(0xFF81C784), // Example: green for adjectives
+                ),
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
-                    text = "${stringResource(StringResource.no_translate_adverbs)}\n(${
-                        stringResource(
-                            StringResource.adverbs
-                        )
-                    })",
+                    text = "${stringResource(StringResource.no_translate_title_adjectives)}\n(${stringResource(StringResource.title_adjectives)})",
                     textAlign = TextAlign.Center,
-                    color = Color(0xFFB39DDB)
+                    color = Color(0xFF81C784)
                 )
             }
         }
-
     }
 }

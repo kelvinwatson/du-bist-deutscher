@@ -6,6 +6,7 @@
     <string name="nav_grammar">Grammar</string>
     <string name="nav_vocabulary">Vocabulary</string>
     <string name="nav_account">Account</string>
+    <string name="nav_back">Navigate back</string>
 
     <!-- titles -->
     <string name="title_overview">Du bist jetzt Deutscher!</string>
@@ -16,6 +17,7 @@
     <string name="title_account">Account</string>
     <string name="title_connectors">Connectors</string>
     <string name="title_prepositions">Prepositions</string>
+    <string name="title_adjectives">Adjectives</string>
 
     <string name="adverbs">Adverbs</string>
     <string name="connectors">Connectors</string>
@@ -31,4 +33,29 @@
     <string name="tab_coordinating_explanation">Coordinating</string>
     <string name="tab_subordinating_explanation">Subordinating</string>
     <string name="tab_adverbial_connector_explanation">Adverbial</string>
+
+    <!-- Connector tab notes/mnemonics -->
+    <string name="connector_subordinating_note">Nebensatz. ALWAYS send the verb to the end. WEIL–DASS–OB → verb goes to the end.</string>
+    <string name="connector_coordinating_note">Hauptsatz (Main clause). Conjugated verb in pos2. These do NOT change word order.</string>
+    <string name="connector_adverbial_note">Hauptsatz, Conjugated verb in pos2. Not conjunctions. They take position 1, so the verb must follow right after.</string>
+    <string name="navigate_back">Back</string>
+
+    <!-- Adjective categories -->
+    <string name="adjective_category_size">Size</string>
+    <string name="adjective_category_color">Color</string>
+    <string name="adjective_category_quality">Quality</string>
+    <string name="adjective_category_quantity_countable">Countable Quantity</string>
+    <string name="adjective_category_quantity_uncountable">Uncountable Quantity</string>
+    <string name="adjective_category_difficulty">Difficulty</string>
+    <string name="adjective_category_emotion">Emotion</string>
+    <string name="adjective_category_state">State</string>
+    <string name="adjective_category_age">Age</string>
+    <string name="adjective_category_material">Material</string>
+    <string name="adjective_category_opinion">Opinion</string>
+    <string name="adjective_category_personality">Personality</string>
+    <string name="adjective_category_position">Position</string>
+    <string name="adjective_category_shape">Shape</string>
+    <string name="adjective_category_taste">Taste</string>
+    <string name="adjective_category_temperature">Temperature</string>
+    <string name="no_translate_title_adjectives" translatable="false">Adjektive</string>
 </resources>

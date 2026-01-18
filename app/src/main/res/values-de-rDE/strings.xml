@@ -6,12 +6,14 @@
     <string name="nav_grammar">Grammatik</string>
     <string name="nav_vocabulary">Wortschatz</string>
     <string name="nav_account">Benutzerkonto</string>
+    <string name="nav_back">Zurück navigieren</string>
 
     <!-- titles -->
     <string name="title_overview">Du bist jetzt Deutscher!</string>
     <string name="title_grammar">Grammatik</string>
     <string name="title_vocabulary">Wortschatz</string>
     <string name="title_account">Benutzerkonto</string>
+    <string name="title_adjectives">Adjektive</string>
 
     <!-- grammar section titles -->
     <string name="title_connectors">Konnektoren</string>
@@ -37,4 +39,28 @@
     <string name="tab_coordinating_explanation">Nebenordnend</string>
     <string name="tab_subordinating_explanation">Unterordnend</string>
     <string name="tab_adverbial_connector_explanation">Mehrdeutig</string>
+
+    <!-- Connector tab notes/mnemonics -->
+    <string name="connector_subordinating_note">Nebensatz. Das Verb steht immer am Ende. WEIL–DASS–OB → Verb am Ende.</string>
+    <string name="connector_coordinating_note">Hauptsatz. Das konjugierte Verb steht an zweiter Stelle. Diese verändern die Wortstellung nicht.</string>
+    <string name="connector_adverbial_note">Hauptsatz, konjugiertes Verb an zweiter Stelle. Keine Konjunktionen. Sie stehen an erster Stelle, das Verb folgt direkt danach.</string>
+
+    <!-- Adjective categories -->
+    <string name="adjective_category_size">Größe</string>
+    <string name="adjective_category_color">Farbe</string>
+    <string name="adjective_category_quality">Qualität</string>
+    <string name="adjective_category_quantity_countable">Zählbare Menge</string>
+    <string name="adjective_category_quantity_uncountable">Unzählbare Menge</string>
+    <string name="adjective_category_difficulty">Schwierigkeit</string>
+    <string name="adjective_category_emotion">Gefühl</string>
+    <string name="adjective_category_state">Zustand</string>
+    <string name="adjective_category_age">Alter</string>
+    <string name="adjective_category_material">Material</string>
+    <string name="adjective_category_opinion">Meinung</string>
+    <string name="adjective_category_personality">Persönlichkeit</string>
+    <string name="adjective_category_position">Position</string>
+    <string name="adjective_category_shape">Form</string>
+    <string name="adjective_category_taste">Geschmack</string>
+    <string name="adjective_category_temperature">Temperatur</string>
+    <string name="no_translate_title_adjectives" translatable="false">Adjektive</string>
 </resources>
