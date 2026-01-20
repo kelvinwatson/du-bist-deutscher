@@ -8,37 +8,30 @@
     <string name="nav_account">Account</string>
     <string name="nav_back">Navigate back</string>
 
+    <!-- ui state -->
+    <string name="ui_state_empty">So empty!</string>
+    <string name="ui_state_error">An error occurred. Please try again later.</string>
+    <string name="ui_state_loading">Loading…</string>
+
     <!-- titles -->
-    <string name="title_overview">Du bist jetzt Deutscher!</string>
-    <string name="title_grammar">Grammar</string>
-    <string name="title_vocabulary">Vocabulary</string>
+    <string name="no_translate_en_title_overview" translatable="false">Du bist jetzt Deutscher!</string>
+    <string name="no_translate_en_title_grammar" translatable="false">Grammar</string>
+    <string name="no_translate_en_title_vocabulary" translatable="false">Vocabulary</string>
 
     <!-- grammar section titles -->
-    <string name="title_account">Account</string>
-    <string name="title_connectors">Connectors</string>
-    <string name="title_prepositions">Prepositions</string>
-    <string name="title_adjectives">Adjectives</string>
+    <string name="no_translate_en_title_account" translatable="false">Account</string>
+    <string name="no_translate_en_title_connectors" translatable="false">Connectors</string>
+    <string name="no_translate_en_title_prepositions" translatable="false">Prepositions</string>
+    <string name="no_translate_en_title_adjectives" translatable="false">Adjectives</string>
 
     <string name="adverbs">Adverbs</string>
     <string name="connectors">Connectors</string>
     <string name="prepositions">Prepositions</string>
 
-    <!-- Preposition tab explanations -->
-    <string name="tab_accusative_explanation">Accusative</string>
-    <string name="tab_dative_explanation">Dative</string>
-    <string name="tab_twoway_explanation">Two-Way</string>
-    <string name="tab_genitive_explanation">Genitive</string>
-
-    <!-- Connector tab explanations -->
-    <string name="tab_coordinating_explanation">Coordinating</string>
-    <string name="tab_subordinating_explanation">Subordinating</string>
-    <string name="tab_adverbial_connector_explanation">Adverbial</string>
-
     <!-- Connector tab notes/mnemonics -->
     <string name="connector_subordinating_note">Nebensatz. ALWAYS send the verb to the end. WEIL–DASS–OB → verb goes to the end.</string>
     <string name="connector_coordinating_note">Hauptsatz (Main clause). Conjugated verb in pos2. These do NOT change word order.</string>
     <string name="connector_adverbial_note">Hauptsatz, Conjugated verb in pos2. Not conjunctions. They take position 1, so the verb must follow right after.</string>
-    <string name="navigate_back">Back</string>
 
     <!-- Adjective categories -->
     <string name="adjective_category_size">Size</string>
@@ -57,5 +50,40 @@
     <string name="adjective_category_shape">Shape</string>
     <string name="adjective_category_taste">Taste</string>
     <string name="adjective_category_temperature">Temperature</string>
+
+    <!-- NO TRANSLATE -->
+
+    <!-- bottom nav titles -->
+    <string name="no_translate_title_overview" translatable="false">Du bist jetzt Deutscher!</string>
+    <string name="no_translate_title_grammar" translatable="false">Grammatik</string>
+    <string name="no_translate_title_account" translatable="false">Benutzerkonto</string>
+    <string name="no_translate_title_adverbs" translatable="false">Umstandswörter</string>
     <string name="no_translate_title_adjectives" translatable="false">Adjektive</string>
+    <string name="no_translate_title_connectors" translatable="false">Konnektoren</string>
+    <string name="no_translate_title_prepositions" translatable="false">Präpositionen</string>
+    <string name="no_translate_title_vocabulary" translatable="false">Wortschatz</string>
+
+    <!-- Preposition tab explanations -->
+    <string name="no_translate_tab_accusative_explanation" translatable="false">Accusative</string>
+    <string name="no_translate_tab_dative_explanation" translatable="false">Dative</string>
+    <string name="no_translate_tab_twoway_explanation" translatable="false">Two-Way</string>
+    <string name="no_translate_tab_genitive_explanation" translatable="false">Genitive</string>
+
+    <!-- Connector tab explanations -->
+    <string name="no_translate_tab_coordinating_explanation" translatable="false">Coordinating</string>
+    <string name="no_translate_tab_subordinating_explanation" translatable="false">Subordinating</string>
+    <string name="no_translate_tab_adverbial_connector_explanation" translatable="false">Adverbial</string>
+
+    <!-- tab labels -->
+    <string name="no_translate_tab_accusative" translatable="false">Akkusativ</string>
+    <string name="no_translate_tab_dative" translatable="false">Dativ</string>
+    <string name="no_translate_tab_twoway" translatable="false">Wechselpräpositionen</string>
+    <string name="no_translate_tab_genitive" translatable="false">Genitiv</string>
+
+    <!-- toggle -->
+    <string name="no_translate_en_toggle_english_first" translatable="false">English first</string>
+    <string name="no_translate_toggle_english_first" translatable="false">Englisch zuerst</string>
+
+    <!-- search -->
+    <string name="no_translate_en_search_hint" translatable="false">Search...</string>
 </resources>

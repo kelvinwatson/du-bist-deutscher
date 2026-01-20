@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Card
@@ -33,9 +32,10 @@ import com.watson.kelvin.dubistjetztdeutscher.R
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.ConnectorColors
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.LocalColors
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
+import com.watson.kelvin.dubistjetztdeutscher.data.connectors.Connector
 import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.ConnectorsFallbackData
-import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors.ConnectorColorKey.Companion.toColors
+import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
 import javax.annotation.processing.Generated
 
 /**
@@ -156,24 +156,24 @@ sealed class ConnectorTab(
         get() = this::class.simpleName ?: "unknown"
 
     data object SubordinatingConjunctions : ConnectorTab(
-        germanRes = R.string.tab_subordinating_explanation,
-        localizedRes = R.string.tab_subordinating_explanation,
+        germanRes = R.string.no_translate_tab_subordinating_explanation,
+        localizedRes = R.string.no_translate_tab_subordinating_explanation,
         data = ConnectorsFallbackData.subordinatingConjunctions,
         noteRes = R.string.connector_subordinating_note,
         colorKey = ConnectorColorKey.Subordinating
     )
 
     data object CoordinatingConjunctions : ConnectorTab(
-        germanRes = R.string.tab_coordinating_explanation,
-        localizedRes = R.string.tab_coordinating_explanation,
+        germanRes = R.string.no_translate_tab_coordinating_explanation,
+        localizedRes = R.string.no_translate_tab_coordinating_explanation,
         data = ConnectorsFallbackData.coordinatingConjunctions,
         noteRes = R.string.connector_coordinating_note,
         colorKey = ConnectorColorKey.Coordinating
     )
 
     data object AdverbialConnectors : ConnectorTab(
-        germanRes = R.string.tab_adverbial_connector_explanation,
-        localizedRes = R.string.tab_adverbial_connector_explanation,
+        germanRes = R.string.no_translate_tab_adverbial_connector_explanation,
+        localizedRes = R.string.no_translate_tab_adverbial_connector_explanation,
         data = ConnectorsFallbackData.adverbialConnectors,
         noteRes = R.string.connector_adverbial_note,
         colorKey = ConnectorColorKey.Adverbial
@@ -196,16 +196,6 @@ enum class ConnectorColorKey {
 }
 
 /**
- * Data class representing a connector entry.
- */
-data class Connector(
-    val german: String,
-    val english: String,
-    val example: String? = null,
-    val notes: String? = null,
-)
-
-/**
  * Reusable composable to display a list of connectors.
  */
 @Composable
@@ -217,8 +207,8 @@ private fun ConnectorList(
     LazyColumn(
         modifier = modifier.fillMaxSize(),
     ) {
-        items(connectors) { connector ->
-            ConnectorCard(connector = connector, borderColor = borderColor)
+        items(connectors.size) { index ->
+            ConnectorCard(connector = connectors[index], borderColor = borderColor)
         }
     }
 }

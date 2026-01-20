@@ -115,7 +115,9 @@ internal fun App(
 
             entryProvider = entryProvider {
                 entry<BottomBarKey.Overview> {
-                    OverviewScreen()
+                    OverviewScreen(
+                        onSearchBarActivated = { onNavigate(Grammar.Adjectives) }
+                    )
                 }
                 entry<BottomBarKey.Grammar> {
                     GrammarScreen(

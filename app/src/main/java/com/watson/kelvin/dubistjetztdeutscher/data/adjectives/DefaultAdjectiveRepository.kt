@@ -1,7 +1,11 @@
 package com.watson.kelvin.dubistjetztdeutscher.data.adjectives
 
+import com.watson.kelvin.dubistjetztdeutscher.common.EnglishAdjective
+import com.watson.kelvin.dubistjetztdeutscher.common.GermanAdjective
+import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.AdjectiveCategory
+
 /**
- * Default implementation of [AdjectiveRepository] that delegates all operations to the provided [AdjectiveRetrieval] data source.
+ * Default implementation of [AdjectiveRepository] that provides caching for adjective data.
  *
  * This repository is responsible for providing access to adjective data, and can be easily swapped for other data sources (e.g., network, database).
  *
@@ -12,5 +16,16 @@ class DefaultAdjectiveRepository(
      * The data source used for retrieving adjective data. Can be replaced for testing or different data sources.
      */
     private val dataSource: AdjectiveRetrieval = OfflineAdjectiveDataSource()
-) : AdjectiveRepository, AdjectiveRetrieval by dataSource
+) : AdjectiveRepository {
+    /**
+     * Cached adjectives, built on first access and reused for all subsequent calls.
+     */
+    private var cachedAdjectives: Map<AdjectiveCategory, Map<EnglishAdjective, GermanAdjective>>? = null
 
+    override fun getAllAdjectives(): Map<AdjectiveCategory, Map<EnglishAdjective, GermanAdjective>> {
+        if (cachedAdjectives == null) {
+            cachedAdjectives = dataSource.getAllAdjectives()
+        }
+        return cachedAdjectives!!
+    }
+}

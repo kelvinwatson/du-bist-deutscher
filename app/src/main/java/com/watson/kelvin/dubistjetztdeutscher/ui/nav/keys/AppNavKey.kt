@@ -33,5 +33,5 @@ interface NavIdentifier {
      * A factory that produces the title for this navigation key.
      */
     @get:StringRes
-    val localizedTitleRes: Int
+    val localizedTitleRes: Int?
 }

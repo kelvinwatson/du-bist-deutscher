@@ -134,29 +134,29 @@ sealed class PrepositionTab(
         get() = this::class.simpleName ?: "unknown"
 
     data object Accusative : PrepositionTab(
-        germanRes = R.string.tab_accusative,
-        localizedRes = R.string.tab_accusative_explanation,
+        germanRes = R.string.no_translate_tab_accusative,
+        localizedRes = R.string.no_translate_tab_accusative_explanation,
         data = PrepositionsFallbackData.accusativePrepositions,
         colorKey = PrepositionColorKey.Akkusativ,
     )
 
     data object Dative : PrepositionTab(
-        germanRes = R.string.tab_dative,
-        localizedRes = R.string.tab_dative_explanation,
+        germanRes = R.string.no_translate_tab_dative,
+        localizedRes = R.string.no_translate_tab_dative_explanation,
         data = PrepositionsFallbackData.dativePrepositions,
         colorKey = PrepositionColorKey.Dativ,
     )
 
     data object TwoWay : PrepositionTab(
-        germanRes = R.string.tab_twoway,
-        localizedRes = R.string.tab_twoway_explanation,
+        germanRes = R.string.no_translate_tab_twoway,
+        localizedRes = R.string.no_translate_tab_twoway_explanation,
         data = PrepositionsFallbackData.twoWayPrepositions,
         colorKey = PrepositionColorKey.Wechsel,
     )
 
     data object Genitive : PrepositionTab(
-        germanRes = R.string.tab_genitive,
-        localizedRes = R.string.tab_genitive_explanation,
+        germanRes = R.string.no_translate_tab_genitive,
+        localizedRes = R.string.no_translate_tab_genitive_explanation,
         data = PrepositionsFallbackData.genitivePrepositions,
         colorKey = PrepositionColorKey.Genitive,
     )

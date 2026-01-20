@@ -8,37 +8,14 @@
     <string name="nav_account">Benutzerkonto</string>
     <string name="nav_back">Zurück navigieren</string>
 
-    <!-- titles -->
-    <string name="title_overview">Du bist jetzt Deutscher!</string>
-    <string name="title_grammar">Grammatik</string>
-    <string name="title_vocabulary">Wortschatz</string>
-    <string name="title_account">Benutzerkonto</string>
-    <string name="title_adjectives">Adjektive</string>
-
-    <!-- grammar section titles -->
-    <string name="title_connectors">Konnektoren</string>
-    <string name="title_prepositions">Präpositionen</string>
+    <!-- ui state -->
+    <string name="ui_state_empty">So leer! Bitte versuche es später erneut.</string>
+    <string name="ui_state_error">Ein Fehler ist aufgetreten. Bitte versuche es später erneut.</string>
+    <string name="ui_state_loading">Wird geladen…</string>
 
     <string name="adverbs">Umstandswörter</string>
     <string name="connectors">Konnektoren</string>
     <string name="prepositions">Präpositionen</string>
-
-    <!-- tab labels -->
-    <string name="tab_accusative">Akkusativ</string>
-    <string name="tab_dative">Dativ</string>
-    <string name="tab_twoway">Wechselpräpositionen</string>
-    <string name="tab_genitive">Genitiv</string>
-
-    <!-- tab explanations -->
-    <string name="tab_accusative_explanation">Akkusativ</string>
-    <string name="tab_dative_explanation">Dativ</string>
-    <string name="tab_twoway_explanation">Wechselpräpositionen</string>
-    <string name="tab_genitive_explanation">Genitiv</string>
-
-    <!-- Connector tabs (translations only) -->
-    <string name="tab_coordinating_explanation">Nebenordnend</string>
-    <string name="tab_subordinating_explanation">Unterordnend</string>
-    <string name="tab_adverbial_connector_explanation">Mehrdeutig</string>
 
     <!-- Connector tab notes/mnemonics -->
     <string name="connector_subordinating_note">Nebensatz. Das Verb steht immer am Ende. WEIL–DASS–OB → Verb am Ende.</string>

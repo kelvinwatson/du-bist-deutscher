@@ -11,9 +11,9 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.withParenthesizedTranslation
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
@@ -42,7 +42,9 @@ fun VocabularyScreen(
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
-                    text = "${stringResource(StringResource.no_translate_title_connectors)}\n(${stringResource(StringResource.connectors)})",
+                    text = StringResource.no_translate_title_connectors.withParenthesizedTranslation(
+                        translation = StringResource.no_translate_en_title_connectors
+                    ),
                     textAlign = TextAlign.Center,
                     color = Theme.connectorColors.coordinating
                 )
@@ -58,7 +60,9 @@ fun VocabularyScreen(
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
-                    text = "${stringResource(StringResource.no_translate_title_adjectives)}\n(${stringResource(StringResource.title_adjectives)})",
+                    text = StringResource.no_translate_title_adjectives.withParenthesizedTranslation(
+                        StringResource.no_translate_en_title_adjectives,
+                    ),
                     textAlign = TextAlign.Center,
                     color = Color(0xFF81C784)
                 )

@@ -41,7 +41,7 @@ fun GrammarScreen(
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
-                    text = "${stringResource(StringResource.no_translate_prepositions)}\n(${
+                    text = "${stringResource(StringResource.no_translate_title_prepositions)}\n(${
                         stringResource(
                             StringResource.prepositions
                         )
@@ -64,7 +64,7 @@ fun GrammarScreen(
                 Text(
                     text = "${stringResource(StringResource.no_translate_title_connectors)}\n(${
                         stringResource(
-                            StringResource.connectors
+                            StringResource.no_translate_title_connectors
                         )
                     })",
                     textAlign = TextAlign.Center,
@@ -83,7 +83,7 @@ fun GrammarScreen(
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
-                    text = "${stringResource(StringResource.no_translate_adverbs)}\n(${
+                    text = "${stringResource(StringResource.no_translate_title_adverbs)}\n(${
                         stringResource(
                             StringResource.adverbs
                         )

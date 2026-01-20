@@ -2,6 +2,8 @@ package com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks
 
 import androidx.annotation.StringRes
 import com.watson.kelvin.dubistjetztdeutscher.R
+import com.watson.kelvin.dubistjetztdeutscher.common.EnglishAdjective
+import com.watson.kelvin.dubistjetztdeutscher.common.GermanAdjective
 
 // Enum for all adjective categories
 enum class AdjectiveCategory(@get:StringRes val displayName: Int) {
@@ -22,7 +24,7 @@ enum class AdjectiveCategory(@get:StringRes val displayName: Int) {
     TASTE(R.string.adjective_category_taste),
     TEMPERATURE(R.string.adjective_category_temperature);
 
-    fun getMap(): Map<String, String> = when (this) {
+    fun getMap(): Map<EnglishAdjective, GermanAdjective> = when (this) {
         AGE -> AdjectivesFallbackData.age
         COLOR -> AdjectivesFallbackData.color
         DIFFICULTY -> AdjectivesFallbackData.difficulty
@@ -43,14 +45,14 @@ enum class AdjectiveCategory(@get:StringRes val displayName: Int) {
 }
 
 object AdjectivesFallbackData {
-    val age = mapOf(
+    val age: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "antique" to "antik",
         "modern" to "modern",
         "new" to "neu",
         "old" to "alt",
         "young" to "jung"
     )
-    val color = mapOf(
+    val color: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "black" to "schwarz",
         "blue" to "blau",
         "brown" to "braun",
@@ -63,7 +65,7 @@ object AdjectivesFallbackData {
         "white" to "weiß",
         "yellow" to "gelb"
     )
-    val difficulty = mapOf(
+    val difficulty: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "challenging" to "herausfordernd",
         "complicated" to "kompliziert",
         "difficult" to "schwer",
@@ -71,7 +73,7 @@ object AdjectivesFallbackData {
         "hard" to "hart",
         "simple" to "simpel"
     )
-    val emotion = mapOf(
+    val emotion: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "angry" to "wütend",
         "bored" to "gelangweilt",
         "calm" to "ruhig",
@@ -83,7 +85,7 @@ object AdjectivesFallbackData {
         "surprised" to "überrascht",
         "tired" to "müde"
     )
-    val material = mapOf(
+    val material: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "firm" to "fest",
         "hard" to "hart",
         "rough" to "rau",
@@ -92,7 +94,7 @@ object AdjectivesFallbackData {
         "thick" to "dick",
         "thin" to "dünn"
     )
-    val opinion = mapOf(
+    val opinion: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "boring" to "langweilig",
         "cheap" to "billig",
         "expensive" to "teuer",
@@ -101,7 +103,7 @@ object AdjectivesFallbackData {
         "practical" to "praktisch",
         "useful" to "nützlich"
     )
-    val personality = mapOf(
+    val personality: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "brave" to "mutig",
         "fearful" to "ängstlich",
         "friendly" to "freundlich",
@@ -111,7 +113,7 @@ object AdjectivesFallbackData {
         "lazy" to "faul",
         "nice" to "nett"
     )
-    val position = mapOf(
+    val position: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "back" to "hinten",
         "bottom" to "unten",
         "front" to "vorn",
@@ -119,7 +121,7 @@ object AdjectivesFallbackData {
         "right" to "rechts",
         "top" to "oben"
     )
-    val quality = mapOf(
+    val quality: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "bad" to "schlecht",
         "beautiful" to "schön",
         "clean" to "sauber",
@@ -137,7 +139,7 @@ object AdjectivesFallbackData {
         "ugly" to "hässlich",
         "weak" to "schwach"
     )
-    val quantityCountable = mapOf(
+    val quantityCountable: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "all" to "die ganze Menge / alles",
         "enough" to "genug",
         "little" to "wenig",
@@ -145,7 +147,7 @@ object AdjectivesFallbackData {
         "none" to "nichts",
         "some" to "etwas"
     )
-    val quantityUncountable = mapOf(
+    val quantityUncountable: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "all" to "die ganze Menge / alles",
         "enough" to "genug",
         "little" to "wenig",
@@ -153,14 +155,14 @@ object AdjectivesFallbackData {
         "none" to "nichts",
         "some" to "etwas"
     )
-    val shape = mapOf(
+    val shape: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "elongated" to "langgestreckt",
         "flat" to "flach",
         "pointed" to "spitz",
         "round" to "rund",
         "square" to "eckig"
     )
-    val size = mapOf(
+    val size: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "big" to "groß",
         "huge" to "riesig",
         "long" to "lang",
@@ -171,7 +173,7 @@ object AdjectivesFallbackData {
         "tiny" to "winzig",
         "wide" to "breit"
     )
-    val state = mapOf(
+    val state: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "broken" to "kaputt",
         "busy" to "beschäftigt",
         "closed" to "geschlossen",
@@ -180,7 +182,7 @@ object AdjectivesFallbackData {
         "open" to "offen",
         "ready" to "bereit"
     )
-    val taste = mapOf(
+    val taste: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "bitter" to "bitter",
         "fragrant" to "duftend",
         "salty" to "salzig",
@@ -188,7 +190,7 @@ object AdjectivesFallbackData {
         "spicy" to "würzig",
         "sweet" to "süß"
     )
-    val temperature = mapOf(
+    val temperature: Map<EnglishAdjective, GermanAdjective> = mapOf(
         "cold" to "kalt",
         "cool" to "kühl",
         "hot" to "heiß",

@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.graphics.Color.Companion.Yellow
+import androidx.compose.ui.graphics.Color.Companion.White
 
 val LocalColors = staticCompositionLocalOf<Colors> {
     error("No AppColors provided")
@@ -83,6 +84,7 @@ internal val appMaterialBasedColorScheme = darkColorScheme(
     primary = Black,
     secondary = Gray,
     onPrimary = Yellow,
+    onSecondary = White,
 )
 
 object Colors {
