@@ -3,21 +3,22 @@ package com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks
 import com.watson.kelvin.dubistjetztdeutscher.data.connectors.Connector
 import com.watson.kelvin.dubistjetztdeutscher.data.connectors.ConnectorCategory
 
-// TODO: Replace static preposition lists with dynamic data loaded from an external source (e.g., remote CSV, API, or GitHub) so that prepositions can be updated without publishing a new app.
 object ConnectorsFallbackData {
 
     /**
-     * ============================================================
-     * COORDINATING CONJUNCTIONS
-     * → Hauptsatz + Hauptsatz
-     * → Verb stays in position 2 (V2)
-     * ============================================================
+     * COORDINATING CONJUNCTIONS → Hauptsatz + Hauptsatz → Verb stays in position 2 (V2)
      */
     val coordinatingConjunctions = listOf(
         Connector(
             german = "aber",
             english = "but",
             example = "Ich mag Kaffee, aber ich trinke auch Tee.",
+            category = ConnectorCategory.COORDINATING
+        ),
+        Connector(
+            german = "bzw.",
+            english = "or rather / respectively",
+            example = "Wir treffen uns am Montag bzw. Dienstag.",
             category = ConnectorCategory.COORDINATING
         ),
         Connector(
@@ -48,201 +49,55 @@ object ConnectorsFallbackData {
     )
 
     /**
-     * ============================================================
-     * SUBORDINATING CONJUNCTIONS
-     * → Nebensatz
-     * → Conjugated verb ALWAYS at the end
-     * ============================================================
+     * SUBORDINATING CONJUNCTIONS → Nebensatz → verb at the end
      */
     val subordinatingConjunctions = listOf(
-        Connector(
-            german = "als",
-            english = "when (past)",
-            example = "Als ich jung war, spielte ich Fußball.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "bevor",
-            english = "before",
-            example = "Bevor er geht, ruft er an.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "bis",
-            english = "until",
-            example = "Ich warte, bis du kommst.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "da",
-            english = "because (formal)",
-            example = "Da es regnet, bleibe ich zu Hause.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "damit",
-            english = "so that",
-            example = "Ich spreche laut, damit du mich hörst.",
-            category = ConnectorCategory.SUBORDINATING,
-            notes = "⚠️ Do not confuse with dazu / dafür (adverbial, V2)"
-        ),
-        Connector(
-            german = "dass",
-            english = "that",
-            example = "Ich denke, dass es regnet.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "falls",
-            english = "in case",
-            example = "Falls du kommst, bringst du Essen mit.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "indem",
-            english = "by doing",
-            example = "Er lernt Deutsch, indem er viel liest.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "nachdem",
-            english = "after",
-            example = "Nachdem ich gegessen habe, gehe ich spazieren.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "ob",
-            english = "whether / if",
-            example = "Ich frage mich, ob er da ist.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "obwohl",
-            english = "although",
-            example = "Obwohl ich müde bin, arbeite ich.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "seit / seitdem",
-            english = "since",
-            example = "Seit ich hier wohne, bin ich glücklich.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "während",
-            english = "while / whereas",
-            example = "Während ich arbeite, hört er Musik.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "wenn",
-            english = "when / if",
-            example = "Wenn er müde ist, geht er nicht zum Sport.",
-            category = ConnectorCategory.SUBORDINATING
-        ),
-        Connector(
-            german = "weil",
-            english = "because",
-            example = "Ich bleibe zu Hause, weil es regnet.",
-            category = ConnectorCategory.SUBORDINATING
-        )
+        Connector("als", "when (past)", "Als ich jung war, spielte ich Fußball.", ConnectorCategory.SUBORDINATING),
+        Connector("bevor", "before", "Bevor er geht, ruft er an.", ConnectorCategory.SUBORDINATING),
+        Connector("bis", "until", "Ich warte, bis du kommst.", ConnectorCategory.SUBORDINATING),
+        Connector("da", "because (formal)", "Da es regnet, bleibe ich zu Hause.", ConnectorCategory.SUBORDINATING),
+        Connector("damit", "so that", "Ich spreche laut, damit du mich hörst.", ConnectorCategory.SUBORDINATING, "⚠️ Do not confuse with dazu / dafür (adverbial, V2)"),
+        Connector("dass", "that", "Ich denke, dass es regnet.", ConnectorCategory.SUBORDINATING),
+        Connector("falls", "in case", "Falls du kommst, bringst du Essen mit.", ConnectorCategory.SUBORDINATING),
+        Connector("indem", "by doing", "Er lernt Deutsch, indem er viel liest.", ConnectorCategory.SUBORDINATING),
+        Connector("nachdem", "after", "Nachdem ich gegessen habe, gehe ich spazieren.", ConnectorCategory.SUBORDINATING),
+        Connector("ob", "whether / if", "Ich frage mich, ob er da ist.", ConnectorCategory.SUBORDINATING),
+        Connector("obgleich", "although / even though", "Obgleich ich müde bin, arbeite ich weiter.", ConnectorCategory.SUBORDINATING), // new
+        Connector("obwohl", "although", "Obwohl ich müde bin, arbeite ich.", ConnectorCategory.SUBORDINATING),
+        Connector("seit / seitdem", "since", "Seit ich hier wohne, bin ich glücklich.", ConnectorCategory.SUBORDINATING),
+        Connector("sobald", "as soon as", "Sobald ich fertig bin, rufe ich dich an.", ConnectorCategory.SUBORDINATING), // new
+        Connector("solange", "as long as", "Solange du lernst, helfe ich dir.", ConnectorCategory.SUBORDINATING), // new
+        Connector("während", "while / whereas", "Während ich arbeite, hört er Musik.", ConnectorCategory.SUBORDINATING),
+        Connector("wenn", "when / if", "Wenn er müde ist, geht er nicht zum Sport.", ConnectorCategory.SUBORDINATING),
+        Connector("weil", "because", "Ich bleibe zu Hause, weil es regnet.", ConnectorCategory.SUBORDINATING)
     )
 
     /**
-     * ============================================================
-     * ADVERBIAL CONNECTORS
-     * → Hauptsatz
-     * → Verb stays in position 2 (often inversion)
-     * ============================================================
+     * ADVERBIAL CONNECTORS → Hauptsatz → Verb in 2nd position
      */
     val adverbialConnectors = listOf(
-        Connector(
-            german = "außerdem",
-            english = "furthermore",
-            example = "Ich gehe nicht einkaufen. Außerdem habe ich keine Zeit.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "daher",
-            english = "therefore",
-            example = "Es regnet. Daher bleiben wir zu Hause.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "dann",
-            english = "then",
-            example = "Zuerst essen wir. Dann gehen wir spazieren.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "danach",
-            english = "afterwards",
-            example = "Wir essen. Danach gehen wir spazieren.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "darum",
-            english = "that’s why",
-            example = "Ich bin müde. Darum gehe ich früh ins Bett.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "dazu",
-            english = "in addition / while doing so",
-            example = "Er kocht gern. Dazu hört er Musik.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "dafür",
-            english = "instead / in return",
-            example = "Ich habe keine Zeit. Dafür habe ich morgen frei.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "deshalb",
-            english = "therefore",
-            example = "Ich habe Hunger. Deshalb esse ich.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "inzwischen",
-            english = "meanwhile",
-            example = "Ich koche. Inzwischen deckt er den Tisch.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "jedoch",
-            english = "however",
-            example = "Ich mag Kaffee. Jedoch trinke ich lieber Tee.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "sonst",
-            english = "otherwise",
-            example = "Beeil dich, sonst verpassen wir den Zug.",
-            category = ConnectorCategory.ADVERBIAL
-        ),
-        Connector(
-            german = "trotzdem",
-            english = "nevertheless",
-            example = "Es regnet. Trotzdem gehe ich raus.",
-            category = ConnectorCategory.ADVERBIAL
-        )
+        Connector("allerdings", "however", "Ich mag Kaffee. Allerdings trinke ich lieber Tee.", ConnectorCategory.ADVERBIAL), // new
+        Connector("außerdem", "furthermore", "Ich gehe nicht einkaufen. Außerdem habe ich keine Zeit.", ConnectorCategory.ADVERBIAL),
+        Connector("anschließend", "subsequently", "Wir essen. Anschließend gehen wir spazieren.", ConnectorCategory.ADVERBIAL), // new
+        Connector("daher", "therefore", "Es regnet. Daher bleiben wir zu Hause.", ConnectorCategory.ADVERBIAL),
+        Connector("danach", "afterwards", "Wir essen. Danach gehen wir spazieren.", ConnectorCategory.ADVERBIAL),
+        Connector("dann", "then", "Zuerst essen wir. Dann gehen wir spazieren.", ConnectorCategory.ADVERBIAL),
+        Connector("darüber hinaus", "moreover", "Er ist klug. Darüber hinaus ist er freundlich.", ConnectorCategory.ADVERBIAL), // new
+        Connector("darum", "that's why", "Ich bin müde. Darum gehe ich früh ins Bett.", ConnectorCategory.ADVERBIAL),
+        Connector("dazu", "in addition / while doing so", "Er kocht gern. Dazu hört er Musik.", ConnectorCategory.ADVERBIAL),
+        Connector("dafür", "instead / in return", "Ich habe keine Zeit. Dafür habe ich morgen frei.", ConnectorCategory.ADVERBIAL),
+        Connector("deshalb", "therefore", "Ich habe Hunger. Deshalb esse ich.", ConnectorCategory.ADVERBIAL),
+        Connector("folglich", "consequently", "Es regnet, folglich bleiben wir zu Hause.", ConnectorCategory.ADVERBIAL), // new
+        Connector("inzwischen", "meanwhile", "Ich koche. Inzwischen deckt er den Tisch.", ConnectorCategory.ADVERBIAL),
+        Connector("jedoch", "however", "Ich mag Kaffee. Jedoch trinke ich lieber Tee.", ConnectorCategory.ADVERBIAL),
+        Connector("sonst", "otherwise", "Beeil dich, sonst verpassen wir den Zug.", ConnectorCategory.ADVERBIAL),
+        Connector("trotzdem", "nevertheless", "Es regnet. Trotzdem gehe ich raus.", ConnectorCategory.ADVERBIAL)
     )
 
     /**
-     * ============================================================
-     * NOT REAL CONNECTORS
-     * → No inversion, no verb movement
-     * ============================================================
+     * NOT REAL CONNECTORS → No inversion, no verb movement
      */
     val nonConnectors = listOf(
-        Connector(
-            german = "nämlich",
-            english = "namely / because",
-            example = "Ich bleibe zu Hause. Es regnet nämlich.",
-            category = ConnectorCategory.NON_CONNECTOR,
-            notes = "⚠️ Does NOT trigger inversion or verb movement"
-        )
+        Connector("nämlich", "namely / because", "Ich bleibe zu Hause. Es regnet nämlich.", ConnectorCategory.NON_CONNECTOR, "⚠️ Does NOT trigger inversion or verb movement")
     )
 }

@@ -19,18 +19,19 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.AdjectiveCategory
@@ -39,8 +40,8 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.component.state.UiState
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.withParenthesizedTranslation
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flowOf
 import javax.annotation.processing.Generated
 
@@ -54,16 +55,19 @@ import javax.annotation.processing.Generated
 @Composable
 fun AdjectivesScreen(
     modifier: Modifier = Modifier,
+    focusSearch: Boolean = false, // TODO check should this go into the viewModel?
     viewModel: AdjectivesViewModel = viewModel {
         AdjectivesViewModel(
             useCase = DefaultAdjectiveSearchUseCase(),
 //            savedStateHandle = createSavedStateHandle()
         )
-    }
+    },
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
     val showGermanFirst by viewModel.showGermanFirst.collectAsState()
+
+    val focusRequester = remember { FocusRequester() }
 
     // Debounce the search query in the UI layer
     LaunchedEffect(searchQuery, showGermanFirst) {
@@ -73,6 +77,13 @@ fun AdjectivesScreen(
                 viewModel.updateSearchQuery(debouncedQuery)
                 viewModel.toggleLanguageOrder(debouncedShowGermanFirst)
             }
+    }
+
+    // Focus the search bar if requested
+    LaunchedEffect(focusSearch) {
+        if (focusSearch) {
+            focusRequester.requestFocus()
+        }
     }
 
     when (val state = uiState) {
@@ -89,7 +100,6 @@ fun AdjectivesScreen(
                 )
             }
         }
-
         is AdjectivesUiState.Success -> {
             AdjectivesScreen(
                 modifier = modifier,
@@ -98,9 +108,10 @@ fun AdjectivesScreen(
                 showGermanFirst = state.showGermanFirst,
                 onToggleLanguageOrder = viewModel::toggleLanguageOrder,
                 onSearchQueryChange = viewModel::updateSearchQuery,
+                focusRequester = focusRequester, // pass to stateless version
+                focusSearch = focusSearch
             )
         }
-
         is UiState.Error -> {
             Box(
                 modifier = Modifier
@@ -129,6 +140,8 @@ internal fun AdjectivesScreen(
     showGermanFirst: Boolean = true,
     onToggleLanguageOrder: (Boolean) -> Unit = {},
     onSearchQueryChange: (String) -> Unit = {},
+    focusRequester: FocusRequester? = null, // NEW: allow focus control
+    focusSearch: Boolean = false // NEW: allow focus control
 ) {
     println("Stateless AdjectivesScreen: searchQuery='$searchQuery'")
     Column(
@@ -157,7 +170,8 @@ internal fun AdjectivesScreen(
             onValueChange = onSearchQueryChange,
             label = { Text(stringResource(StringResource.no_translate_en_search_hint)) },
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .then(if (focusRequester != null) Modifier.focusRequester(focusRequester) else Modifier),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = MaterialTheme.colorScheme.onPrimary,
                 focusedBorderColor = MaterialTheme.colorScheme.onPrimary,

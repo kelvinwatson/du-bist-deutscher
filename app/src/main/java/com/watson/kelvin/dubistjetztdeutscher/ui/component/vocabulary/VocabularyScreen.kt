@@ -15,6 +15,8 @@ import androidx.compose.ui.text.style.TextAlign
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.withParenthesizedTranslation
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
 /**
@@ -52,7 +54,7 @@ fun VocabularyScreen(
         }
         item {
             TextButton(
-                onClick = { onClick(com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar.Adjectives) },
+                onClick = { onClick(Grammar.Adjectives()) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
                     color = Color(0xFF81C784), // Example: green for adjectives

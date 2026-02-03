@@ -116,7 +116,11 @@ internal fun App(
             entryProvider = entryProvider {
                 entry<BottomBarKey.Overview> {
                     OverviewScreen(
-                        onSearchBarActivated = { onNavigate(Grammar.Adjectives) }
+                        onSearchBarActivated = { focusSearch ->
+                            onNavigate(
+                                Grammar.Adjectives(focusSearch)
+                            )
+                        }
                     )
                 }
                 entry<BottomBarKey.Grammar> {
@@ -134,7 +138,7 @@ internal fun App(
                     PrepositionsScreen()
                 }
                 entry<Grammar.Adjectives> { key ->
-                    AdjectivesScreen()
+                    AdjectivesScreen(focusSearch = key.focusSearch)
                 }
                 entry<Grammar.Connectors> { key ->
                     com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors.ConnectorsScreen()

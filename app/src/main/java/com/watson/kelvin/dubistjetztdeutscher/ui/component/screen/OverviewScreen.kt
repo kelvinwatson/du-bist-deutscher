@@ -14,17 +14,17 @@ import androidx.compose.ui.Modifier
 @Composable
 fun OverviewScreen(
     modifier: Modifier = Modifier,
-    onSearchBarActivated: () -> Unit = {}, // Should navigate to AdjectivesScreen and focus search bar there
+    onSearchBarActivated: (focusSearch: Boolean) -> Unit = {},
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onSearchBarActivated() },
+            .clickable { onSearchBarActivated(true) },
     ) {
         OutlinedTextField(
             value = "",
             enabled = false,
-            onValueChange = { onSearchBarActivated() },
+            onValueChange = { onSearchBarActivated(true) },
             label = { Text("Search adjectives...") },
             modifier = Modifier.fillMaxWidth(),
             readOnly = true
