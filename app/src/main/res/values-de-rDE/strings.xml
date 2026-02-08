@@ -39,5 +39,14 @@
     <string name="adjective_category_shape">Form</string>
     <string name="adjective_category_taste">Geschmack</string>
     <string name="adjective_category_temperature">Temperatur</string>
+
+    <!-- pronoun genders -->
+    <string name="gender_masculine">Maskulin</string>
+    <string name="gender_neuter">Neutral</string>
+    <string name="gender_feminine">Feminin</string>
+    <string name="gender_plural">Plural</string>
+    <string name="possessive_articles_title">Possessivartikel</string>
+    <string name="table_header_person">Person</string>
+
     <string name="no_translate_title_adjectives" translatable="false">Adjektive</string>
 </resources>

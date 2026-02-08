@@ -23,6 +23,8 @@
     <string name="no_translate_en_title_connectors" translatable="false">Connectors</string>
     <string name="no_translate_en_title_prepositions" translatable="false">Prepositions</string>
     <string name="no_translate_en_title_adjectives" translatable="false">Adjectives</string>
+    <string name="no_translate_en_title_possessive_articles" translatable="false">Possessive Articles</string>
+    <string name="no_translate_en_title_pronouns" translatable="false">Pronouns</string>
 
     <string name="adverbs">Adverbs</string>
     <string name="connectors">Connectors</string>
@@ -61,6 +63,8 @@
     <string name="no_translate_title_adjectives" translatable="false">Adjektive</string>
     <string name="no_translate_title_connectors" translatable="false">Konnektoren</string>
     <string name="no_translate_title_prepositions" translatable="false">Präpositionen</string>
+    <string name="no_translate_title_possessive_articles" translatable="false">Possessivartikel</string>
+    <string name="no_translate_title_pronouns" translatable="false">Pronomen</string>
     <string name="no_translate_title_vocabulary" translatable="false">Wortschatz</string>
 
     <!-- Preposition tab explanations -->
@@ -86,4 +90,18 @@
 
     <!-- search -->
     <string name="no_translate_en_search_hint" translatable="false">Search...</string>
+
+    <!-- pronoun genders -->
+    <string name="gender_masculine">Masculine</string>
+    <string name="gender_neuter">Neuter</string>
+    <string name="gender_feminine">Feminine</string>
+    <string name="gender_plural">Plural</string>
+    <string name="possessive_articles_title">Possessive Articles</string>
+    <string name="table_header_person">Person</string>
+    <string name="no_translate_header_person" translatable="false">Person</string>
+    <string name="no_translate_case_nominative" translatable="false">Nominativ</string>
+    <string name="no_translate_gender_masculine" translatable="false">Masculine</string>
+    <string name="no_translate_gender_neuter" translatable="false">Neuter</string>
+    <string name="no_translate_gender_feminine" translatable="false">Feminine</string>
+    <string name="no_translate_gender_plural" translatable="false">Plural</string>
 </resources>

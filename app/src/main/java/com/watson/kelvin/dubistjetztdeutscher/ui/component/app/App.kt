@@ -25,14 +25,17 @@ import androidx.navigation3.ui.NavDisplay
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.adjectives.AdjectivesScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.bottombar.BottomBar
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.GrammarScreen
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.AccountScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.singleLineTitle
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.vocabulary.VocabularyScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.VocabularyScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.connectors.ConnectorsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions.PrepositionsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PersonalPronounsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PossessiveArticlesScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.NavigationViewModel
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
@@ -118,7 +121,7 @@ internal fun App(
                     OverviewScreen(
                         onSearchBarActivated = { focusSearch ->
                             onNavigate(
-                                Grammar.Adjectives(focusSearch)
+                                Vocabulary.Adjectives(focusSearch)
                             )
                         }
                     )
@@ -134,14 +137,20 @@ internal fun App(
                 entry<BottomBarKey.Vocabulary> {
                     VocabularyScreen(onClick = onNavigate)
                 }
-                entry<Grammar.Prepositions> { key ->
+                entry<Vocabulary.Prepositions> { key ->
                     PrepositionsScreen()
                 }
-                entry<Grammar.Adjectives> { key ->
+                entry<Vocabulary.Adjectives> { key ->
                     AdjectivesScreen(focusSearch = key.focusSearch)
                 }
-                entry<Grammar.Connectors> { key ->
-                    com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors.ConnectorsScreen()
+                entry<Vocabulary.Connectors> { key ->
+                    ConnectorsScreen()
+                }
+                entry<Vocabulary.PossessiveArticles> { key ->
+                    PossessiveArticlesScreen()
+                }
+                entry<Vocabulary.Pronouns> { key ->
+                    PersonalPronounsScreen()
                 }
             },
         )

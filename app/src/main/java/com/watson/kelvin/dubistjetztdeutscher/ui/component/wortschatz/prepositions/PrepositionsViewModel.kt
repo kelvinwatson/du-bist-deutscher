@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.prepositions
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.initializer
@@ -11,7 +11,7 @@ import com.watson.kelvin.dubistjetztdeutscher.domain.usecase.TabSelectionUseCase
  * Uses Kotlin delegation to delegate tab selection logic to TabSelectionUseCase.
  */
 class PrepositionsViewModel(
-    tabSelectionUseCase: TabSelectionUseCase<PrepositionTab>
+    tabSelectionUseCase: TabSelectionUseCase<PrepositionTab>,
 ) : ViewModel(),
     TabSelectionUseCase<PrepositionTab> by tabSelectionUseCase {
 

@@ -10,12 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
 @OptIn(ExperimentalMaterial3Api::class) // TopAppBar
@@ -33,7 +32,7 @@ fun GrammarScreen(
 
         item {
             TextButton(
-                onClick = { onClick(Grammar.Prepositions) },
+                onClick = { onClick(Vocabulary.Prepositions) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
                     color = Theme.prepositionColors.akkusativ,
@@ -54,7 +53,7 @@ fun GrammarScreen(
 
         item {
             TextButton(
-                onClick = { onClick(Grammar.Connectors) },
+                onClick = { onClick(Vocabulary.Connectors) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
                     color = Theme.connectorColors.coordinating,
@@ -78,18 +77,18 @@ fun GrammarScreen(
                 onClick = { /* TODO: Navigate to detailed screen */ },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
-                    color = Color(0xFFB39DDB)
-                ), // Example: purple for adverbs
+                    color = Theme.grammarColors.adverbs,
+                ),
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
                     text = "${stringResource(StringResource.no_translate_title_adverbs)}\n(${
                         stringResource(
-                            StringResource.adverbs
+                            StringResource.adverbs,
                         )
                     })",
                     textAlign = TextAlign.Center,
-                    color = Color(0xFFB39DDB)
+                    color = Theme.grammarColors.adverbs,
                 )
             }
         }

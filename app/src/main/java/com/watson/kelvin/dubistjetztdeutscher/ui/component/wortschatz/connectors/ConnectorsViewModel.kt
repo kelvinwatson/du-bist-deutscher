@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.connectors
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.initializer

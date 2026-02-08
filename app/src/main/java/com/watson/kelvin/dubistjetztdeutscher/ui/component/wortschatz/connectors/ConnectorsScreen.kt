@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.connectors
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
@@ -33,8 +33,8 @@ import com.watson.kelvin.dubistjetztdeutscher.core.theme.ConnectorColors
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.LocalColors
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.data.connectors.Connector
-import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.ConnectorsFallbackData
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.connectors.ConnectorColorKey.Companion.toColors
+import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz.ConnectorsFallbackData
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.connectors.ConnectorColorKey.Companion.toColors
 import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
 import javax.annotation.processing.Generated
 
@@ -260,3 +260,4 @@ private fun ConnectorsScreenDarkPreview() {
         ConnectorsScreen()
     }
 }
+

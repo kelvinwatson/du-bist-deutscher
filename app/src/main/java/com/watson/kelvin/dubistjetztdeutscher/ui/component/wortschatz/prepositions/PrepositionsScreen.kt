@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.prepositions
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions
 
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -34,7 +34,7 @@ import com.watson.kelvin.dubistjetztdeutscher.R
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey.Companion.toColor
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
-import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.PrepositionsFallbackData
+import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz.PrepositionsFallbackData
 import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
 
 /**
@@ -336,3 +336,4 @@ private fun PrepositionListPreview() {
         )
     }
 }
+

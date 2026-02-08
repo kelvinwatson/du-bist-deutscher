@@ -5,7 +5,6 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey.Overview
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar.Prepositions
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,7 +27,7 @@ class BackStackManager<K : AppNavKey>(startKey: K) : BackStackManagement<K> {
      *
      *   1. Starts at Overview (masterStack: [Overview] to [Overview])
      *   2. Navigates to Grammar (masterStack: [Grammar] to [Grammar])
-     *   3. From Grammar, goes to Prepositions (masterStack: [Prepositions] to [[Grammar], [Prepositions])
+     *   3. From Grammar, goes to CaseRules (masterStack: [CaseRules] to [[Grammar], [CaseRules])
      *   4. Switches back to Overview (stack: [Overview])
      *
      * With the above use case, the `masterStack` would look like this:

@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -34,7 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
-import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.AdjectiveCategory
+import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz.AdjectiveCategory
 import com.watson.kelvin.dubistjetztdeutscher.domain.adjectives.DefaultAdjectiveSearchUseCase
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.state.UiState
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.withParenthesizedTranslation
@@ -44,6 +46,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flowOf
 import javax.annotation.processing.Generated
+import com.watson.kelvin.dubistjetztdeutscher.common.EnglishAdjective
+import com.watson.kelvin.dubistjetztdeutscher.common.GermanAdjective
 
 /**
  * Main entry point for production usage (with ViewModel)
@@ -55,11 +59,10 @@ import javax.annotation.processing.Generated
 @Composable
 fun AdjectivesScreen(
     modifier: Modifier = Modifier,
-    focusSearch: Boolean = false, // TODO check should this go into the viewModel?
+    focusSearch: Boolean = false,
     viewModel: AdjectivesViewModel = viewModel {
         AdjectivesViewModel(
             useCase = DefaultAdjectiveSearchUseCase(),
-//            savedStateHandle = createSavedStateHandle()
         )
     },
 ) {
@@ -71,7 +74,7 @@ fun AdjectivesScreen(
 
     // Debounce the search query in the UI layer
     LaunchedEffect(searchQuery, showGermanFirst) {
-        flowOf(Pair(searchQuery, showGermanFirst))
+        flowOf(Pair(searchQuery, showGermanFirst),)
             .debounce(300)
             .collectLatest { (debouncedQuery, debouncedShowGermanFirst) ->
                 viewModel.updateSearchQuery(debouncedQuery)
@@ -100,6 +103,7 @@ fun AdjectivesScreen(
                 )
             }
         }
+
         is AdjectivesUiState.Success -> {
             AdjectivesScreen(
                 modifier = modifier,
@@ -108,10 +112,10 @@ fun AdjectivesScreen(
                 showGermanFirst = state.showGermanFirst,
                 onToggleLanguageOrder = viewModel::toggleLanguageOrder,
                 onSearchQueryChange = viewModel::updateSearchQuery,
-                focusRequester = focusRequester, // pass to stateless version
-                focusSearch = focusSearch
+                focusRequester = focusRequester,
             )
         }
+
         is UiState.Error -> {
             Box(
                 modifier = Modifier
@@ -136,12 +140,11 @@ fun AdjectivesScreen(
 internal fun AdjectivesScreen(
     modifier: Modifier = Modifier,
     searchQuery: String,
-    filteredCategories: List<Pair<AdjectiveCategory, List<Pair<String, String>>>>,
+    filteredCategories: List<Pair<AdjectiveCategory, List<Pair<GermanAdjective, EnglishAdjective>>>>,
     showGermanFirst: Boolean = true,
     onToggleLanguageOrder: (Boolean) -> Unit = {},
     onSearchQueryChange: (String) -> Unit = {},
-    focusRequester: FocusRequester? = null, // NEW: allow focus control
-    focusSearch: Boolean = false // NEW: allow focus control
+    focusRequester: FocusRequester? = null,
 ) {
     println("Stateless AdjectivesScreen: searchQuery='$searchQuery'")
     Column(
@@ -151,18 +154,20 @@ internal fun AdjectivesScreen(
             modifier = Modifier
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = StringResource.no_translate_toggle_english_first.withParenthesizedTranslation(
-                    translation = StringResource.no_translate_en_toggle_english_first
+                    translation = StringResource.no_translate_en_toggle_english_first,
                 ),
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
             Switch(
                 checked = showGermanFirst,
                 onCheckedChange = onToggleLanguageOrder,
-                colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colorScheme.onPrimary)
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
+                ),
             )
         }
         OutlinedTextField(
@@ -177,7 +182,7 @@ internal fun AdjectivesScreen(
                 focusedBorderColor = MaterialTheme.colorScheme.onPrimary,
                 unfocusedBorderColor = MaterialTheme.colorScheme.onPrimary,
                 cursorColor = MaterialTheme.colorScheme.onPrimary,
-            )
+            ),
         )
         val categories = filteredCategories.map { it.first }
         if (categories.isEmpty()) {
@@ -197,7 +202,7 @@ internal fun AdjectivesScreen(
             var selectedTabIndex by remember { mutableIntStateOf(0) }
             val pagerState = rememberPagerState(
                 initialPage = selectedTabIndex,
-                pageCount = { categories.size }
+                pageCount = { categories.size },
             )
             // Sync pager state with tab selection
             LaunchedEffect(pagerState) {
@@ -213,13 +218,19 @@ internal fun AdjectivesScreen(
             PrimaryScrollableTabRow(
                 selectedTabIndex = selectedTabIndex,
                 modifier = Modifier.fillMaxWidth(),
-                edgePadding = 0.dp
+                edgePadding = 0.dp,
             ) {
                 categories.forEachIndexed { index, category ->
+                    val categoryColor = category.getColor(Theme.adjectiveCategoryColors)
                     Tab(
                         selected = selectedTabIndex == index,
                         onClick = { selectedTabIndex = index },
-                        text = { Text(stringResource(category.displayName)) }
+                        text = {
+                            Text(
+                                text = stringResource(category.displayName),
+                                color = categoryColor,
+                            )
+                        },
                     )
                 }
             }
@@ -230,22 +241,30 @@ internal fun AdjectivesScreen(
             ) { page ->
                 val selectedCategory = categories.getOrNull(page)
                 val selectedAdjectives = filteredCategories.getOrNull(page)?.second ?: emptyList()
-                Column(modifier = Modifier.fillMaxWidth()) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState()),
+                ) {
                     if (selectedCategory != null && selectedAdjectives.isNotEmpty()) {
+                        val categoryColor = selectedCategory.getColor(Theme.adjectiveCategoryColors)
                         Text(
                             text = stringResource(selectedCategory.displayName),
                             style = MaterialTheme.typography.titleMedium,
+                            color = categoryColor,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 8.dp),
                         )
-                        selectedAdjectives.forEach { (en, de) ->
+                        selectedAdjectives.forEach { (de, en) ->
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(vertical = 6.dp),
                             ) {
-                                Column(modifier = Modifier.padding(10.dp)) {
+                                Column(
+                                    modifier = Modifier.padding(10.dp),
+                                ) {
                                     val (first, second) = if (showGermanFirst) {
                                         de to en
                                     } else {
@@ -255,7 +274,7 @@ internal fun AdjectivesScreen(
                                     Text(
                                         text = second,
                                         style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onSecondary // Use app's white color
+                                        color = MaterialTheme.colorScheme.onSecondary,
                                     )
                                 }
                             }
@@ -274,14 +293,14 @@ internal fun AdjectivesScreenPreview() {
             searchQuery = "",
             filteredCategories = listOf(
                 AdjectiveCategory.COLOR to listOf(
-                    "red" to "rot",
-                    "blue" to "blau"
+                    "blau" to "blue",
+                    "rot" to "red",
                 ),
                 AdjectiveCategory.SIZE to listOf(
-                    "big" to "groß",
-                    "small" to "klein"
-                )
-            )
+                    "groß" to "big",
+                    "klein" to "small",
+                ),
+            ),
         )
     }
 }

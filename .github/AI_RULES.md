@@ -1,4 +1,4 @@
-# AI/Automation Rules
+ # AI/Automation Rules
 
 ## Discovery and Compliance
 
@@ -14,6 +14,10 @@
 - **All generated Compose previews must use only @[Preview Generated Composable] (with square brackets, not @Preview or @Composable), and must be declared as internal fun. Do not use @Preview or @Composable for generated previews.**
 - **When generating a composable that takes in viewModel properties and callbacks, declare it as internal. Always preserve and place all required annotations (such as @Composable) before the access modifier.**
 - **The Modifier parameter should be the first optional parameter in all composable functions.**
+- **Always add trailing commas for constructor invocations and function parameters.**
+- **Never consume CoreColors directly. Always use semantically named colors from the Theme object (e.g., Theme.adjectiveCategoryColors.quality). If a semantically named color doesn't exist, create it in the appropriate color resources and color class.**
+- **Use method references when possible (e.g., viewModel::someMethod instead of { viewModel.someMethod() }).**
+- **Always call .asStateFlow() when exposing a MutableStateFlow as a StateFlow.**
 
 ## Formatting
 

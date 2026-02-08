@@ -12,6 +12,12 @@ object Dimensions {
     val cellPadding: Dp = 16.dp
     val borderWidth: Dp = 2.dp
     val cornerRadius: Dp = 8.dp
+    val screenPadding: Dp = 16.dp
+    val sectionSpacing: Dp = 16.dp
+    val pronounHeaderWidth: Dp = 100.dp
+    val pronounCaseWidth: Dp = 96.dp
+    val pronounPossessiveWidth: Dp = 120.dp
+    val pronounRowHeight: Dp = 48.dp
 }
 
 val LocalDimens = staticCompositionLocalOf { Dimensions }

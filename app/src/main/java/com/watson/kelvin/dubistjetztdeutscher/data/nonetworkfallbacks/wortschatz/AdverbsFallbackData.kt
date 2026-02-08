@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks
+package com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz
 
 /**
  * Represents an adverb with its English meaning and example sentence.

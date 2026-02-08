@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.vocabulary
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -10,13 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.withParenthesizedTranslation
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
 /**
@@ -36,7 +34,7 @@ fun VocabularyScreen(
     ) {
         item {
             TextButton(
-                onClick = { onClick(com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar.Connectors) },
+                onClick = { onClick(Vocabulary.Connectors) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
                     color = Theme.connectorColors.coordinating,
@@ -54,10 +52,10 @@ fun VocabularyScreen(
         }
         item {
             TextButton(
-                onClick = { onClick(Grammar.Adjectives()) },
+                onClick = { onClick(Vocabulary.Adjectives()) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
-                    color = Color(0xFF81C784), // Example: green for adjectives
+                    color = Theme.adjectiveCategoryColors.quality,
                 ),
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
@@ -66,7 +64,25 @@ fun VocabularyScreen(
                         StringResource.no_translate_en_title_adjectives,
                     ),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF81C784)
+                    color = Theme.adjectiveCategoryColors.quality,
+                )
+            }
+        }
+        item {
+            TextButton(
+                onClick = { onClick(Vocabulary.Pronouns) },
+                border = BorderStroke(
+                    width = Theme.dimens.borderWidth,
+                    color = Theme.caseColors.nominativ,
+                ),
+                contentPadding = PaddingValues(Theme.dimens.cellPadding),
+            ) {
+                Text(
+                    text = StringResource.no_translate_title_pronouns.withParenthesizedTranslation(
+                        StringResource.no_translate_en_title_pronouns,
+                    ),
+                    textAlign = TextAlign.Center,
+                    color = Theme.caseColors.nominativ,
                 )
             }
         }
