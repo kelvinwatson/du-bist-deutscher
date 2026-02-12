@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.watson.kelvin.dubistjetztdeutscher.R
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
+import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz.Gender
 import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz.PronounsFallbackData
 import javax.annotation.processing.Generated
 
@@ -34,13 +35,10 @@ import javax.annotation.processing.Generated
 internal fun PossessiveArticlesScreen(
     modifier: Modifier = Modifier,
 ) {
+    val scrollState = rememberScrollState()
+
     val data = PronounsFallbackData.possessiveMatrix
-    val genderLabels = listOf(
-        stringResource(R.string.no_translate_gender_masculine),
-        stringResource(R.string.no_translate_gender_neuter),
-        stringResource(R.string.no_translate_gender_feminine),
-        stringResource(R.string.no_translate_gender_plural),
-    )
+    val genders = Gender.entries
     val genderColors = listOf(
         Theme.possessiveArticleColors.masculine,
         Theme.possessiveArticleColors.neuter,
@@ -48,62 +46,62 @@ internal fun PossessiveArticlesScreen(
         Theme.possessiveArticleColors.plural,
     )
 
-    val scrollState = rememberScrollState()
-
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(Theme.dimens.screenPadding),
+            .padding(
+                start = Theme.dimens.screenPadding,
+                top = Theme.dimens.screenPadding,
+                bottom = Theme.dimens.screenPadding,
+            ),
     ) {
+        // Header row with sticky Person column
         item {
-            Text(
-                text = stringResource(R.string.no_translate_title_possessive_articles),
-                style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(bottom = Theme.dimens.sectionSpacing),
-            )
-        }
-
-        item {
-            Row(
-                modifier = Modifier
-                    .background(MaterialTheme.colorScheme.surfaceVariant)
-                    .horizontalScroll(scrollState),
-            ) {
+            Row {
+                // Sticky header cell
                 Box(
                     modifier = Modifier
                         .width(Theme.dimens.pronounHeaderWidth)
                         .height(Theme.dimens.pronounRowHeight)
-                        .background(MaterialTheme.colorScheme.surfaceVariant),
+                        .background(Theme.grammarColors.tableHeader),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
                         text = stringResource(R.string.no_translate_header_person),
                         fontWeight = FontWeight.Bold,
                         fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSecondary,
                     )
                 }
-                data.forEach { possessive ->
-                    Box(
-                        modifier = Modifier
-                            .width(Theme.dimens.pronounPossessiveWidth)
-                            .height(Theme.dimens.pronounRowHeight)
-                            .background(MaterialTheme.colorScheme.surfaceVariant),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = possessive.person,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 9.sp,
-                        )
+
+                // Scrollable person labels
+                Row(
+                    modifier = Modifier.horizontalScroll(scrollState),
+                ) {
+                    data.forEach { possessive ->
+                        Box(
+                            modifier = Modifier
+                                .width(Theme.dimens.pronounPossessiveWidth)
+                                .height(Theme.dimens.pronounRowHeight)
+                                .background(Theme.grammarColors.tableHeader),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = possessive.person,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 9.sp,
+                                color = MaterialTheme.colorScheme.onSecondary,
+                            )
+                        }
                     }
                 }
             }
         }
 
-        itemsIndexed(genderLabels) { genderIndex, genderLabel ->
-            Row(
-                modifier = Modifier.horizontalScroll(scrollState),
-            ) {
+        // Data rows grouped by gender with sticky first column
+        itemsIndexed(genders) { genderIndex, gender ->
+            Row {
+                // Sticky gender label cell
                 Box(
                     modifier = Modifier
                         .width(Theme.dimens.pronounHeaderWidth)
@@ -112,34 +110,38 @@ internal fun PossessiveArticlesScreen(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text = genderLabel,
+                        text = stringResource(gender.abbreviationResId),
                         fontWeight = FontWeight.Bold,
                         fontSize = 11.sp,
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = MaterialTheme.colorScheme.onSecondary,
                     )
                 }
 
-                data.forEach { possessive ->
-                    val genderValue = when (genderIndex) {
-                        0 -> possessive.masculine
-                        1 -> possessive.neuter
-                        2 -> possessive.feminine
-                        else -> possessive.plural
-                    }
+                // Scrollable gender data cells (uses same scrollState as header)
+                Row(
+                    modifier = Modifier.horizontalScroll(scrollState),
+                ) {
+                    data.forEach { possessive ->
+                        val genderValue = when (genderIndex) {
+                            0 -> possessive.masculine
+                            1 -> possessive.neuter
+                            2 -> possessive.feminine
+                            else -> possessive.plural
+                        }
 
-                    Box(
-                        modifier = Modifier
-                            .width(Theme.dimens.pronounPossessiveWidth)
-                            .height(Theme.dimens.pronounRowHeight)
-                            .background(genderColors[genderIndex]),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = genderValue,
-                            fontSize = 9.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MaterialTheme.colorScheme.onPrimary,
-                        )
+                        Box(
+                            modifier = Modifier
+                                .width(Theme.dimens.pronounPossessiveWidth)
+                                .height(Theme.dimens.pronounRowHeight)
+                                .background(genderColors[genderIndex]),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = genderValue,
+                                fontSize = 9.sp,
+                                fontWeight = FontWeight.SemiBold,
+                            )
+                        }
                     }
                 }
             }

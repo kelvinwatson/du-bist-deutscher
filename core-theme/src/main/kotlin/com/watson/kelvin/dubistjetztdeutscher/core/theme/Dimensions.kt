@@ -14,7 +14,7 @@ object Dimensions {
     val cornerRadius: Dp = 8.dp
     val screenPadding: Dp = 16.dp
     val sectionSpacing: Dp = 16.dp
-    val pronounHeaderWidth: Dp = 100.dp
+    val pronounHeaderWidth: Dp = 90.dp
     val pronounCaseWidth: Dp = 96.dp
     val pronounPossessiveWidth: Dp = 120.dp
     val pronounRowHeight: Dp = 48.dp

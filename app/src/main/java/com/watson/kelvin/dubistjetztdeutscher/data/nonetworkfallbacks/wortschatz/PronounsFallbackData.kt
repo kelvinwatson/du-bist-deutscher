@@ -1,5 +1,8 @@
 package com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz
 
+import androidx.annotation.StringRes
+import com.watson.kelvin.dubistjetztdeutscher.R
+
 /**
  * Pronouns and Possessives in a "matrix" style: all cases in one row per person.
  */
@@ -133,6 +136,19 @@ object PronounsFallbackData {
             plural = "Ihre / Ihre / Ihren / Ihrer"
         )
     )
+}
+
+/**
+ * Represents grammatical genders with abbreviations
+ */
+enum class Gender(
+    @StringRes val fullNameResId: Int,
+    @StringRes val abbreviationResId: Int,
+) {
+    Masculine(R.string.gender_masculine, R.string.gender_masculine_abbrev),
+    Neuter(R.string.gender_neuter, R.string.gender_neuter_abbrev),
+    Feminine(R.string.gender_feminine, R.string.gender_feminine_abbrev),
+    Plural(R.string.gender_plural, R.string.gender_plural_abbrev),
 }
 
 /**

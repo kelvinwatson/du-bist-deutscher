@@ -43,7 +43,8 @@ fun VocabularyScreen(
             ) {
                 Text(
                     text = StringResource.no_translate_title_connectors.withParenthesizedTranslation(
-                        translation = StringResource.no_translate_en_title_connectors
+                        translation = StringResource.no_translate_en_title_connectors,
+                        delimiter = "\n",
                     ),
                     textAlign = TextAlign.Center,
                     color = Theme.connectorColors.coordinating
@@ -62,6 +63,7 @@ fun VocabularyScreen(
                 Text(
                     text = StringResource.no_translate_title_adjectives.withParenthesizedTranslation(
                         StringResource.no_translate_en_title_adjectives,
+                        delimiter = "\n",
                     ),
                     textAlign = TextAlign.Center,
                     color = Theme.adjectiveCategoryColors.quality,
@@ -80,9 +82,29 @@ fun VocabularyScreen(
                 Text(
                     text = StringResource.no_translate_title_pronouns.withParenthesizedTranslation(
                         StringResource.no_translate_en_title_pronouns,
+                        delimiter = "\n",
                     ),
                     textAlign = TextAlign.Center,
                     color = Theme.caseColors.nominativ,
+                )
+            }
+        }
+        item {
+            TextButton(
+                onClick = { onClick(Vocabulary.PossessiveArticles) },
+                border = BorderStroke(
+                    width = Theme.dimens.borderWidth,
+                    color = Theme.possessiveArticleColors.masculine,
+                ),
+                contentPadding = PaddingValues(Theme.dimens.cellPadding),
+            ) {
+                Text(
+                    text = StringResource.no_translate_title_possessive_articles.withParenthesizedTranslation(
+                        StringResource.no_translate_en_title_possessive_articles,
+                        delimiter = "\n",
+                    ),
+                    textAlign = TextAlign.Center,
+                    color = Theme.possessiveArticleColors.masculine,
                 )
             }
         }

@@ -17,6 +17,9 @@ fun NavIdentifier.singleLineTitle(): String {
 }
 
 @Composable
-fun @receiver:StringRes Int.withParenthesizedTranslation(@StringRes translation: Int): String {
-    return "${stringResource(this)} (${stringResource(translation)})"
+fun @receiver:StringRes Int.withParenthesizedTranslation(
+    @StringRes translation: Int,
+    delimiter: String = "",
+): String {
+    return "${stringResource(this)}$delimiter(${stringResource(translation)})"
 }

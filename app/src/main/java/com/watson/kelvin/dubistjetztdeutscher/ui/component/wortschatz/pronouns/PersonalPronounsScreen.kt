@@ -61,7 +61,7 @@ internal fun PersonalPronounsScreen(
             // Sticky header cell
             Box(
                 modifier = Modifier
-                    .width(140.dp)
+                    .width(90.dp)
                     .height(50.dp)
                     .background(Theme.grammarColors.tableHeader),
                 contentAlignment = Alignment.Center,
@@ -103,7 +103,7 @@ internal fun PersonalPronounsScreen(
                 // Sticky case label cell
                 Box(
                     modifier = Modifier
-                        .width(140.dp)
+                        .width(90.dp)
                         .height(50.dp)
                         .background(
                             viewModel.getCaseColor(
@@ -142,7 +142,7 @@ internal fun PersonalPronounsScreen(
                         ) {
                             Text(
                                 text = viewModel.getCaseValue(pronoun, caseIndex),
-                                fontSize = 9.sp,
+                                fontSize = 12.sp,
                                 fontWeight = FontWeight.SemiBold,
                             )
                         }

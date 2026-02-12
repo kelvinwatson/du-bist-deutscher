@@ -96,6 +96,10 @@
     <string name="gender_neuter">Neuter</string>
     <string name="gender_feminine">Feminine</string>
     <string name="gender_plural">Plural</string>
+    <string name="gender_masculine_abbrev">M</string>
+    <string name="gender_neuter_abbrev">N</string>
+    <string name="gender_feminine_abbrev">F</string>
+    <string name="gender_plural_abbrev">Pl</string>
     <string name="possessive_articles_title">Possessive Articles</string>
     <string name="table_header_person">Person</string>
     <string name="no_translate_header_person" translatable="false">Person</string>
