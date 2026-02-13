@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
@@ -32,24 +33,25 @@ fun GrammarScreen(
 
         item {
             TextButton(
-                onClick = { onClick(Vocabulary.Prepositions) },
+                onClick = { onClick(Grammar.AdjectiveEndings) },
                 border = BorderStroke(
                     width = Theme.dimens.borderWidth,
-                    color = Theme.prepositionColors.akkusativ,
+                    color = Theme.caseColors.nominativ,
                 ),
                 contentPadding = PaddingValues(Theme.dimens.cellPadding),
             ) {
                 Text(
-                    text = "${stringResource(StringResource.no_translate_title_prepositions)}\n(${
+                    text = "${stringResource(StringResource.no_translate_title_adjective_endings)}\n(${
                         stringResource(
-                            StringResource.prepositions
+                            StringResource.no_translate_en_title_adjective_endings
                         )
                     })",
                     textAlign = TextAlign.Center,
-                    color = Theme.prepositionColors.akkusativ
+                    color = Theme.caseColors.nominativ,
                 )
             }
         }
+
 
         item {
             TextButton(
@@ -68,6 +70,27 @@ fun GrammarScreen(
                     })",
                     textAlign = TextAlign.Center,
                     color = Theme.connectorColors.coordinating
+                )
+            }
+        }
+
+        item {
+            TextButton(
+                onClick = { onClick(Vocabulary.Prepositions) },
+                border = BorderStroke(
+                    width = Theme.dimens.borderWidth,
+                    color = Theme.prepositionColors.akkusativ,
+                ),
+                contentPadding = PaddingValues(Theme.dimens.cellPadding),
+            ) {
+                Text(
+                    text = "${stringResource(StringResource.no_translate_title_prepositions)}\n(${
+                        stringResource(
+                            StringResource.prepositions
+                        )
+                    })",
+                    textAlign = TextAlign.Center,
+                    color = Theme.prepositionColors.akkusativ
                 )
             }
         }

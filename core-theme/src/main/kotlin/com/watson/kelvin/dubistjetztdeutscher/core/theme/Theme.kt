@@ -29,6 +29,8 @@ fun Theme(
 object Theme {
     val adjectiveCategoryColors: AdjectiveCategoryColors
         @Composable get() = LocalColors.current.adjectiveCategoryColors
+    val adjectiveEndingColors: AdjectiveEndingColors
+        @Composable get() = LocalColors.current.adjectiveEndingColors
     val caseColors: CaseColors
         @Composable get() = LocalColors.current.caseColors
     val connectorColors: ConnectorColors

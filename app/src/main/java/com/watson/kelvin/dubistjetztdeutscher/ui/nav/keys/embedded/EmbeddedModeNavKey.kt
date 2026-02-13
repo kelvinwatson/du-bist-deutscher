@@ -9,7 +9,15 @@ import kotlinx.serialization.Serializable
  */
 sealed interface EmbeddedModeNavKey : AppNavKey
 
-sealed interface Grammar : EmbeddedModeNavKey
+sealed interface Grammar : EmbeddedModeNavKey {
+    @Serializable
+    data object AdjectiveEndings : Grammar {
+        override val id: String = "AdjectiveEndings"
+        override val germanTitleRes: Int = StringResource.no_translate_title_adjective_endings
+        override val localizedTitleRes: Int = StringResource.no_translate_en_title_adjective_endings
+    }
+}
+
 sealed interface Vocabulary : EmbeddedModeNavKey {
 
     /**

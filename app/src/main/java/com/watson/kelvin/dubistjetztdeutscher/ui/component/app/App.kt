@@ -24,6 +24,7 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.adjectives.AdjectivesScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.bottombar.BottomBar
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.AdjectiveEndingsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.GrammarScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.AccountScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
@@ -35,6 +36,7 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.P
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PossessiveArticlesScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.NavigationViewModel
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
@@ -136,6 +138,9 @@ internal fun App(
                 }
                 entry<BottomBarKey.Vocabulary> {
                     VocabularyScreen(onClick = onNavigate)
+                }
+                entry<Grammar.AdjectiveEndings> { key ->
+                    AdjectiveEndingsScreen()
                 }
                 entry<Vocabulary.Prepositions> { key ->
                     PrepositionsScreen()

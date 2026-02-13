@@ -21,7 +21,6 @@ val LocalColors = staticCompositionLocalOf<Colors> {
  */
 internal object CoreColors {
     const val aqua: Int = 0xFF00FFFF.toInt()
-    const val black: Int = 0xFF000000.toInt()
     const val blue300: Int = 0xFF64B5F6.toInt()
     const val blue600: Int = 0xFF1565C0.toInt()
     const val blue700: Int = 0xFF1976D2.toInt()
@@ -46,7 +45,6 @@ internal object CoreColors {
     const val red300: Int = 0xFFE57373.toInt()
     const val red700: Int = 0xFFD32F2F.toInt()
     const val teal300: Int = 0xFF4DB6AC.toInt()
-    const val white: Int = 0xFFFFFFFF.toInt()
     const val yellow300: Int = 0xFFFFF176.toInt()
 }
 
@@ -113,6 +111,12 @@ object AdjectiveCategoryColorResources {
     const val Temperature: Int = CoreColors.blue300
 }
 
+object AdjectiveEndingColorResources {
+    const val Nominativ: Int = CoreColors.blue700
+    const val Akkusativ: Int = CoreColors.pink700
+    const val Dativ: Int = CoreColors.green700
+}
+
 object GrammarColorResources {
     const val Adverbs: Int = CoreColors.purple300
     const val TableHeader: Int = CoreColors.darkGray
@@ -162,6 +166,12 @@ class AdjectiveCategoryColors(
     val state: Color,
     val taste: Color,
     val temperature: Color,
+)
+
+data class AdjectiveEndingColors(
+    val nominativ: Color,
+    val akkusativ: Color,
+    val dativ: Color,
 )
 
 class GrammarColors(
@@ -217,6 +227,11 @@ object Colors {
         state = Color(AdjectiveCategoryColorResources.State),
         taste = Color(AdjectiveCategoryColorResources.Taste),
         temperature = Color(AdjectiveCategoryColorResources.Temperature),
+    )
+    val adjectiveEndingColors = AdjectiveEndingColors(
+        nominativ = Color(AdjectiveEndingColorResources.Nominativ),
+        akkusativ = Color(AdjectiveEndingColorResources.Akkusativ),
+        dativ = Color(AdjectiveEndingColorResources.Dativ),
     )
     val grammarColors = GrammarColors(
         adverbs = Color(GrammarColorResources.Adverbs),
