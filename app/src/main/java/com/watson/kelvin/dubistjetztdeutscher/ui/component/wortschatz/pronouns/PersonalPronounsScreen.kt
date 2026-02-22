@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.watson.kelvin.dubistjetztdeutscher.R
+import com.watson.kelvin.dubistjetztdeutscher.core.theme.Dimensions.pronounCaseWidth
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import javax.annotation.processing.Generated
 
@@ -51,9 +52,9 @@ internal fun PersonalPronounsScreen(
         modifier = modifier
             .fillMaxSize()
             .padding(
-                start = Theme.dimens.screenPadding,
-                top = Theme.dimens.screenPadding,
-                bottom = Theme.dimens.screenPadding,
+                start = Theme.spacing.screenSpacing,
+                top = Theme.spacing.screenSpacing,
+                bottom = Theme.spacing.screenSpacing,
             ),
     ) {
         // Header row with sticky "Case" column
@@ -103,7 +104,7 @@ internal fun PersonalPronounsScreen(
                 // Sticky case label cell
                 Box(
                     modifier = Modifier
-                        .width(90.dp)
+                        .width(pronounCaseWidth)
                         .height(50.dp)
                         .background(
                             viewModel.getCaseColor(

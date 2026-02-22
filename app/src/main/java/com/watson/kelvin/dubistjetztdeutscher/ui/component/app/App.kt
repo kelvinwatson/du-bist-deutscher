@@ -1,5 +1,6 @@
 package com.watson.kelvin.dubistjetztdeutscher.ui.component.app
 
+import android.app.Application
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalActivity
 import androidx.annotation.VisibleForTesting
@@ -17,6 +18,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
@@ -26,7 +28,6 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.component.adjectives.Adjectives
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.bottombar.BottomBar
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.AdjectiveEndingsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.GrammarScreen
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.AccountScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.singleLineTitle
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.VocabularyScreen
@@ -39,6 +40,7 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.NavigationViewModel
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.SingleActivityAppViewModel
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
 /**
@@ -56,9 +58,10 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @VisibleForTesting
 @Composable
-internal fun App(
+internal fun AppInternal(
     currentTopLevelKey: AppNavKey,
     currentSubLevelKey: AppNavKey,
+    recentPages: List<String>,
     backStackForCurrentKey: List<AppNavKey>,
     onNavigateToTopLevel: (AppNavKey) -> Unit,
     onNavigate: (goTo: AppNavKey) -> Unit,
@@ -122,19 +125,15 @@ internal fun App(
                 entry<BottomBarKey.Overview> {
                     OverviewScreen(
                         onSearchBarActivated = { focusSearch ->
-                            onNavigate(
-                                Vocabulary.Adjectives(focusSearch)
-                            )
-                        }
+                            onNavigate(Vocabulary.Adjectives(focusSearch))
+                        },
+                        recentPages = recentPages,
                     )
                 }
                 entry<BottomBarKey.Grammar> {
                     GrammarScreen(
                         onClick = onNavigate,
                     )
-                }
-                entry<BottomBarKey.Account> {
-                    AccountScreen()
                 }
                 entry<BottomBarKey.Vocabulary> {
                     VocabularyScreen(onClick = onNavigate)
@@ -172,18 +171,29 @@ internal fun App(
 @Composable
 fun App(
     modifier: Modifier = Modifier,
+    application: Application = LocalActivity.current?.application ?: error("No context"),
     navigationViewModel: NavigationViewModel = viewModel<NavigationViewModel>(),
+    singleActivityAppViewModel: SingleActivityAppViewModel = viewModel<SingleActivityAppViewModel>(
+        initializer = {
+            SingleActivityAppViewModel(
+                savedStateHandle = createSavedStateHandle(),
+                application = application,
+            )
+        }
+    ),
 ) {
     val currentTopLevelKey: AppNavKey by navigationViewModel.currentTopLevelKeyFlow.collectAsState()
     val currentSubLevelKey: AppNavKey by navigationViewModel.currentSubLevelKeyFlow.collectAsState()
+    val recentPages: List<String> by singleActivityAppViewModel.recentPages.collectAsState()
 
-    App(
+    AppInternal(
         currentTopLevelKey = currentTopLevelKey,
         currentSubLevelKey = currentSubLevelKey,
+        recentPages = recentPages,
         backStackForCurrentKey = navigationViewModel.subBackStack,
         onNavigateToTopLevel = navigationViewModel::addTopLevel,
         onNavigate = navigationViewModel::add,
         removeLastKey = navigationViewModel::removeLast,
-        modifier = modifier
+        modifier = modifier,
     )
 }

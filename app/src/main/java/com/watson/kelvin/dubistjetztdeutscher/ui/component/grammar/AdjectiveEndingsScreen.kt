@@ -40,7 +40,7 @@ internal fun AdjectiveEndingsScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(Theme.dimens.screenPadding),
+            .padding(Theme.spacing.screenSpacing),
         verticalArrangement = Arrangement.spacedBy(32.dp),
     ) {
 

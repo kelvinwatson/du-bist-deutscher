@@ -50,9 +50,9 @@ internal fun PossessiveArticlesScreen(
         modifier = modifier
             .fillMaxSize()
             .padding(
-                start = Theme.dimens.screenPadding,
-                top = Theme.dimens.screenPadding,
-                bottom = Theme.dimens.screenPadding,
+                start = Theme.spacing.screenSpacing,
+                top = Theme.spacing.screenSpacing,
+                bottom = Theme.spacing.screenSpacing,
             ),
     ) {
         // Header row with sticky Person column

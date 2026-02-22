@@ -1,18 +1,12 @@
 package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.stringResource
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.withParenthesizedTranslation
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.common.FeatureGridItem
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.common.FeatureGridScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
@@ -26,87 +20,34 @@ fun VocabularyScreen(
     modifier: Modifier = Modifier,
     onClick: (goTo: AppNavKey) -> Unit = {},
 ) {
-    LazyVerticalGrid(
+    FeatureGridScreen(
+        items = listOf(
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_adjectives),
+                translation = stringResource(StringResource.no_translate_en_title_adjectives),
+                color = Theme.adjectiveCategoryColors.quality,
+                navKey = Vocabulary.Adjectives(),
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_connectors),
+                translation = stringResource(StringResource.no_translate_en_title_connectors),
+                color = Theme.connectorColors.coordinating,
+                navKey = Vocabulary.Connectors,
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_possessive_articles),
+                translation = stringResource(StringResource.no_translate_en_title_possessive_articles),
+                color = Theme.possessiveArticleColors.masculine,
+                navKey = Vocabulary.PossessiveArticles,
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_pronouns),
+                translation = stringResource(StringResource.no_translate_en_title_pronouns),
+                color = Theme.caseColors.nominativ,
+                navKey = Vocabulary.Pronouns,
+            ),
+        ),
         modifier = modifier,
-        columns = GridCells.Adaptive(minSize = Theme.dimens.gridMinCellSize),
-        horizontalArrangement = Arrangement.spacedBy(Theme.dimens.gridHorizontalSpacing),
-        verticalArrangement = Arrangement.spacedBy(Theme.dimens.gridVerticalSpacing),
-    ) {
-        item {
-            TextButton(
-                onClick = { onClick(Vocabulary.Connectors) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.connectorColors.coordinating,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = StringResource.no_translate_title_connectors.withParenthesizedTranslation(
-                        translation = StringResource.no_translate_en_title_connectors,
-                        delimiter = "\n",
-                    ),
-                    textAlign = TextAlign.Center,
-                    color = Theme.connectorColors.coordinating
-                )
-            }
-        }
-        item {
-            TextButton(
-                onClick = { onClick(Vocabulary.Adjectives()) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.adjectiveCategoryColors.quality,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = StringResource.no_translate_title_adjectives.withParenthesizedTranslation(
-                        StringResource.no_translate_en_title_adjectives,
-                        delimiter = "\n",
-                    ),
-                    textAlign = TextAlign.Center,
-                    color = Theme.adjectiveCategoryColors.quality,
-                )
-            }
-        }
-        item {
-            TextButton(
-                onClick = { onClick(Vocabulary.Pronouns) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.caseColors.nominativ,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = StringResource.no_translate_title_pronouns.withParenthesizedTranslation(
-                        StringResource.no_translate_en_title_pronouns,
-                        delimiter = "\n",
-                    ),
-                    textAlign = TextAlign.Center,
-                    color = Theme.caseColors.nominativ,
-                )
-            }
-        }
-        item {
-            TextButton(
-                onClick = { onClick(Vocabulary.PossessiveArticles) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.possessiveArticleColors.masculine,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = StringResource.no_translate_title_possessive_articles.withParenthesizedTranslation(
-                        StringResource.no_translate_en_title_possessive_articles,
-                        delimiter = "\n",
-                    ),
-                    textAlign = TextAlign.Center,
-                    color = Theme.possessiveArticleColors.masculine,
-                )
-            }
-        }
-    }
+        onClick = onClick,
+    )
 }

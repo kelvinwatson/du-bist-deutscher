@@ -69,6 +69,5 @@ object BottomBarNavKeys {
         BottomBarKey.Overview,
         BottomBarKey.Grammar,
         BottomBarKey.Vocabulary,
-        BottomBarKey.Account,
     )
 }

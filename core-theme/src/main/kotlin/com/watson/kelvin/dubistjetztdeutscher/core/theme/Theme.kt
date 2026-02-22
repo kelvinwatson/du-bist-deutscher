@@ -35,6 +35,8 @@ object Theme {
         @Composable get() = LocalColors.current.caseColors
     val connectorColors: ConnectorColors
         @Composable get() = LocalColors.current.connectorColors
+    val coreColors: CoreColors
+        @Composable get() = LocalColors.current.coreColors
     val dimens: Dimensions
         @Composable get() = LocalDimens.current
     val grammarColors: GrammarColors
@@ -43,4 +45,6 @@ object Theme {
         @Composable get() = LocalColors.current.possessiveArticleColors
     val prepositionColors: PrepositionColors
         @Composable get() = LocalColors.current.prepositionColors
+    val spacing: Spacing
+        @Composable get() = LocalSpacing.current
 }

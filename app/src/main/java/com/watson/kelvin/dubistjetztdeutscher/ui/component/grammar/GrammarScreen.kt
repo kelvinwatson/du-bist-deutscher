@@ -1,18 +1,12 @@
 package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.common.FeatureGridItem
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.common.FeatureGridScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
@@ -24,97 +18,34 @@ fun GrammarScreen(
     onClick: (goTo: AppNavKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    LazyVerticalGrid(
+    FeatureGridScreen(
+        items = listOf(
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_adjective_endings),
+                translation = stringResource(StringResource.no_translate_en_title_adjective_endings),
+                color = Theme.caseColors.nominativ,
+                navKey = Grammar.AdjectiveEndings,
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_connectors),
+                translation = stringResource(StringResource.no_translate_en_title_connectors),
+                color = Theme.connectorColors.coordinating,
+                navKey = Vocabulary.Connectors,
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_prepositions),
+                translation = stringResource(StringResource.prepositions),
+                color = Theme.prepositionColors.akkusativ,
+                navKey = Vocabulary.Prepositions,
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_adverbs),
+                translation = stringResource(StringResource.adverbs),
+                color = Theme.grammarColors.adverbs,
+                navKey = Grammar.AdjectiveEndings, // TODO: Replace with correct navKey for adverbs
+            ),
+        ),
         modifier = modifier,
-        columns = GridCells.Adaptive(minSize = Theme.dimens.gridMinCellSize),
-        horizontalArrangement = Arrangement.spacedBy(Theme.dimens.gridHorizontalSpacing),
-        verticalArrangement = Arrangement.spacedBy(Theme.dimens.gridVerticalSpacing),
-    ) {
-
-        item {
-            TextButton(
-                onClick = { onClick(Grammar.AdjectiveEndings) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.caseColors.nominativ,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = "${stringResource(StringResource.no_translate_title_adjective_endings)}\n(${
-                        stringResource(
-                            StringResource.no_translate_en_title_adjective_endings
-                        )
-                    })",
-                    textAlign = TextAlign.Center,
-                    color = Theme.caseColors.nominativ,
-                )
-            }
-        }
-
-
-        item {
-            TextButton(
-                onClick = { onClick(Vocabulary.Connectors) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.connectorColors.coordinating,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = "${stringResource(StringResource.no_translate_title_connectors)}\n(${
-                        stringResource(
-                            StringResource.no_translate_title_connectors
-                        )
-                    })",
-                    textAlign = TextAlign.Center,
-                    color = Theme.connectorColors.coordinating
-                )
-            }
-        }
-
-        item {
-            TextButton(
-                onClick = { onClick(Vocabulary.Prepositions) },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.prepositionColors.akkusativ,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = "${stringResource(StringResource.no_translate_title_prepositions)}\n(${
-                        stringResource(
-                            StringResource.prepositions
-                        )
-                    })",
-                    textAlign = TextAlign.Center,
-                    color = Theme.prepositionColors.akkusativ
-                )
-            }
-        }
-
-        item {
-            TextButton(
-                onClick = { /* TODO: Navigate to detailed screen */ },
-                border = BorderStroke(
-                    width = Theme.dimens.borderWidth,
-                    color = Theme.grammarColors.adverbs,
-                ),
-                contentPadding = PaddingValues(Theme.dimens.cellPadding),
-            ) {
-                Text(
-                    text = "${stringResource(StringResource.no_translate_title_adverbs)}\n(${
-                        stringResource(
-                            StringResource.adverbs,
-                        )
-                    })",
-                    textAlign = TextAlign.Center,
-                    color = Theme.grammarColors.adverbs,
-                )
-            }
-        }
-
-    }
+        onClick = onClick,
+    )
 }

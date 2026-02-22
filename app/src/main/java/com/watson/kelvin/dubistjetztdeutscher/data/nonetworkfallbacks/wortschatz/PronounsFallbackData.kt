@@ -13,21 +13,21 @@ object PronounsFallbackData {
      */
     val personalPronounsMatrix = listOf(
         MatrixPronoun(
-            person = "1st singular",
+            person = "I/me",
             nominative = "ich",
             accusative = "mich",
             dative = "mir",
             genitive = null,
         ),
         MatrixPronoun(
-            person = "2nd singular informal",
+            person = "you",
             nominative = "du",
             accusative = "dich",
             dative = "dir",
             genitive = null,
         ),
         MatrixPronoun(
-            person = "3rd singular masculine",
+            person = "he/him",
             nominative = "er",
             accusative = "ihn",
             dative = "ihm",
@@ -35,15 +35,7 @@ object PronounsFallbackData {
             reflexive = "sich",
         ),
         MatrixPronoun(
-            person = "3rd singular feminine",
-            nominative = "sie",
-            accusative = "sie",
-            dative = "ihr",
-            genitive = null,
-            reflexive = "sich",
-        ),
-        MatrixPronoun(
-            person = "3rd singular neuter",
+            person = "it",
             nominative = "es",
             accusative = "es",
             dative = "ihm",
@@ -51,21 +43,29 @@ object PronounsFallbackData {
             reflexive = "sich",
         ),
         MatrixPronoun(
-            person = "1st plural",
+            person = "she/her",
+            nominative = "sie",
+            accusative = "sie",
+            dative = "ihr",
+            genitive = null,
+            reflexive = "sich",
+        ),
+        MatrixPronoun(
+            person = "we/us",
             nominative = "wir",
             accusative = "uns",
             dative = "uns",
             genitive = null,
         ),
         MatrixPronoun(
-            person = "2nd plural informal",
+            person = "you (plural)",
             nominative = "ihr",
             accusative = "euch",
             dative = "euch",
             genitive = null,
         ),
         MatrixPronoun(
-            person = "3rd plural",
+            person = "they/them",
             nominative = "sie",
             accusative = "sie",
             dative = "ihnen",
@@ -73,7 +73,7 @@ object PronounsFallbackData {
             reflexive = "sich",
         ),
         MatrixPronoun(
-            person = "2nd singular & plural formal",
+            person = "You formal",
             nominative = "Sie",
             accusative = "Sie",
             dative = "Ihnen",
@@ -87,53 +87,53 @@ object PronounsFallbackData {
      */
     val possessiveMatrix = listOf(
         MatrixPossessive(
-            person = "1st singular",
-            masculine = "mein / meinen / meinem / meiner",
-            neuter = "mein / mein / meinem / meiner",
-            feminine = "meine / meine / meiner / meiner",
-            plural = "meine / meine / meinen / meiner"
+            person = "ich (my)",
+            masculine = "mein\nmeinen\nmeinem\nmeiner",
+            neuter = "mein\nmein\nmeinem\nmeiner",
+            feminine = "meine\nmeine\nmeiner\nmeiner",
+            plural = "meine\nmeine\nmeinen\nmeiner"
         ),
         MatrixPossessive(
-            person = "2nd singular informal",
-            masculine = "dein / deinen / deinem / deiner",
-            neuter = "dein / dein / deinem / deiner",
-            feminine = "deine / deine / deiner / deiner",
-            plural = "deine / deine / deinen / deiner"
+            person = "du\n(your)",
+            masculine = "dein\ndeinen\ndeinem\ndeiner",
+            neuter = "dein\ndein\ndeinem\ndeiner",
+            feminine = "deine\ndeine\ndeiner\ndeiner",
+            plural = "deine\ndeine\ndeinen\ndeiner"
         ),
         MatrixPossessive(
-            person = "3rd singular masculine",
-            masculine = "sein / seinen / seinem / seiner",
-            neuter = "sein / sein / seinem / seiner",
-            feminine = "seine / seine / seiner / seiner",
-            plural = "seine / seine / seinen / seiner"
+            person = "er\n(his)",
+            masculine = "sein\nseinen\nseinem\nseiner",
+            neuter = "sein\nsein\nseinem\nseiner",
+            feminine = "seine\nseine\nseiner\nseiner",
+            plural = "seine\nseine\nseinen\nseiner"
         ),
         MatrixPossessive(
-            person = "3rd singular feminine",
-            masculine = "ihr / ihren / ihrem / ihrer",
-            neuter = "ihr / ihr / ihrem / ihrer",
-            feminine = "ihre / ihre / ihrer / ihrer",
-            plural = "ihre / ihre / ihren / ihrer"
+            person = "sie\n(her, their)",
+            masculine = "ihr\nihren\nihrem\nihrer",
+            neuter = "ihr\nihr\nihrem\nihrer",
+            feminine = "ihre\nihre\nihrer\nihrer",
+            plural = "ihre\nihre\nihren\nihrer"
         ),
         MatrixPossessive(
-            person = "1st plural",
-            masculine = "unser / unseren / unserem / unserer",
-            neuter = "unser / unser / unserem / unserer",
-            feminine = "unsere / unsere / unserer / unserer",
-            plural = "unsere / unsere / unseren / unserer"
+            person = "wir\n(our)",
+            masculine = "unser\nunseren\nunserem\n unserer",
+            neuter = "unser\nunser\nunserem\nunserer",
+            feminine = "unsere\nunsere\nunserer\nunserer",
+            plural = "unsere\nunsere\nunseren\nunserer"
         ),
         MatrixPossessive(
-            person = "2nd plural informal",
-            masculine = "euer / euren / eurem / eurer",
-            neuter = "euer / euer / eurem / eurer",
-            feminine = "eure / eure / eurer / eurer",
-            plural = "eure / eure / euren / eurer"
+            person = "ihr\n(your)",
+            masculine = "euer\neuren\neurem\neurer",
+            neuter = "euer\neuer\neurem\neurer",
+            feminine = "eure\neure\neurer\neurer",
+            plural = "eure\neure\neuren\neurer"
         ),
         MatrixPossessive(
-            person = "2nd singular & plural formal",
-            masculine = "Ihr / Ihren / Ihrem / Ihrer",
-            neuter = "Ihr / Ihr / Ihrem / Ihrer",
-            feminine = "Ihre / Ihre / Ihrer / Ihrer",
-            plural = "Ihre / Ihre / Ihren / Ihrer"
+            person = "Sie\n(Your)",
+            masculine = "Ihr\nIhren\nIhrem\nIhrer",
+            neuter = "Ihr\nIhr\nIhrem\nIhrer",
+            feminine = "Ihre\nIhre\nIhrer\nIhrer",
+            plural = "Ihre\nIhre\nIhren\nIhrer"
         )
     )
 }
@@ -142,8 +142,8 @@ object PronounsFallbackData {
  * Represents grammatical genders with abbreviations
  */
 enum class Gender(
-    @StringRes val fullNameResId: Int,
-    @StringRes val abbreviationResId: Int,
+    @get:StringRes val fullNameResId: Int,
+    @get:StringRes val abbreviationResId: Int,
 ) {
     Masculine(R.string.gender_masculine, R.string.gender_masculine_abbrev),
     Neuter(R.string.gender_neuter, R.string.gender_neuter_abbrev),

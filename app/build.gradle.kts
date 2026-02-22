@@ -52,6 +52,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
     // Compose BOM and UI dependencies
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material.icons.extended)

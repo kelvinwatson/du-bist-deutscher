@@ -19,7 +19,7 @@ val LocalColors = staticCompositionLocalOf<Colors> {
  * All HEX color values are defined here.
  * These should not be consumed directly - always use semantically named colors.
  */
-internal object CoreColors {
+object CoreColorResources {
     const val aqua: Int = 0xFF00FFFF.toInt()
     const val blue300: Int = 0xFF64B5F6.toInt()
     const val blue600: Int = 0xFF1565C0.toInt()
@@ -66,60 +66,60 @@ enum class PrepositionColorKey {
 
 
 object CaseColorResources {
-    const val Akkusativ: Int = CoreColors.pink
-    const val Dativ: Int = CoreColors.greenBright
-    const val Genitive: Int = CoreColors.purple
-    const val Nominativ: Int = CoreColors.aqua
+    const val Akkusativ: Int = CoreColorResources.pink
+    const val Dativ: Int = CoreColorResources.greenBright
+    const val Genitive: Int = CoreColorResources.purple
+    const val Nominativ: Int = CoreColorResources.aqua
 }
 
 object ConnectorColorResources {
-    const val Adverbial: Int = CoreColors.green700
-    const val Coordinating: Int = CoreColors.blue700
-    const val Subordinating: Int = CoreColors.red700
+    const val Adverbial: Int = CoreColorResources.green700
+    const val Coordinating: Int = CoreColorResources.blue700
+    const val Subordinating: Int = CoreColorResources.red700
 }
 
 object PossessiveArticleColorResources {
-    const val Feminine: Int = CoreColors.pink700
-    const val Masculine: Int = CoreColors.blue600
-    const val Neuter: Int = CoreColors.green700
-    const val Plural: Int = CoreColors.orange900
+    const val Feminine: Int = CoreColorResources.pink700
+    const val Masculine: Int = CoreColorResources.blue600
+    const val Neuter: Int = CoreColorResources.green700
+    const val Plural: Int = CoreColorResources.orange900
 }
 
 object PrepositionColorResources {
-    const val Akkusativ: Int = CoreColors.pink
-    const val Dativ: Int = CoreColors.greenBright
-    const val Genitive: Int = CoreColors.purple
-    const val Wechsel: Int = CoreColors.orange
+    const val Akkusativ: Int = CoreColorResources.pink
+    const val Dativ: Int = CoreColorResources.greenBright
+    const val Genitive: Int = CoreColorResources.purple
+    const val Wechsel: Int = CoreColorResources.orange
 }
 
 object AdjectiveCategoryColorResources {
-    const val Age: Int = CoreColors.blue300
-    const val Color: Int = CoreColors.pink300
-    const val Difficulty: Int = CoreColors.orange300
-    const val Emotion: Int = CoreColors.yellow300
-    const val Material: Int = CoreColors.teal300
-    const val Opinion: Int = CoreColors.purple300
-    const val Personality: Int = CoreColors.indigo300
-    const val Position: Int = CoreColors.cyan300
-    const val Quality: Int = CoreColors.green300
-    const val QuantityCountable: Int = CoreColors.lime300
-    const val QuantityNonCountable: Int = CoreColors.deepOrange300
-    const val Shape: Int = CoreColors.deepPurple300
-    const val Size: Int = CoreColors.red300
-    const val State: Int = CoreColors.green800
-    const val Taste: Int = CoreColors.pink300
-    const val Temperature: Int = CoreColors.blue300
+    const val Age: Int = CoreColorResources.blue300
+    const val Color: Int = CoreColorResources.pink300
+    const val Difficulty: Int = CoreColorResources.orange300
+    const val Emotion: Int = CoreColorResources.yellow300
+    const val Material: Int = CoreColorResources.teal300
+    const val Opinion: Int = CoreColorResources.purple300
+    const val Personality: Int = CoreColorResources.indigo300
+    const val Position: Int = CoreColorResources.cyan300
+    const val Quality: Int = CoreColorResources.green300
+    const val QuantityCountable: Int = CoreColorResources.lime300
+    const val QuantityNonCountable: Int = CoreColorResources.deepOrange300
+    const val Shape: Int = CoreColorResources.deepPurple300
+    const val Size: Int = CoreColorResources.red300
+    const val State: Int = CoreColorResources.green800
+    const val Taste: Int = CoreColorResources.pink300
+    const val Temperature: Int = CoreColorResources.blue300
 }
 
 object AdjectiveEndingColorResources {
-    const val Nominativ: Int = CoreColors.blue700
-    const val Akkusativ: Int = CoreColors.pink700
-    const val Dativ: Int = CoreColors.green700
+    const val Nominativ: Int = CoreColorResources.blue700
+    const val Akkusativ: Int = CoreColorResources.pink700
+    const val Dativ: Int = CoreColorResources.green700
 }
 
 object GrammarColorResources {
-    const val Adverbs: Int = CoreColors.purple300
-    const val TableHeader: Int = CoreColors.darkGray
+    const val Adverbs: Int = CoreColorResources.purple300
+    const val TableHeader: Int = CoreColorResources.darkGray
 }
 
 class PrepositionColors(
@@ -140,6 +140,35 @@ class ConnectorColors(
     val adverbial: Color,
     val coordinating: Color,
     val subordinating: Color,
+)
+
+class CoreColors(
+    val aqua: Color,
+    val blue300: Color,
+    val blue600: Color,
+    val blue700: Color,
+    val cyan300: Color,
+    val darkGray: Color,
+    val deepOrange300: Color,
+    val deepPurple300: Color,
+    val green300: Color,
+    val green700: Color,
+    val green800: Color,
+    val greenBright: Color,
+    val indigo300: Color,
+    val lime300: Color,
+    val orange: Color,
+    val orange300: Color,
+    val orange900: Color,
+    val pink: Color,
+    val pink300: Color,
+    val pink700: Color,
+    val purple: Color,
+    val purple300: Color,
+    val red300: Color,
+    val red700: Color,
+    val teal300: Color,
+    val yellow300: Color,
 )
 
 class PossessiveArticleColors(
@@ -203,6 +232,34 @@ object Colors {
         adverbial = Color(ConnectorColorResources.Adverbial),
         coordinating = Color(ConnectorColorResources.Coordinating),
         subordinating = Color(ConnectorColorResources.Subordinating),
+    )
+    val coreColors = CoreColors(
+        aqua = Color(CoreColorResources.aqua),
+        blue300 = Color(CoreColorResources.blue300),
+        blue600 = Color(CoreColorResources.blue600),
+        blue700 = Color(CoreColorResources.blue700),
+        cyan300 = Color(CoreColorResources.cyan300),
+        darkGray = Color(CoreColorResources.darkGray),
+        deepOrange300 = Color(CoreColorResources.deepOrange300),
+        deepPurple300 = Color(CoreColorResources.deepPurple300),
+        green300 = Color(CoreColorResources.green300),
+        green700 = Color(CoreColorResources.green700),
+        green800 = Color(CoreColorResources.green800),
+        greenBright = Color(CoreColorResources.greenBright),
+        indigo300 = Color(CoreColorResources.indigo300),
+        lime300 = Color(CoreColorResources.lime300),
+        orange = Color(CoreColorResources.orange),
+        orange300 = Color(CoreColorResources.orange300),
+        orange900 = Color(CoreColorResources.orange900),
+        pink = Color(CoreColorResources.pink),
+        pink300 = Color(CoreColorResources.pink300),
+        pink700 = Color(CoreColorResources.pink700),
+        purple = Color(CoreColorResources.purple),
+        purple300 = Color(CoreColorResources.purple300),
+        red300 = Color(CoreColorResources.red300),
+        red700 = Color(CoreColorResources.red700),
+        teal300 = Color(CoreColorResources.teal300),
+        yellow300 = Color(CoreColorResources.yellow300),
     )
     val possessiveArticleColors = PossessiveArticleColors(
         masculine = Color(PossessiveArticleColorResources.Masculine),
