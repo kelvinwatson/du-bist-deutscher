@@ -122,6 +122,15 @@ object GrammarColorResources {
     const val TableHeader: Int = CoreColorResources.darkGray
 }
 
+object GrammarCategoryColorResources {
+    const val Prepositions: Int = CoreColorResources.pink300
+    const val Connectors: Int = CoreColorResources.blue700
+    const val Adjectives: Int = CoreColorResources.green300
+    const val Pronouns: Int = CoreColorResources.purple300
+    const val PossessiveArticles: Int = CoreColorResources.orange900
+    // Add more as needed
+}
+
 class PrepositionColors(
     val akkusativ: Color,
     val dativ: Color,
@@ -206,6 +215,14 @@ data class AdjectiveEndingColors(
 class GrammarColors(
     val adverbs: Color,
     val tableHeader: Color,
+)
+
+class GrammarCategoryColors(
+    val prepositions: Color,
+    val connectors: Color,
+    val adjectives: Color,
+    val pronouns: Color,
+    val possessiveArticles: Color,
 )
 
 internal val appMaterialBasedColorScheme = darkColorScheme(
@@ -294,4 +311,31 @@ object Colors {
         adverbs = Color(GrammarColorResources.Adverbs),
         tableHeader = Color(GrammarColorResources.TableHeader),
     )
+    val grammarCategoryColors = GrammarCategoryColors(
+        prepositions = Color(GrammarCategoryColorResources.Prepositions),
+        connectors = Color(GrammarCategoryColorResources.Connectors),
+        adjectives = Color(GrammarCategoryColorResources.Adjectives),
+        pronouns = Color(GrammarCategoryColorResources.Pronouns),
+        possessiveArticles = Color(GrammarCategoryColorResources.PossessiveArticles),
+    )
+    val vocabularyCategoryColors = VocabularyCategoryColors(
+        adjectives = Color(VocabularyCategoryColorResources.Adjectives),
+        connectors = Color(VocabularyCategoryColorResources.Connectors),
+        possessiveArticles = Color(VocabularyCategoryColorResources.PossessiveArticles),
+        pronouns = Color(VocabularyCategoryColorResources.Pronouns),
+    )
 }
+
+object VocabularyCategoryColorResources {
+    const val Adjectives: Int = CoreColorResources.green300
+    const val Connectors: Int = CoreColorResources.blue700
+    const val PossessiveArticles: Int = CoreColorResources.orange900
+    const val Pronouns: Int = CoreColorResources.purple300
+}
+
+class VocabularyCategoryColors(
+    val adjectives: Color,
+    val connectors: Color,
+    val possessiveArticles: Color,
+    val pronouns: Color,
+)

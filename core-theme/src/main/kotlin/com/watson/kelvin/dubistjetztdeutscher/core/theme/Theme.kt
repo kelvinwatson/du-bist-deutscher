@@ -47,4 +47,6 @@ object Theme {
         @Composable get() = LocalColors.current.prepositionColors
     val spacing: Spacing
         @Composable get() = LocalSpacing.current
+    val vocabularyCategoryColors: VocabularyCategoryColors
+        @Composable get() = LocalColors.current.vocabularyCategoryColors
 }

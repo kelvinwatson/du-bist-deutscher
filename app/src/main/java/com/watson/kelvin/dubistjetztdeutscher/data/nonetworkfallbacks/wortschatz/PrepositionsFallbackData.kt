@@ -131,4 +131,53 @@ object PrepositionsFallbackData {
             "Das Geld wird zugunsten der Kinder gesammelt."
         ), // new
     )
+
+    object LocalPrepositionsFallbackData {
+        val headers = listOf("Woher?\n+ Dativ", "Wo?\n+ Dativ", "Wohin?\n+ Dativ")
+        val rows = listOf(
+            listOf("Firmennamen", "von MöbelMaxx", "bei MöbelMaxx", "zu MöbelMaxx"), // company and people names do not require artikels, so the preposition isn't conjugated
+            listOf("Personen", "von Benni", "bei Benni", "zu Benni"), // / company and people names do not require artikels, so the preposition isn't conjugated. However, for profession, we always use vom
+            listOf("Beruf", "vom Bäcker", "beim Bäcker", "zum Bäcker"), // / company and people names do not require artikels, so the preposition isn't conjugated. However, for profession, we always use vom
+            listOf("Aktivitäten", "vom Einkaufen", "beim Einkaufen", "zum Einkaufen"),
+            listOf("Hause", "von zu Haus", "zu Haus", "nach Haus"),
+        )
+    }
+
+    object UnifiedPrepositionsPeopleServicesFallbackData {
+        val headers = listOf("Woher? + Dat", "Wo? + Dat", "Wohin? + Dat")
+        val rows = listOf(
+            listOf("von Benni", "bei Benni", "zu Benni"),
+            listOf("vom Arzt", "beim Arzt", "zum Arzt"),
+            listOf("von der Firma", "bei der Firma", "zur Firma"),
+        )
+    }
+
+    object UnifiedPrepositionsBuildingsFallbackData {
+        val headers = listOf("Woher? + Dat", "Wo? + Dat", "Wohin? + Akk")
+        val rows = listOf(
+            listOf("aus dem Fitnessstudio", "im Fitnessstudio", "ins Fitnessstudio"),
+            listOf("aus der Schule", "in der Schule", "in die Schule"),
+            listOf("aus dem Büro", "im Büro", "ins Büro"),
+        )
+    }
+
+    object UnifiedPrepositionsFullChartFallbackData {
+        val title = "Woher/Wo/Wohin? systems"
+        val peopleServicesTitle = "Firmennamen / Personen / Dienstleistungen / Aktivitäten (bei-system)"
+        val peopleServicesHeaders = listOf("Woher? + Dat", "Wo? + Dat", "Wohin? + Dat")
+        val peopleServicesRows = listOf(
+            listOf("von MöbelMaxx", "bei MöbelMaxx", "zu MöbelMaxx"), // Firmennamen
+            listOf("von Benni", "bei Benni", "zu Benni"), // Personen
+            listOf("vom Arzt", "beim Arzt", "zum Arzt"), // Dienstleistungen
+            listOf("vom Einkaufen", "beim Einkaufen", "zum Einkaufen"), // Aktivitäten
+            listOf("von der Firma", "bei der Firma", "zur Firma"), // mit Artikel
+        )
+        val buildingsTitle = "Buildings / interiors (in-system)"
+        val buildingsHeaders = listOf("Woher? + Dat", "Wo? + Dat", "Wohin? + Akk")
+        val buildingsRows = listOf(
+            listOf("aus dem Fitnessstudio", "im Fitnessstudio", "ins Fitnessstudio"), // maskulin
+            listOf("aus dem Büro", "im Büro", "ins Büro"), // neuter
+            listOf("aus der Schule", "in der Schule", "in die Schule"), // feminin
+        )
+    }
 }

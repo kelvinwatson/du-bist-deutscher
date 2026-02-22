@@ -32,6 +32,7 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.singleLineTitle
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.VocabularyScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.connectors.ConnectorsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions.LocalPrepositionsDativeScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PersonalPronounsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PossessiveArticlesScreen
@@ -122,6 +123,8 @@ internal fun AppInternal(
             ),
 
             entryProvider = entryProvider {
+
+                // Overview entry
                 entry<BottomBarKey.Overview> {
                     OverviewScreen(
                         onSearchBarActivated = { focusSearch ->
@@ -130,19 +133,23 @@ internal fun AppInternal(
                         recentPages = recentPages,
                     )
                 }
+
+                // Grammar entries
                 entry<BottomBarKey.Grammar> {
                     GrammarScreen(
                         onClick = onNavigate,
                     )
                 }
-                entry<BottomBarKey.Vocabulary> {
-                    VocabularyScreen(onClick = onNavigate)
-                }
                 entry<Grammar.AdjectiveEndings> { key ->
                     AdjectiveEndingsScreen()
                 }
-                entry<Vocabulary.Prepositions> { key ->
-                    PrepositionsScreen()
+                entry<Grammar.LocalPrepositionsDative> { key ->
+                    LocalPrepositionsDativeScreen()
+                }
+
+                // Vocabulary entries
+                entry<BottomBarKey.Vocabulary> {
+                    VocabularyScreen(onClick = onNavigate)
                 }
                 entry<Vocabulary.Adjectives> { key ->
                     AdjectivesScreen(focusSearch = key.focusSearch)
@@ -153,9 +160,13 @@ internal fun AppInternal(
                 entry<Vocabulary.PossessiveArticles> { key ->
                     PossessiveArticlesScreen()
                 }
+                entry<Vocabulary.Prepositions> { key ->
+                    PrepositionsScreen()
+                }
                 entry<Vocabulary.Pronouns> { key ->
                     PersonalPronounsScreen()
                 }
+
             },
         )
     }

@@ -25,28 +25,28 @@ fun VocabularyScreen(
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_adjectives),
                 translation = stringResource(StringResource.no_translate_en_title_adjectives),
-                color = Theme.adjectiveCategoryColors.quality,
+                color = Theme.vocabularyCategoryColors.adjectives,
                 navKey = Vocabulary.Adjectives(),
             ),
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_connectors),
                 translation = stringResource(StringResource.no_translate_en_title_connectors),
-                color = Theme.connectorColors.coordinating,
+                color = Theme.vocabularyCategoryColors.connectors,
                 navKey = Vocabulary.Connectors,
             ),
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_possessive_articles),
                 translation = stringResource(StringResource.no_translate_en_title_possessive_articles),
-                color = Theme.possessiveArticleColors.masculine,
+                color = Theme.vocabularyCategoryColors.possessiveArticles,
                 navKey = Vocabulary.PossessiveArticles,
             ),
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_pronouns),
                 translation = stringResource(StringResource.no_translate_en_title_pronouns),
-                color = Theme.caseColors.nominativ,
+                color = Theme.vocabularyCategoryColors.pronouns,
                 navKey = Vocabulary.Pronouns,
             ),
-        ),
+        ).sortedBy { it.label },
         modifier = modifier,
         onClick = onClick,
     )

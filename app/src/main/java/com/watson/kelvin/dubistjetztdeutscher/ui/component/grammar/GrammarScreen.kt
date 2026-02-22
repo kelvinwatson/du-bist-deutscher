@@ -44,7 +44,13 @@ fun GrammarScreen(
                 color = Theme.grammarColors.adverbs,
                 navKey = Grammar.AdjectiveEndings, // TODO: Replace with correct navKey for adverbs
             ),
-        ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_local_prepositions_dative),
+                translation = stringResource(StringResource.no_translate_en_title_local_prepositions),
+                color = Theme.prepositionColors.dativ, // Or use a new semantic color if needed
+                navKey = Grammar.LocalPrepositionsDative,
+            ),
+        ).sortedBy { it.label },
         modifier = modifier,
         onClick = onClick,
     )
