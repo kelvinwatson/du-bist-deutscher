@@ -41,6 +41,12 @@ fun VocabularyScreen(
                 navKey = Vocabulary.PossessiveArticles,
             ),
             FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_prepositions),
+                translation = stringResource(StringResource.no_translate_en_title_prepositions),
+                color = Theme.vocabularyCategoryColors.prepositions,
+                navKey = Vocabulary.Prepositions,
+            ),
+            FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_pronouns),
                 translation = stringResource(StringResource.no_translate_en_title_pronouns),
                 color = Theme.vocabularyCategoryColors.pronouns,

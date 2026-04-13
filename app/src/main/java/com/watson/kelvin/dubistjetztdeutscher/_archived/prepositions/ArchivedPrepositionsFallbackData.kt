@@ -1,8 +1,8 @@
-package com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz
+@file:Suppress("unused")
 
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions.Preposition
+package com.watson.kelvin.dubistjetztdeutscher._archived.prepositions
 
-object PrepositionsFallbackData {
+object ArchivedPrepositionsFallbackData {
 
     /**
      * Accusative prepositions → direct object (Akkusativ)

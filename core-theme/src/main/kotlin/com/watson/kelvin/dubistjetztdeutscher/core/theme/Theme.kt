@@ -35,12 +35,12 @@ object Theme {
         @Composable get() = LocalColors.current.caseColors
     val connectorColors: ConnectorColors
         @Composable get() = LocalColors.current.connectorColors
-    val coreColors: CoreColors
-        @Composable get() = LocalColors.current.coreColors
     val dimens: Dimensions
         @Composable get() = LocalDimens.current
     val grammarColors: GrammarColors
         @Composable get() = LocalColors.current.grammarColors
+    val grammarCategoryColors: GrammarCategoryColors
+        @Composable get() = LocalColors.current.grammarCategoryColors
     val possessiveArticleColors: PossessiveArticleColors
         @Composable get() = LocalColors.current.possessiveArticleColors
     val prepositionColors: PrepositionColors

@@ -32,10 +32,9 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.singleLineTitle
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.VocabularyScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.connectors.ConnectorsScreen
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions.LocalPrepositionsDativeScreen
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PersonalPronounsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PossessiveArticlesScreen
+import com.kelvinwatson.dubistjetztdeutscher.ui.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
@@ -130,6 +129,7 @@ internal fun AppInternal(
                         onSearchBarActivated = { focusSearch ->
                             onNavigate(Vocabulary.Adjectives(focusSearch))
                         },
+                        onQuickLinkClick = onNavigate,
                         recentPages = recentPages,
                     )
                 }
@@ -142,9 +142,6 @@ internal fun AppInternal(
                 }
                 entry<Grammar.AdjectiveEndings> { key ->
                     AdjectiveEndingsScreen()
-                }
-                entry<Grammar.LocalPrepositionsDative> { key ->
-                    LocalPrepositionsDativeScreen()
                 }
 
                 // Vocabulary entries
@@ -183,7 +180,14 @@ internal fun AppInternal(
 fun App(
     modifier: Modifier = Modifier,
     application: Application = LocalActivity.current?.application ?: error("No context"),
-    navigationViewModel: NavigationViewModel = viewModel<NavigationViewModel>(),
+    navigationViewModel: NavigationViewModel = viewModel<NavigationViewModel>(
+        initializer = {
+            NavigationViewModel(
+                savedStateHandle = createSavedStateHandle(),
+                application = application,
+            )
+        },
+    ),
     singleActivityAppViewModel: SingleActivityAppViewModel = viewModel<SingleActivityAppViewModel>(
         initializer = {
             SingleActivityAppViewModel(
@@ -203,7 +207,7 @@ fun App(
         recentPages = recentPages,
         backStackForCurrentKey = navigationViewModel.subBackStack,
         onNavigateToTopLevel = navigationViewModel::addTopLevel,
-        onNavigate = navigationViewModel::add,
+        onNavigate = navigationViewModel::navigateTo,
         removeLastKey = navigationViewModel::removeLast,
         modifier = modifier,
     )

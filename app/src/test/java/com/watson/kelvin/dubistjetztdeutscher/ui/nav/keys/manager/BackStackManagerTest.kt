@@ -57,7 +57,7 @@ class BackStackManagerTest {
     fun `addTopLevel should restore previous stack when returning to visited tab`() = runTest {
         // Navigate to Grammar and add nested screen
         backStackManager.addTopLevel(BottomBarKey.Grammar)
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
 
         // Navigate to Account
         backStackManager.addTopLevel(BottomBarKey.Account)
@@ -67,8 +67,8 @@ class BackStackManagerTest {
 
         // Assert Grammar's stack is restored with nested screen
         assertEquals(BottomBarKey.Grammar, backStackManager.currentTopLevelKeyFlow.value)
-        assertEquals(Grammar.Prepositions, backStackManager.currentSubLevelKeyFlow.value)
-        assertEquals(listOf(BottomBarKey.Grammar, Grammar.Prepositions), backStackManager.subBackStack)
+        assertEquals(Grammar.AdjectiveEndings, backStackManager.currentSubLevelKeyFlow.value)
+        assertEquals(listOf(BottomBarKey.Grammar, Grammar.AdjectiveEndings), backStackManager.subBackStack)
     }
 
     @Test
@@ -94,32 +94,32 @@ class BackStackManagerTest {
         backStackManager.addTopLevel(BottomBarKey.Grammar)
 
         // Add nested screen
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
 
         // Assert nested screen is added
         assertEquals(BottomBarKey.Grammar, backStackManager.currentTopLevelKeyFlow.value)
-        assertEquals(Grammar.Prepositions, backStackManager.currentSubLevelKeyFlow.value)
-        assertEquals(listOf(BottomBarKey.Grammar, Grammar.Prepositions), backStackManager.subBackStack)
+        assertEquals(Grammar.AdjectiveEndings, backStackManager.currentSubLevelKeyFlow.value)
+        assertEquals(listOf(BottomBarKey.Grammar, Grammar.AdjectiveEndings), backStackManager.subBackStack)
     }
 
     @Test
     fun `add should support multiple nested screens`() = runTest {
         backStackManager.addTopLevel(BottomBarKey.Grammar)
-        backStackManager.add(Grammar.Prepositions)
-        backStackManager.add(Grammar.Prepositions) // Add again for testing
+        backStackManager.add(Grammar.AdjectiveEndings)
+        backStackManager.add(Grammar.AdjectiveEndings) // Add again for testing
 
         // Assert stack contains all nested screens
         assertEquals(3, backStackManager.subBackStack.size)
-        assertEquals(Grammar.Prepositions, backStackManager.currentSubLevelKeyFlow.value)
+        assertEquals(Grammar.AdjectiveEndings, backStackManager.currentSubLevelKeyFlow.value)
     }
 
     // ========== Back Navigation Tests (Nested) ==========
 
     @Test
     fun `removeLast should pop nested screen when stack size greater than 1`() = runTest {
-        // Setup: Grammar with nested Prepositions
+        // Setup: Grammar with nested AdjectiveEndings
         backStackManager.addTopLevel(BottomBarKey.Grammar)
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
 
         // Go back
         backStackManager.removeLast {}
@@ -133,8 +133,8 @@ class BackStackManagerTest {
     @Test
     fun `removeLast should pop multiple nested screens correctly`() = runTest {
         backStackManager.addTopLevel(BottomBarKey.Grammar)
-        backStackManager.add(Grammar.Prepositions)
-        backStackManager.add(Grammar.Prepositions) // Add twice
+        backStackManager.add(Grammar.AdjectiveEndings)
+        backStackManager.add(Grammar.AdjectiveEndings) // Add twice
 
         // First back
         backStackManager.removeLast {}
@@ -181,7 +181,7 @@ class BackStackManagerTest {
     fun `removeLast should preserve nested stacks when switching between tabs`() = runTest {
         // Grammar with nested screen
         backStackManager.addTopLevel(BottomBarKey.Grammar)
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
 
         // Switch to Account and back
         backStackManager.addTopLevel(BottomBarKey.Account)
@@ -189,8 +189,8 @@ class BackStackManagerTest {
 
         // Grammar's nested stack should be preserved
         assertEquals(BottomBarKey.Grammar, backStackManager.currentTopLevelKeyFlow.value)
-        assertEquals(Grammar.Prepositions, backStackManager.currentSubLevelKeyFlow.value)
-        assertEquals(listOf(BottomBarKey.Grammar, Grammar.Prepositions), backStackManager.subBackStack)
+        assertEquals(Grammar.AdjectiveEndings, backStackManager.currentSubLevelKeyFlow.value)
+        assertEquals(listOf(BottomBarKey.Grammar, Grammar.AdjectiveEndings), backStackManager.subBackStack)
     }
 
     // ========== Close App Tests ==========
@@ -211,7 +211,7 @@ class BackStackManagerTest {
         val closeApp: () -> Unit = mockk(relaxed = true)
 
         // Add nested screen
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
 
         // Go back (should just pop nested screen, not close app)
         backStackManager.removeLast(closeApp)
@@ -253,7 +253,7 @@ class BackStackManagerTest {
         )
 
         // After nested navigation
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
         assertEquals(
             backStackManager.subBackStack.lastOrNull(),
             backStackManager.currentSubLevelKeyFlow.value
@@ -271,12 +271,12 @@ class BackStackManagerTest {
     fun `subBackStack should only contain screens from current top-level tab`() = runTest {
         // Grammar with nested screen
         backStackManager.addTopLevel(BottomBarKey.Grammar)
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
 
         // Switch to Account
         backStackManager.addTopLevel(BottomBarKey.Account)
 
-        // subBackStack should only have Account, not Grammar or Prepositions
+        // subBackStack should only have Account, not Grammar or AdjectiveEndings
         assertEquals(listOf(BottomBarKey.Account), backStackManager.subBackStack)
     }
 
@@ -284,7 +284,7 @@ class BackStackManagerTest {
     fun `all flows and stacks should update consistently on any navigation action`() = runTest {
         // Complex navigation scenario
         backStackManager.addTopLevel(BottomBarKey.Grammar)
-        backStackManager.add(Grammar.Prepositions)
+        backStackManager.add(Grammar.AdjectiveEndings)
         backStackManager.addTopLevel(BottomBarKey.Account)
         backStackManager.addTopLevel(BottomBarKey.Grammar)
         backStackManager.removeLast {}

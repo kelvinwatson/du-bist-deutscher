@@ -33,22 +33,10 @@ fun GrammarScreen(
                 navKey = Vocabulary.Connectors,
             ),
             FeatureGridItem(
-                label = stringResource(StringResource.no_translate_title_prepositions),
-                translation = stringResource(StringResource.prepositions),
-                color = Theme.prepositionColors.akkusativ,
-                navKey = Vocabulary.Prepositions,
-            ),
-            FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_adverbs),
                 translation = stringResource(StringResource.adverbs),
                 color = Theme.grammarColors.adverbs,
                 navKey = Grammar.AdjectiveEndings, // TODO: Replace with correct navKey for adverbs
-            ),
-            FeatureGridItem(
-                label = stringResource(StringResource.no_translate_title_local_prepositions_dative),
-                translation = stringResource(StringResource.no_translate_en_title_local_prepositions),
-                color = Theme.prepositionColors.dativ, // Or use a new semantic color if needed
-                navKey = Grammar.LocalPrepositionsDative,
             ),
         ).sortedBy { it.label },
         modifier = modifier,

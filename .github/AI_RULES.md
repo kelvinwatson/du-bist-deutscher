@@ -24,6 +24,7 @@
 - All code must be formatted before being committed.
 - Use the project's formatter or linter (see CONTRIBUTING.md).
 - Always format code after generating or editing it.
+- **Always optimize imports (remove unused imports, sort imports) when a file's code is changed.**
 
 ## Documentation
 

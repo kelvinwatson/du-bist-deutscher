@@ -16,31 +16,23 @@ sealed interface Grammar : EmbeddedModeNavKey {
         override val germanTitleRes: Int = StringResource.no_translate_title_adjective_endings
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_adjective_endings
     }
-    @Serializable
-    data object LocalPrepositionsDative : Vocabulary {
-        override val id: String = "LocalPrepositionsDative"
-        override val germanTitleRes: Int = StringResource.no_translate_title_local_prepositions_dative
-        override val localizedTitleRes: Int = StringResource.no_translate_en_title_local_prepositions
-    }
 }
 
 sealed interface Vocabulary : EmbeddedModeNavKey {
 
-    /**
-     * A full screen destination in the app.
-     */
-    @Serializable
-    data object Prepositions : Vocabulary {
-        override val id: String = "Prepositions"
-        override val germanTitleRes: Int = StringResource.no_translate_title_prepositions
-        override val localizedTitleRes: Int = StringResource.no_translate_en_title_prepositions
-    }
 
     @Serializable
     data object Connectors : Vocabulary {
         override val id: String = "Connectors"
         override val germanTitleRes: Int = StringResource.no_translate_title_connectors
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_connectors
+    }
+
+    @Serializable
+    data object Prepositions : Vocabulary {
+        override val id: String = "Prepositions"
+        override val germanTitleRes: Int = StringResource.no_translate_title_prepositions
+        override val localizedTitleRes: Int = StringResource.no_translate_en_title_prepositions
     }
 
     @Serializable

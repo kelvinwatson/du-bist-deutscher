@@ -1,4 +1,6 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions
+@file:Suppress("unused")
+
+package com.watson.kelvin.dubistjetztdeutscher._archived.prepositions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.initializer
@@ -10,7 +12,7 @@ import com.watson.kelvin.dubistjetztdeutscher.domain.usecase.TabSelectionUseCase
  * ViewModel for managing the state and business logic of the Prepositions screen.
  * Uses Kotlin delegation to delegate tab selection logic to TabSelectionUseCase.
  */
-class PrepositionsViewModel(
+class ArchivedPrepositionsViewModel(
     tabSelectionUseCase: TabSelectionUseCase<PrepositionTab>,
 ) : ViewModel(),
     TabSelectionUseCase<PrepositionTab> by tabSelectionUseCase {
@@ -24,7 +26,7 @@ class PrepositionsViewModel(
                     PrepositionTab.TwoWay,
                     PrepositionTab.Genitive
                 )
-                PrepositionsViewModel(
+                ArchivedPrepositionsViewModel(
                     tabSelectionUseCase = TabSelectionUseCaseImpl(tabs)
                 )
             }

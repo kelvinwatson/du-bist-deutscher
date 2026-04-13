@@ -1,4 +1,6 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.prepositions
+@file:Suppress("unused")
+
+package com.watson.kelvin.dubistjetztdeutscher._archived.prepositions
 
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -30,11 +32,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.kelvinwatson.dubistjetztdeutscher.ui.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.R
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.PrepositionColorKey.Companion.toColor
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
-import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz.PrepositionsFallbackData
 import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
 
 /**
@@ -43,9 +45,9 @@ import com.watson.kelvin.dubistjetztdeutscher.ui.model.Tab
  */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PrepositionsScreen(
+fun ArchivedPrepositionsScreen(
     modifier: Modifier = Modifier,
-    prepositionsViewModel: PrepositionsViewModel = viewModel(factory = PrepositionsViewModel.Factory),
+    prepositionsViewModel: ArchivedPrepositionsViewModel = viewModel(factory = ArchivedPrepositionsViewModel.Factory),
 ) {
     val selectedTabIndex: Int by prepositionsViewModel.selectedTabIndex.collectAsState()
     val tabs = prepositionsViewModel.tabs
@@ -136,28 +138,28 @@ sealed class PrepositionTab(
     data object Accusative : PrepositionTab(
         germanRes = R.string.no_translate_tab_accusative,
         localizedRes = R.string.no_translate_tab_accusative_explanation,
-        data = PrepositionsFallbackData.accusativePrepositions,
+        data = ArchivedPrepositionsFallbackData.accusativePrepositions,
         colorKey = PrepositionColorKey.Akkusativ,
     )
 
     data object Dative : PrepositionTab(
         germanRes = R.string.no_translate_tab_dative,
         localizedRes = R.string.no_translate_tab_dative_explanation,
-        data = PrepositionsFallbackData.dativePrepositions,
+        data = ArchivedPrepositionsFallbackData.dativePrepositions,
         colorKey = PrepositionColorKey.Dativ,
     )
 
     data object TwoWay : PrepositionTab(
         germanRes = R.string.no_translate_tab_twoway,
         localizedRes = R.string.no_translate_tab_twoway_explanation,
-        data = PrepositionsFallbackData.twoWayPrepositions,
+        data = ArchivedPrepositionsFallbackData.twoWayPrepositions,
         colorKey = PrepositionColorKey.Wechsel,
     )
 
     data object Genitive : PrepositionTab(
         germanRes = R.string.no_translate_tab_genitive,
         localizedRes = R.string.no_translate_tab_genitive_explanation,
-        data = PrepositionsFallbackData.genitivePrepositions,
+        data = ArchivedPrepositionsFallbackData.genitivePrepositions,
         colorKey = PrepositionColorKey.Genitive,
     )
 }
@@ -268,9 +270,9 @@ private fun PrepositionsScreenPreview() {
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
-private fun PrepositionsScreenDarkPreview() {
+private fun ArchivedPrepositionsScreenDarkPreview() {
     Theme {
-        PrepositionsScreen()
+        ArchivedPrepositionsScreen()
     }
 }
 

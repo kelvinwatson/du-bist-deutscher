@@ -127,7 +127,6 @@ object GrammarCategoryColorResources {
     const val Connectors: Int = CoreColorResources.blue700
     const val Adjectives: Int = CoreColorResources.green300
     const val Pronouns: Int = CoreColorResources.purple300
-    const val PossessiveArticles: Int = CoreColorResources.orange900
     // Add more as needed
 }
 
@@ -149,35 +148,6 @@ class ConnectorColors(
     val adverbial: Color,
     val coordinating: Color,
     val subordinating: Color,
-)
-
-class CoreColors(
-    val aqua: Color,
-    val blue300: Color,
-    val blue600: Color,
-    val blue700: Color,
-    val cyan300: Color,
-    val darkGray: Color,
-    val deepOrange300: Color,
-    val deepPurple300: Color,
-    val green300: Color,
-    val green700: Color,
-    val green800: Color,
-    val greenBright: Color,
-    val indigo300: Color,
-    val lime300: Color,
-    val orange: Color,
-    val orange300: Color,
-    val orange900: Color,
-    val pink: Color,
-    val pink300: Color,
-    val pink700: Color,
-    val purple: Color,
-    val purple300: Color,
-    val red300: Color,
-    val red700: Color,
-    val teal300: Color,
-    val yellow300: Color,
 )
 
 class PossessiveArticleColors(
@@ -222,7 +192,6 @@ class GrammarCategoryColors(
     val connectors: Color,
     val adjectives: Color,
     val pronouns: Color,
-    val possessiveArticles: Color,
 )
 
 internal val appMaterialBasedColorScheme = darkColorScheme(
@@ -249,34 +218,6 @@ object Colors {
         adverbial = Color(ConnectorColorResources.Adverbial),
         coordinating = Color(ConnectorColorResources.Coordinating),
         subordinating = Color(ConnectorColorResources.Subordinating),
-    )
-    val coreColors = CoreColors(
-        aqua = Color(CoreColorResources.aqua),
-        blue300 = Color(CoreColorResources.blue300),
-        blue600 = Color(CoreColorResources.blue600),
-        blue700 = Color(CoreColorResources.blue700),
-        cyan300 = Color(CoreColorResources.cyan300),
-        darkGray = Color(CoreColorResources.darkGray),
-        deepOrange300 = Color(CoreColorResources.deepOrange300),
-        deepPurple300 = Color(CoreColorResources.deepPurple300),
-        green300 = Color(CoreColorResources.green300),
-        green700 = Color(CoreColorResources.green700),
-        green800 = Color(CoreColorResources.green800),
-        greenBright = Color(CoreColorResources.greenBright),
-        indigo300 = Color(CoreColorResources.indigo300),
-        lime300 = Color(CoreColorResources.lime300),
-        orange = Color(CoreColorResources.orange),
-        orange300 = Color(CoreColorResources.orange300),
-        orange900 = Color(CoreColorResources.orange900),
-        pink = Color(CoreColorResources.pink),
-        pink300 = Color(CoreColorResources.pink300),
-        pink700 = Color(CoreColorResources.pink700),
-        purple = Color(CoreColorResources.purple),
-        purple300 = Color(CoreColorResources.purple300),
-        red300 = Color(CoreColorResources.red300),
-        red700 = Color(CoreColorResources.red700),
-        teal300 = Color(CoreColorResources.teal300),
-        yellow300 = Color(CoreColorResources.yellow300),
     )
     val possessiveArticleColors = PossessiveArticleColors(
         masculine = Color(PossessiveArticleColorResources.Masculine),
@@ -316,12 +257,12 @@ object Colors {
         connectors = Color(GrammarCategoryColorResources.Connectors),
         adjectives = Color(GrammarCategoryColorResources.Adjectives),
         pronouns = Color(GrammarCategoryColorResources.Pronouns),
-        possessiveArticles = Color(GrammarCategoryColorResources.PossessiveArticles),
     )
     val vocabularyCategoryColors = VocabularyCategoryColors(
         adjectives = Color(VocabularyCategoryColorResources.Adjectives),
         connectors = Color(VocabularyCategoryColorResources.Connectors),
         possessiveArticles = Color(VocabularyCategoryColorResources.PossessiveArticles),
+        prepositions = Color(VocabularyCategoryColorResources.Prepositions),
         pronouns = Color(VocabularyCategoryColorResources.Pronouns),
     )
 }
@@ -330,6 +271,7 @@ object VocabularyCategoryColorResources {
     const val Adjectives: Int = CoreColorResources.green300
     const val Connectors: Int = CoreColorResources.blue700
     const val PossessiveArticles: Int = CoreColorResources.orange900
+    const val Prepositions: Int = CoreColorResources.pink300
     const val Pronouns: Int = CoreColorResources.purple300
 }
 
@@ -337,5 +279,6 @@ class VocabularyCategoryColors(
     val adjectives: Color,
     val connectors: Color,
     val possessiveArticles: Color,
+    val prepositions: Color,
     val pronouns: Color,
 )

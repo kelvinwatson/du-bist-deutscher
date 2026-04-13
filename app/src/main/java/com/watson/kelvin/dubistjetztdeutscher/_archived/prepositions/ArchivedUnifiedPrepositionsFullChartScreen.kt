@@ -1,4 +1,6 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar
+@file:Suppress("unused")
+
+package com.watson.kelvin.dubistjetztdeutscher._archived.prepositions
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -19,14 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
-import com.watson.kelvin.dubistjetztdeutscher.data.nonetworkfallbacks.wortschatz.PrepositionsFallbackData
 import javax.annotation.processing.Generated
 
 @Composable
-internal fun UnifiedPrepositionsFullChartScreen(
+internal fun ArchivedUnifiedPrepositionsFullChartScreen(
     modifier: Modifier = Modifier,
 ) {
-    val data = PrepositionsFallbackData.UnifiedPrepositionsFullChartFallbackData
+    val data = ArchivedPrepositionsFallbackData.UnifiedPrepositionsFullChartFallbackData
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -141,9 +142,9 @@ private fun PrepositionsTable(
 }
 
 @[Preview Generated Composable]
-internal fun UnifiedPrepositionsFullChartScreenPreview() {
+internal fun ArchivedUnifiedPrepositionsFullChartScreenPreview() {
     Theme {
-        UnifiedPrepositionsFullChartScreen()
+        ArchivedUnifiedPrepositionsFullChartScreen()
     }
 }
 
