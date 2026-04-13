@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,20 +24,17 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.PlainTooltip
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TooltipAnchorPosition
-import androidx.compose.material3.TooltipBox
-import androidx.compose.material3.TooltipDefaults
-import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,13 +43,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kelvinwatson.dubistjetztdeutscher.data.PrepositionData
 import com.kelvinwatson.dubistjetztdeutscher.data.model.Preposition
 import com.kelvinwatson.dubistjetztdeutscher.data.model.PrepositionCategory
 import javax.annotation.processing.Generated
-import kotlinx.coroutines.launch
 
 @Composable
 fun PrepositionsScreen(
@@ -207,46 +206,48 @@ private fun PrepositionCategoryCard(
     }
 }
 
-@OptIn(
-    ExperimentalFoundationApi::class,
-    ExperimentalMaterial3Api::class,
-)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun PrepositionWordWithTooltip(
     word: String,
     english: String,
     modifier: Modifier = Modifier,
 ) {
-    val tooltipState = rememberTooltipState()
-    val scope = rememberCoroutineScope()
+    var showTooltip: Boolean by remember { mutableStateOf(false) }
 
-    TooltipBox(
-        positionProvider = TooltipDefaults.rememberTooltipPositionProvider(
-            positioning = TooltipAnchorPosition.Above,
-        ),
-        tooltip = {
-            PlainTooltip(
-                containerColor = Color.White,
-                contentColor = Color.Black,
-            ) {
-                Text(
-                    text = english,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
-        },
-        state = tooltipState,
-    ) {
+    Box {
         Text(
             text = word,
             modifier = modifier
                 .combinedClickable(
                     onClick = {},
-                    onLongClick = { scope.launch { tooltipState.show() } },
+                    onLongClick = { showTooltip = true },
                 ),
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.SemiBold,
         )
+
+        if (showTooltip) {
+            Popup(
+                alignment = Alignment.TopCenter,
+                offset = IntOffset(0, -80),
+                onDismissRequest = { showTooltip = false },
+            ) {
+                Surface(
+                    shape = RoundedCornerShape(8.dp),
+                    color = Color(0xFF1A1A1A),
+                    shadowElevation = 4.dp,
+                ) {
+                    Text(
+                        text = english,
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                }
+            }
+        }
     }
 }
 
