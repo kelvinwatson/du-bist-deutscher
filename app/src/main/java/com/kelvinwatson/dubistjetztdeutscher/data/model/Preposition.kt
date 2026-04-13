@@ -18,13 +18,14 @@ enum class PrepositionCategory(val displayName: String) {
 
 data class Preposition(
     val word: String,
+    val english: String,
     val case: GrammaticalCase,
     val category: PrepositionCategory,
     val semanticRole: String,
     val exampleAkk: String? = null,
     val exampleDat: String? = null,
     val exampleGen: String? = null,
-    val note: String? = null
+    val note: String? = null,
 ) {
     /** Returns the single example for fixed-case prepositions, or null for Wechsel. */
     val primaryExample: String?

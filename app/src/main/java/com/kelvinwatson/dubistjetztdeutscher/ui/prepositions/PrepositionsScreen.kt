@@ -3,8 +3,10 @@ package com.kelvinwatson.dubistjetztdeutscher.ui.prepositions
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,16 +23,24 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Text
+import androidx.compose.material3.TooltipAnchorPosition
+import androidx.compose.material3.TooltipBox
+import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -41,6 +51,7 @@ import com.kelvinwatson.dubistjetztdeutscher.data.PrepositionData
 import com.kelvinwatson.dubistjetztdeutscher.data.model.Preposition
 import com.kelvinwatson.dubistjetztdeutscher.data.model.PrepositionCategory
 import javax.annotation.processing.Generated
+import kotlinx.coroutines.launch
 
 @Composable
 fun PrepositionsScreen(
@@ -196,6 +207,49 @@ private fun PrepositionCategoryCard(
     }
 }
 
+@OptIn(
+    ExperimentalFoundationApi::class,
+    ExperimentalMaterial3Api::class,
+)
+@Composable
+private fun PrepositionWordWithTooltip(
+    word: String,
+    english: String,
+    modifier: Modifier = Modifier,
+) {
+    val tooltipState = rememberTooltipState()
+    val scope = rememberCoroutineScope()
+
+    TooltipBox(
+        positionProvider = TooltipDefaults.rememberTooltipPositionProvider(
+            positioning = TooltipAnchorPosition.Above,
+        ),
+        tooltip = {
+            PlainTooltip(
+                containerColor = Color.White,
+                contentColor = Color.Black,
+            ) {
+                Text(
+                    text = english,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+        },
+        state = tooltipState,
+    ) {
+        Text(
+            text = word,
+            modifier = modifier
+                .combinedClickable(
+                    onClick = {},
+                    onLongClick = { scope.launch { tooltipState.show() } },
+                ),
+            style = MaterialTheme.typography.bodyMedium,
+            fontWeight = FontWeight.SemiBold,
+        )
+    }
+}
+
 @Composable
 private fun WechselTable(
     prepositions: List<Preposition>,
@@ -236,11 +290,10 @@ private fun WechselTable(
                     .fillMaxWidth()
                     .padding(vertical = 4.dp, horizontal = 8.dp)
             ) {
-                Text(
-                    text = prep.word,
+                PrepositionWordWithTooltip(
+                    word = prep.word,
+                    english = prep.english,
                     modifier = Modifier.width(64.dp),
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.SemiBold
                 )
                 Text(
                     text = prep.exampleAkk ?: "—",
@@ -311,11 +364,10 @@ private fun FixedCaseTable(
                     .fillMaxWidth()
                     .padding(vertical = 4.dp, horizontal = 8.dp)
             ) {
-                Text(
-                    text = prep.word,
+                PrepositionWordWithTooltip(
+                    word = prep.word,
+                    english = prep.english,
                     modifier = Modifier.width(80.dp),
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.SemiBold
                 )
                 Text(
                     text = prep.semanticRole,
