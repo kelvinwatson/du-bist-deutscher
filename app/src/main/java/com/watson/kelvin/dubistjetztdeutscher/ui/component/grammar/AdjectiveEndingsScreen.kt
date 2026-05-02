@@ -49,7 +49,7 @@ internal fun AdjectiveEndingsScreen(
         item {
             AdjectiveEndingTable(
                 title = "Definite Article (der, das, die)",
-                subtitle = "Weak endings: articles are loud and clear, they tell you gender, case and number, so adjective whispers.",
+                subtitle = "Weak endings: articles are loud and clear, they tell you gender, case and number, so adjective is simpler (-e or -en).",
                 headers = listOf("", "♂\nmaskulin", "⚲\nneutral", "♀\nfeminin", "⚭\nPlural"),
                 rows = listOf(
                     AdjectiveTableRow(
@@ -275,10 +275,10 @@ internal fun AdjectiveEndingsScreen(
             )
         }
 
-        // Ein-words (ein, kein)
+        // Ein-words (ein, kein) + possessives singular (mein, dein, ihr etc) Table
         item {
             AdjectiveEndingTable(
-                title = "Ein-words (ein, kein)",
+                title = "Ein-words (ein, kein), singular possessives (mein, dein, ihr etc)",
                 subtitle = "Mixed endings: article missing info (ein is ♂ or ⚲) so adjective has to speak up (-er/-es/etc.).",
                 headers = listOf("", "♂\nmaskulin", "⚲\nneutral", "♀\nfeminin"),
                 rows = listOf(
@@ -434,168 +434,6 @@ internal fun AdjectiveEndingsScreen(
                         ),
                     ),
                 ),
-            )
-        }
-
-        // Possessive (mein, dein, ihr...) — Singular + Plural
-        item {
-            AdjectiveEndingTable(
-                title = "Singular Possessive (mein, dein, ihr)",
-                subtitle = "Same table as above",
-                headers = listOf("", "♂\nmaskulin", "⚲\nneutral", "♀\nfeminin"),
-                rows = listOf(
-                    AdjectiveTableRow(
-                        caseLabel = "Nominativ",
-                        caseColor = Theme.adjectiveEndingColors.nominativ,
-                        rowCells = listOf(
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("mein neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("er")
-                                    pop()
-                                    append(" Kollege")
-                                },
-                                ending = Ending.ER,
-                            ),
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("mein neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("es")
-                                    pop()
-                                    append(" Auto")
-                                },
-                                ending = Ending.ES,
-                            ),
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("meine neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("e")
-                                    pop()
-                                    append(" Tasche")
-                                },
-                            ),
-                        ),
-                    ),
-                    AdjectiveTableRow(
-                        caseLabel = "Akkusativ",
-                        caseColor = Theme.adjectiveEndingColors.akkusativ,
-                        rowCells = listOf(
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("meinen neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("en")
-                                    pop()
-                                    append(" Kollegen")
-                                },
-                                ending = Ending.EN,
-                            ),
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("mein neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("es")
-                                    pop()
-                                    append(" Auto")
-                                },
-                                ending = Ending.ES,
-                            ),
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("meine neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("e")
-                                    pop()
-                                    append(" Tasche")
-                                },
-                            ),
-                        ),
-                    ),
-                    AdjectiveTableRow(
-                        caseLabel = "Dativ",
-                        caseColor = Theme.adjectiveEndingColors.dativ,
-                        rowCells = listOf(
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("meinem neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("en")
-                                    pop()
-                                    append(" Kollegen")
-                                },
-                                ending = Ending.EN,
-                            ),
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("meinem neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("en")
-                                    pop()
-                                    append(" Auto")
-                                },
-                                ending = Ending.EN,
-                            ),
-                            RowCell(
-                                content = buildAnnotatedString {
-                                    append("meiner neu")
-                                    pushStyle(
-                                        SpanStyle(
-                                            color = Color.Red,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    )
-                                    append("en")
-                                    pop()
-                                    append(" Tasche")
-                                },
-                                ending = Ending.EN,
-                            ),
-                        ),
-                    ),
-                ),
                 pluralTitle = "Plural",
                 pluralHeaders = listOf("", "⚭ Beispiel"),
                 pluralRows = listOf(
@@ -681,14 +519,31 @@ internal fun AdjectiveEndingsScreen(
 
                 Text(
                     text = "🧠 Mental models",
-                    style = MaterialTheme.typography.titleSmall,
+                    style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                 )
 
                 Text(
-                    text = "Does the adjective need to help or not?\n\n• der/die/das = loud, clear → adjective whispers (-e / -en)\n• ein/mein = vague → adjective speaks up (-er / -es / etc.)",
-                    modifier = Modifier.padding(top = 8.dp, start = 12.dp, end = 12.dp),
+                    text = "❤️ If you remember only this:",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    modifier = Modifier.padding(top = 16.dp),
+                )
+
+                Text(
+                    text = "• -e / -en after der\n• -er / -es show up only with ein/mein in nominative\n• dative = always -en",
+                    modifier = Modifier.padding(top = 8.dp, start = 10.dp),
+                    fontSize = 11.sp,
+                    style = MaterialTheme.typography.bodySmall,
+                )
+
+                // detailed explanation
+
+                Text(
+                    text = "\nDoes the adjective need to help or not?\n• der-system (weak)= loud, clear → adjective whispers (-e / -en)\n• ein-system (mixed) = vague → adjective has to do the heavy lifting (-er / -es / etc.)\n• dative (-en) → everything becomes -en",
+                    modifier = Modifier.padding(top = 8.dp, start = 24.dp),
                     fontStyle = FontStyle.Italic,
                     fontSize = 10.sp,
                     style = MaterialTheme.typography.bodySmall,
@@ -854,7 +709,7 @@ private fun TableSection(
                         Text(
                             text = value.content,
                             modifier = Modifier.padding(4.dp),
-                            fontSize = 8.sp,
+                            fontSize = 10.sp,
                             textAlign = TextAlign.Center,
                             lineHeight = 14.sp,
                         )

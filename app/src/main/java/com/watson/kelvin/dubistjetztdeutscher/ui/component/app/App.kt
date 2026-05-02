@@ -99,10 +99,12 @@ internal fun AppInternal(
             )
         },
         bottomBar = {
-            BottomBar(
-                currentTopLevel = currentTopLevelKey,
-                onClick = onNavigateToTopLevel,
-            )
+            if (currentSubLevelKey is BottomBarKey) {
+                BottomBar(
+                    currentTopLevel = currentTopLevelKey,
+                    onClick = onNavigateToTopLevel,
+                )
+            }
         }
     ) { innerPadding ->
 
