@@ -440,7 +440,7 @@ internal fun AdjectiveEndingsScreen(
         // Possessive (mein, dein, ihr...) — Singular + Plural
         item {
             AdjectiveEndingTable(
-                title = "Singular Possessive (mein, dein, ihr...)",
+                title = "Singular Possessive (mein, dein, ihr)",
                 subtitle = "Same table as above",
                 headers = listOf("", "♂\nmaskulin", "⚲\nneutral", "♀\nfeminin"),
                 rows = listOf(
@@ -597,7 +597,7 @@ internal fun AdjectiveEndingsScreen(
                     ),
                 ),
                 pluralTitle = "Plural",
-                pluralHeaders = listOf("", "Beispiel"),
+                pluralHeaders = listOf("", "⚭ Beispiel"),
                 pluralRows = listOf(
                     AdjectiveTableRow(
                         caseLabel = "Nominativ",
@@ -690,6 +690,7 @@ internal fun AdjectiveEndingsScreen(
                     text = "Does the adjective need to help or not?\n\n• der/die/das = loud, clear → adjective whispers (-e / -en)\n• ein/mein = vague → adjective speaks up (-er / -es / etc.)",
                     modifier = Modifier.padding(top = 8.dp, start = 12.dp, end = 12.dp),
                     fontStyle = FontStyle.Italic,
+                    fontSize = 10.sp,
                     style = MaterialTheme.typography.bodySmall,
                 )
             }
