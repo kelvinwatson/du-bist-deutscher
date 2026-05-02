@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,6 +49,7 @@ internal fun AdjectiveEndingsScreen(
         item {
             AdjectiveEndingTable(
                 title = "Definite Article (der, das, die)",
+                subtitle = "Weak endings: articles are loud and clear, they tell you gender, case and number, so adjective whispers.",
                 headers = listOf("", "♂\nmaskulin", "⚲\nneutral", "♀\nfeminin", "⚭\nPlural"),
                 rows = listOf(
                     AdjectiveTableRow(
@@ -276,9 +278,9 @@ internal fun AdjectiveEndingsScreen(
         // Ein-words (ein, kein)
         item {
             AdjectiveEndingTable(
-                title = "🟡 Ein-words (ein, kein)",
+                title = "Ein-words (ein, kein)",
+                subtitle = "Mixed endings: article missing info (ein is ♂ or ⚲) so adjective has to speak up (-er/-es/etc.).",
                 headers = listOf("", "♂\nmaskulin", "⚲\nneutral", "♀\nfeminin"),
-                note = "💡 \"ein\" has no plural — use kein/mein/etc. for plural forms (see below).",
                 rows = listOf(
                     AdjectiveTableRow(
                         caseLabel = "Nominativ",
@@ -287,7 +289,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("ein teu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("rer")
                                     pop()
                                     append(" Anzug")
@@ -297,7 +304,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("ein hübsch")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("es")
                                     pop()
                                     append(" Hemd")
@@ -307,7 +319,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("eine hell")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("e")
                                     pop()
                                     append(" Bluse")
@@ -322,7 +339,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("einen teur")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Anzug")
@@ -332,7 +354,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("ein hübsch")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("es")
                                     pop()
                                     append(" Hemd")
@@ -342,7 +369,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("eine hell")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("e")
                                     pop()
                                     append(" Bluse")
@@ -357,7 +389,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("einem teur")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Anzug")
@@ -367,7 +404,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("einem hübsch")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Hemd")
@@ -377,7 +419,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("einer hell")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Bluse")
@@ -393,7 +440,7 @@ internal fun AdjectiveEndingsScreen(
         // Possessive (mein, dein, ihr...) — Singular + Plural
         item {
             AdjectiveEndingTable(
-                title = "🟢 Singular Possessive (mein, dein, ihr...)",
+                title = "Singular Possessive (mein, dein, ihr...)",
                 subtitle = "Same table as above",
                 headers = listOf("", "♂\nmaskulin", "⚲\nneutral", "♀\nfeminin"),
                 rows = listOf(
@@ -404,7 +451,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("mein neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("er")
                                     pop()
                                     append(" Kollege")
@@ -414,7 +466,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("mein neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("es")
                                     pop()
                                     append(" Auto")
@@ -424,7 +481,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meine neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("e")
                                     pop()
                                     append(" Tasche")
@@ -439,7 +501,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meinen neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Kollegen")
@@ -449,7 +516,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("mein neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("es")
                                     pop()
                                     append(" Auto")
@@ -459,7 +531,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meine neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("e")
                                     pop()
                                     append(" Tasche")
@@ -474,7 +551,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meinem neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Kollegen")
@@ -484,7 +566,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meinem neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Auto")
@@ -494,7 +581,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meiner neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Tasche")
@@ -514,7 +606,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meine neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Kollegen")
@@ -530,7 +627,12 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("meine neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Kollegen")
@@ -546,11 +648,21 @@ internal fun AdjectiveEndingsScreen(
                             RowCell(
                                 content = buildAnnotatedString {
                                     append("mein")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" neu")
-                                    pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
+                                    pushStyle(
+                                        SpanStyle(
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    )
                                     append("en")
                                     pop()
                                     append(" Kollegen")
@@ -560,8 +672,27 @@ internal fun AdjectiveEndingsScreen(
                         ),
                     ),
                 ),
-                pluralNote = "👉 Note:\n• meinen (dative plural)\n• noun gets -n → Kollegen",
             )
+        }
+
+        item {
+            // Mental model summary
+            Column {
+
+                Text(
+                    text = "🧠 Mental models",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                )
+
+                Text(
+                    text = "Does the adjective need to help or not?\n\n• der/die/das = loud, clear → adjective whispers (-e / -en)\n• ein/mein = vague → adjective speaks up (-er / -es / etc.)",
+                    modifier = Modifier.padding(top = 8.dp, start = 12.dp, end = 12.dp),
+                    fontStyle = FontStyle.Italic,
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            }
         }
     }
 }
@@ -595,49 +726,33 @@ private fun AdjectiveEndingTable(
     rows: List<AdjectiveTableRow>,
     modifier: Modifier = Modifier,
     subtitle: String? = null,
-    note: String? = null,
     pluralTitle: String? = null,
     pluralHeaders: List<String>? = null,
     pluralRows: List<AdjectiveTableRow>? = null,
-    pluralNote: String? = null,
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         // Title
         Text(
             text = title,
-            style = MaterialTheme.typography.titleSmall,
+            style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
+            color = Color.White,
         )
 
         // Subtitle
         subtitle?.let {
             Text(
                 text = it,
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = FontWeight.Normal,
+                style = MaterialTheme.typography.labelSmall,
+                fontStyle = FontStyle.Italic,
             )
         }
 
         // Table
         TableSection(headers = headers, rows = rows)
-
-        // Note section
-        note?.let {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.dp),
-            ) {
-                Text(
-                    text = it,
-                    fontSize = 10.sp,
-                    lineHeight = 14.sp,
-                )
-            }
-        }
 
         // Plural section
         if (pluralTitle != null && pluralHeaders != null && pluralRows != null) {
@@ -645,24 +760,11 @@ private fun AdjectiveEndingTable(
                 text = pluralTitle,
                 style = MaterialTheme.typography.titleSmall,
                 fontWeight = FontWeight.Bold,
+                color = Color.White,
                 modifier = Modifier.padding(top = 8.dp),
             )
 
             TableSection(headers = pluralHeaders, rows = pluralRows)
-
-            pluralNote?.let {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
-                ) {
-                    Text(
-                        text = it,
-                        fontSize = 10.sp,
-                        lineHeight = 14.sp,
-                    )
-                }
-            }
         }
     }
 }
