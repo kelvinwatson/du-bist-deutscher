@@ -36,21 +36,12 @@ sealed interface BottomBarKey : AppNavKey {
     }
 
     @Serializable
-    data object Grammar : BottomBarKey {
-        override val id: String = "Grammar"
-        override val germanTitleRes: Int = StringResource.no_translate_title_grammar
-        override val localizedTitleRes: Int = StringResource.no_translate_en_title_grammar
+    data object Lernen : BottomBarKey {
+        override val id: String = "Lernen"
+        override val germanTitleRes: Int = StringResource.no_translate_title_lernen
+        override val localizedTitleRes: Int = StringResource.no_translate_en_title_lernen
         override val icon: ImageVector = Icons.Default.School
-        override val labelResource: Int = StringResource.nav_grammar
-    }
-
-    @Serializable
-    data object Vocabulary : BottomBarKey {
-        override val id: String = "Vocabulary"
-        override val germanTitleRes: Int = StringResource.no_translate_title_vocabulary
-        override val localizedTitleRes: Int = StringResource.no_translate_en_title_vocabulary
-        override val icon: ImageVector = Icons.Default.School
-        override val labelResource: Int = StringResource.nav_vocabulary
+        override val labelResource: Int = StringResource.nav_lernen
     }
 
     @Serializable
@@ -67,7 +58,6 @@ sealed interface BottomBarKey : AppNavKey {
 object BottomBarNavKeys {
     val bottomBarKeys: List<BottomBarKey> = listOf(
         BottomBarKey.Overview,
-        BottomBarKey.Grammar,
-        BottomBarKey.Vocabulary,
+        BottomBarKey.Lernen,
     )
 }

@@ -1,4 +1,4 @@
-package com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz
+package com.watson.kelvin.dubistjetztdeutscher.ui.component.lernen
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -8,17 +8,18 @@ import com.watson.kelvin.dubistjetztdeutscher.core.theme.Theme
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.common.FeatureGridItem
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.common.FeatureGridScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Lernen
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
 
 /**
- * Main screen for the Vocabulary tab. Displays vocabulary features in a grid.
+ * Unified screen for the Lernen (Learn) tab.
+ * Combines all grammar and vocabulary features in a single grid.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun VocabularyScreen(
+fun LernenScreen(
+    onClick: (goTo: AppNavKey) -> Unit,
     modifier: Modifier = Modifier,
-    onClick: (goTo: AppNavKey) -> Unit = {},
 ) {
     FeatureGridScreen(
         items = listOf(
@@ -26,34 +27,53 @@ fun VocabularyScreen(
                 label = stringResource(StringResource.no_translate_title_adjectives),
                 translation = stringResource(StringResource.no_translate_en_title_adjectives),
                 color = Theme.vocabularyCategoryColors.adjectives,
-                navKey = Vocabulary.Adjectives(),
+                navKey = Lernen.Adjectives(),
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_adjective_endings),
+                translation = stringResource(StringResource.no_translate_en_title_adjective_endings),
+                color = Theme.caseColors.nominativ,
+                navKey = Lernen.AdjectiveEndings,
             ),
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_connectors),
                 translation = stringResource(StringResource.no_translate_en_title_connectors),
                 color = Theme.vocabularyCategoryColors.connectors,
-                navKey = Vocabulary.Connectors,
+                navKey = Lernen.Connectors,
             ),
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_possessive_articles),
                 translation = stringResource(StringResource.no_translate_en_title_possessive_articles),
                 color = Theme.vocabularyCategoryColors.possessiveArticles,
-                navKey = Vocabulary.PossessiveArticles,
+                navKey = Lernen.PossessiveArticles,
             ),
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_prepositions),
                 translation = stringResource(StringResource.no_translate_en_title_prepositions),
                 color = Theme.vocabularyCategoryColors.prepositions,
-                navKey = Vocabulary.Prepositions,
+                navKey = Lernen.Prepositions,
             ),
             FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_pronouns),
                 translation = stringResource(StringResource.no_translate_en_title_pronouns),
                 color = Theme.vocabularyCategoryColors.pronouns,
-                navKey = Vocabulary.Pronouns,
+                navKey = Lernen.Pronouns,
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_expressions),
+                translation = stringResource(StringResource.no_translate_en_title_expressions),
+                color = Theme.connectorColors.subordinating,
+                navKey = Lernen.Expressions,
+            ),
+            FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_adverbs),
+                translation = stringResource(StringResource.adverbs),
+                color = Theme.grammarColors.adverbs,
+                navKey = Lernen.AdjectiveEndings, // TODO: Replace with correct navKey for adverbs
             ),
         ).sortedBy { it.label },
         modifier = modifier,
         onClick = onClick,
     )
 }
+

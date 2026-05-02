@@ -27,18 +27,17 @@ import androidx.navigation3.ui.NavDisplay
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.adjectives.AdjectivesScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.bottombar.BottomBar
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.AdjectiveEndingsScreen
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.GrammarScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.lernen.ExpressionsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.lernen.LernenScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.title.singleLineTitle
-import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.VocabularyScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.connectors.ConnectorsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PersonalPronounsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.wortschatz.pronouns.PossessiveArticlesScreen
 import com.kelvinwatson.dubistjetztdeutscher.ui.prepositions.PrepositionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Grammar
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Vocabulary
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.embedded.Lernen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.NavigationViewModel
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.viewmodel.SingleActivityAppViewModel
 import com.watson.kelvin.dubistjetztdeutscher.ui.resource.StringResource
@@ -127,40 +126,38 @@ internal fun AppInternal(
                 entry<BottomBarKey.Overview> {
                     OverviewScreen(
                         onSearchBarActivated = { focusSearch ->
-                            onNavigate(Vocabulary.Adjectives(focusSearch))
+                            onNavigate(Lernen.Adjectives(focusSearch))
                         },
                         onQuickLinkClick = onNavigate,
                         recentPages = recentPages,
                     )
                 }
 
-                // Grammar entries
-                entry<BottomBarKey.Grammar> {
-                    GrammarScreen(
+                // Lernen entries
+                entry<BottomBarKey.Lernen> {
+                    LernenScreen(
                         onClick = onNavigate,
                     )
                 }
-                entry<Grammar.AdjectiveEndings> { key ->
+                entry<Lernen.AdjectiveEndings> { key ->
                     AdjectiveEndingsScreen()
                 }
-
-                // Vocabulary entries
-                entry<BottomBarKey.Vocabulary> {
-                    VocabularyScreen(onClick = onNavigate)
-                }
-                entry<Vocabulary.Adjectives> { key ->
+                entry<Lernen.Adjectives> { key ->
                     AdjectivesScreen(focusSearch = key.focusSearch)
                 }
-                entry<Vocabulary.Connectors> { key ->
+                entry<Lernen.Connectors> { key ->
                     ConnectorsScreen()
                 }
-                entry<Vocabulary.PossessiveArticles> { key ->
+                entry<Lernen.Expressions> { key ->
+                    ExpressionsScreen()
+                }
+                entry<Lernen.PossessiveArticles> { key ->
                     PossessiveArticlesScreen()
                 }
-                entry<Vocabulary.Prepositions> { key ->
+                entry<Lernen.Prepositions> { key ->
                     PrepositionsScreen()
                 }
-                entry<Vocabulary.Pronouns> { key ->
+                entry<Lernen.Pronouns> { key ->
                     PersonalPronounsScreen()
                 }
 

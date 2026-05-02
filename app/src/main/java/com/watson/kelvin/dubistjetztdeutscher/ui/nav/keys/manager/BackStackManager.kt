@@ -3,7 +3,7 @@ package com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.manager
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.AppNavKey
-import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey.Grammar
+import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey.Lernen
 import com.watson.kelvin.dubistjetztdeutscher.ui.nav.keys.bottom.BottomBarKey.Overview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +18,7 @@ class BackStackManager<K : AppNavKey>(startKey: K) : BackStackManagement<K> {
     /**
      * A separate stack for each top-level route, for providing nested navigation. A [LinkedHashMap]
      * keeps track of the order tabs were visited for back behavior across tabs (see [removeLast].
-     * Each entry stores a top-level route (Overview, Grammar, Profile) as a key, and its value is a
+     * Each entry stores a top-level route (Overview, Lernen) as a key, and its value is a
      * [androidx.compose.runtime.snapshots.SnapshotStateList] representing that route's own nested navigation history.
      *
      * This could be thought of as a map of tab -> stack of screens within that tab.
@@ -26,14 +26,14 @@ class BackStackManager<K : AppNavKey>(startKey: K) : BackStackManagement<K> {
      * For example, if the user navigates as follows:
      *
      *   1. Starts at Overview (masterStack: [Overview] to [Overview])
-     *   2. Navigates to Grammar (masterStack: [Grammar] to [Grammar])
-     *   3. From Grammar, goes to CaseRules (masterStack: [CaseRules] to [[Grammar], [CaseRules])
+     *   2. Navigates to Lernen (masterStack: [Lernen] to [Lernen])
+     *   3. From Lernen, goes to Prepositions (masterStack: [Prepositions] to [[Lernen], [Prepositions])
      *   4. Switches back to Overview (stack: [Overview])
      *
      * With the above use case, the `masterStack` would look like this:
      * {
      *    "Overview": ["Overview"],
-     *    "Grammar": ["Grammar", "Prepositions"]
+     *    "Lernen": ["Lernen", "Prepositions"]
      *  }
      */
     private var masterStack: LinkedHashMap<K, SnapshotStateList<K>> = linkedMapOf(

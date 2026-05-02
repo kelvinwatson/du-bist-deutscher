@@ -3,8 +3,7 @@
 
     <!-- navigation -->
     <string name="nav_overview">Overview</string>
-    <string name="nav_grammar">Grammar</string>
-    <string name="nav_vocabulary">Vocabulary</string>
+    <string name="nav_lernen">Learn</string>
     <string name="nav_account">Account</string>
     <string name="nav_back">Navigate back</string>
 
@@ -15,13 +14,13 @@
 
     <!-- titles -->
     <string name="no_translate_en_title_overview" translatable="false">Du bist jetzt Deutscher!</string>
-    <string name="no_translate_en_title_grammar" translatable="false">Grammar</string>
-    <string name="no_translate_en_title_vocabulary" translatable="false">Vocabulary</string>
+    <string name="no_translate_en_title_lernen" translatable="false">Learn</string>
 
     <!-- grammar section titles -->
     <string name="no_translate_en_title_account" translatable="false">Account</string>
     <string name="no_translate_en_title_adjective_endings" translatable="false">Adjective Endings</string>
     <string name="no_translate_en_title_connectors" translatable="false">Connectors</string>
+    <string name="no_translate_en_title_expressions" translatable="false">Expressions</string>
     <string name="no_translate_en_title_prepositions" translatable="false">Prepositions</string>
     <string name="no_translate_en_title_adjectives" translatable="false">Adjectives</string>
     <string name="no_translate_en_title_possessive_articles" translatable="false">Possessive Articles</string>
@@ -59,16 +58,16 @@
 
     <!-- bottom nav titles -->
     <string name="no_translate_title_overview" translatable="false">Du bist jetzt Deutscher!</string>
-    <string name="no_translate_title_grammar" translatable="false">Grammatik</string>
+    <string name="no_translate_title_lernen" translatable="false">Lernen</string>
     <string name="no_translate_title_account" translatable="false">Benutzerkonto</string>
     <string name="no_translate_title_adverbs" translatable="false">Umstandswörter</string>
     <string name="no_translate_title_adjective_endings" translatable="false">Adjektivendungen</string>
     <string name="no_translate_title_adjectives" translatable="false">Adjektive</string>
     <string name="no_translate_title_connectors" translatable="false">Konnektoren</string>
+    <string name="no_translate_title_expressions" translatable="false">Redewendungen</string>
     <string name="no_translate_title_prepositions" translatable="false">Präpositionen</string>
     <string name="no_translate_title_possessive_articles" translatable="false">Possessivartikel</string>
     <string name="no_translate_title_pronouns" translatable="false">Pronomen</string>
-    <string name="no_translate_title_vocabulary" translatable="false">Wortschatz</string>
     <string name="no_translate_title_local_prepositions_dative" translatable="false">Lokale Präpositionen</string>
 
     <!-- Preposition tab explanations -->

@@ -9,27 +9,34 @@ import kotlinx.serialization.Serializable
  */
 sealed interface EmbeddedModeNavKey : AppNavKey
 
-sealed interface Grammar : EmbeddedModeNavKey {
+/**
+ * All embedded sub-screens within the Lernen (Learn) tab.
+ */
+sealed interface Lernen : EmbeddedModeNavKey {
+
     @Serializable
-    data object AdjectiveEndings : Grammar {
+    data object AdjectiveEndings : Lernen {
         override val id: String = "AdjectiveEndings"
         override val germanTitleRes: Int = StringResource.no_translate_title_adjective_endings
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_adjective_endings
     }
-}
-
-sealed interface Vocabulary : EmbeddedModeNavKey {
-
 
     @Serializable
-    data object Connectors : Vocabulary {
+    data object Connectors : Lernen {
         override val id: String = "Connectors"
         override val germanTitleRes: Int = StringResource.no_translate_title_connectors
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_connectors
     }
 
     @Serializable
-    data object Prepositions : Vocabulary {
+    data object Expressions : Lernen {
+        override val id: String = "Expressions"
+        override val germanTitleRes: Int = StringResource.no_translate_title_expressions
+        override val localizedTitleRes: Int = StringResource.no_translate_en_title_expressions
+    }
+
+    @Serializable
+    data object Prepositions : Lernen {
         override val id: String = "Prepositions"
         override val germanTitleRes: Int = StringResource.no_translate_title_prepositions
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_prepositions
@@ -38,21 +45,21 @@ sealed interface Vocabulary : EmbeddedModeNavKey {
     @Serializable
     data class Adjectives(
         val focusSearch: Boolean = false,
-    ) : Vocabulary {
+    ) : Lernen {
         override val id: String = "Adjectives"
         override val germanTitleRes: Int = StringResource.no_translate_title_adjectives
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_adjectives
     }
 
     @Serializable
-    data object PossessiveArticles : Vocabulary {
+    data object PossessiveArticles : Lernen {
         override val id: String = "PossessiveArticles"
         override val germanTitleRes: Int = StringResource.no_translate_title_possessive_articles
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_possessive_articles
     }
 
     @Serializable
-    data object Pronouns : Vocabulary {
+    data object Pronouns : Lernen {
         override val id: String = "Pronouns"
         override val germanTitleRes: Int = StringResource.no_translate_title_pronouns
         override val localizedTitleRes: Int = StringResource.no_translate_en_title_pronouns

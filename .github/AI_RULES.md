@@ -18,6 +18,7 @@
 - **Never consume CoreColors directly. Always use semantically named colors from the Theme object (e.g., Theme.adjectiveCategoryColors.quality). If a semantically named color doesn't exist, create it in the appropriate color resources and color class.**
 - **Use method references when possible (e.g., viewModel::someMethod instead of { viewModel.someMethod() }).**
 - **Always call .asStateFlow() when exposing a MutableStateFlow as a StateFlow.**
+- **When referencing German grammatical genders, always use the order: Maskulin, Neutral, Feminin (m, n, f).**
 
 ## Formatting
 
