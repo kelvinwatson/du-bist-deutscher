@@ -27,6 +27,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.adjectives.AdjectivesScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.bottombar.BottomBar
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.AdjectiveEndingsScreen
+import com.watson.kelvin.dubistjetztdeutscher.ui.component.grammar.PassiveScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.lernen.ExpressionsScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.lernen.LernenScreen
 import com.watson.kelvin.dubistjetztdeutscher.ui.component.screen.OverviewScreen
@@ -152,6 +153,9 @@ internal fun AppInternal(
                 }
                 entry<Lernen.Expressions> { key ->
                     ExpressionsScreen()
+                }
+                entry<Lernen.Passive> { key ->
+                    PassiveScreen()
                 }
                 entry<Lernen.PossessiveArticles> { key ->
                     PossessiveArticlesScreen()

@@ -52,6 +52,13 @@ sealed interface Lernen : EmbeddedModeNavKey {
     }
 
     @Serializable
+    data object Passive : Lernen {
+        override val id: String = "Passive"
+        override val germanTitleRes: Int = StringResource.no_translate_title_passive
+        override val localizedTitleRes: Int = StringResource.no_translate_en_title_passive
+    }
+
+    @Serializable
     data object PossessiveArticles : Lernen {
         override val id: String = "PossessiveArticles"
         override val germanTitleRes: Int = StringResource.no_translate_title_possessive_articles

@@ -42,6 +42,12 @@ fun LernenScreen(
                 navKey = Lernen.Connectors,
             ),
             FeatureGridItem(
+                label = stringResource(StringResource.no_translate_title_passive),
+                translation = stringResource(StringResource.no_translate_en_title_passive),
+                color = Theme.grammarColors.adverbs,
+                navKey = Lernen.Passive,
+            ),
+            FeatureGridItem(
                 label = stringResource(StringResource.no_translate_title_possessive_articles),
                 translation = stringResource(StringResource.no_translate_en_title_possessive_articles),
                 color = Theme.vocabularyCategoryColors.possessiveArticles,

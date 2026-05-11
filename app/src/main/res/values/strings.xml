@@ -26,6 +26,7 @@
     <string name="no_translate_en_title_possessive_articles" translatable="false">Possessive Articles</string>
     <string name="no_translate_en_title_pronouns" translatable="false">Pronouns</string>
     <string name="no_translate_en_title_local_prepositions" translatable="false">Local Prepositions</string>
+    <string name="no_translate_en_title_passive" translatable="false">Passive Voice</string>
 
     <string name="adverbs">Adverbs</string>
     <string name="connectors">Connectors</string>
@@ -69,6 +70,7 @@
     <string name="no_translate_title_possessive_articles" translatable="false">Possessivartikel</string>
     <string name="no_translate_title_pronouns" translatable="false">Pronomen</string>
     <string name="no_translate_title_local_prepositions_dative" translatable="false">Lokale Präpositionen</string>
+    <string name="no_translate_title_passive" translatable="false">Passiv</string>
 
     <!-- Preposition tab explanations -->
     <string name="no_translate_tab_accusative_explanation" translatable="false">Accusative</string>
